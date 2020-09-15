@@ -10,17 +10,12 @@ IMG.displayed {
 }
 
 #footer {
-    position: flex;
-    /* ������������� ��������� */
-    text-align: center;
-    bottom: 0;
-    /* ����� ������ ���� */
-    padding: 10px;
-    /* ���� ������ ������ */
-    background: #FFBF73;
-    /* ���� ���� */
-    color: #331508;
-    /* ���� ������ */
-    width: 100%;
-    /* ������ ���� */
-}
+        position: flex; /* Фиксированное положение */
+        text-align: center;
+        bottom: 0; /* Левый нижний угол */
+        padding: 10px; /* Поля вокруг текста */
+        background:#FFBF73; /* Цвет фона */
+        color: #331508; /* Цвет текста */
+        width: 100%; /* Ширина слоя */
+       }
+
