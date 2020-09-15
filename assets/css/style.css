@@ -1,0 +1,17 @@
+body{
+    background: #FFEAD0;
+    color: #331508;
+}
+IMG.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+#footer {
+        position: flex; /* Фиксированное положение */
+        text-align: center;
+        bottom: 0; /* Левый нижний угол */
+        padding: 10px; /* Поля вокруг текста */
+        background:#FFBF73; /* Цвет фона */
+        color: #331508; /* Цвет текста */
+        width: 100%; /* Ширина слоя */
+       }
