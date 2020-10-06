@@ -153,14 +153,29 @@
             </div>
         </div>
     </div>
-    <?php else: ?>
-    <p>Имя: <?=$_COOKIE['user']?></p>
-        <p>Фамилия: <?=$_COOKIE['user1']?></p>
-        <p>Email: <?=$_COOKIE['user2']?></p>
-    <?php endif; ?>
+
 </div>
+<?php else: ?>
+<?php
+$mysql = new mysqli('localhost','root','root','regist');
+$name = $_COOKIE['user'];
+$result= $mysql->query("SELECT `email` FROM `users` WHERE `name` = '$name'");
+$arr=$result->fetch_assoc();
+$email=$arr['email'];
+$result= $mysql->query("SELECT `surname` FROM `users` WHERE `name` = '$name'");
+$arr=$result->fetch_assoc();
+$surname = $arr['surname'];
 
-
+?>
+<div class="back_text">
+    <p>Имя: <?= $_COOKIE['user'] ?></p>
+    <p>Фамилия: <?=$surname?></p>
+    <p>Email: <?=$email?></p>
+</div>
+<?php
+$mysql->close();
+?>
+<?php endif; ?>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8

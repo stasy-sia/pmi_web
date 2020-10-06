@@ -8,16 +8,15 @@ $pass = md5($pass."fdhfhg2345");
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
 
 $result = $mysql->query("SELECT * FROM `users1` WHERE `email`='$email' AND `pass` = '$pass'");
+$check_if = mysqli_num_rows($result);
 $user = $result->fetch_assoc();
-if(count($user) == 0){
-    echo "Такой пользователь не найден";
+if(!$check_if){
+    echo "Неверный email или пароль";
+    header('Location: ../../pages/regest.php');
     exit();
 }
 
 setcookie('user',$user['name'], time() + 3600, "/");
-setcookie('user1',$user['surname'], time() + 3600, "/");
-setcookie('user2',$user['email'], time() + 3600, "/");
-
 
 $mysql->close();
 
