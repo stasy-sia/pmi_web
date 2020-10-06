@@ -20,7 +20,7 @@
       <img src="https://sun9-23.userapi.com/V52b4W3F4tIyICwnARlr2NUZ2Lso8luh_J5JyA/FXpViQ2dhvg.jpg" width="30"
         height="30" alt="logo">
     </a>
-    <button class="navbar-toggler type=" button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    <button class="navbar-toggler" type=" button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -28,22 +28,44 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a href="index.html" class="nav-link">Главная</a>
+          <a href="index.php" class="nav-link">Главная</a>
         </li>
         <li class="nav-item">
-          <a href="pages/menu.html" class="nav-link">Меню</a>
+          <a href="pages/menu.php" class="nav-link">Меню</a>
         </li>
         <li class="nav-item">
-          <a href="pages/contacts.html" class="nav-link">Контакты</a>
+          <a href="pages/contacts.php" class="nav-link">Контакты</a>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
+          <?php
+          if (empty($_COOKIE['user'])) :
+              ?>
+              <li class="nav-item">
+                  <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
+              </li>
+          <?php
+          endif;
+          ?>
       </ul>
+      <?php
+                if (empty($_COOKIE['user'])) :
+                    ?>
       <form class="form-inline my-2 my-lg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
       </form>
+      <?php
+                else :
+                    ?>
+
+
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+
+      <?php
+                endif;
+                ?>
     </div>
   </nav>
 
