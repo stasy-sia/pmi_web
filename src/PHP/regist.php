@@ -20,6 +20,14 @@ if(mb_strlen($email) < 5 || mb_strlen($email) > 50) {
 $pass = md5($pass."fdhfhg2345");
 
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
+
+$result = $mysql->query("SELECT * FROM `users1` WHERE `email` = '$email'");
+$check_if = mysqli_num_rows($result);
+if($check_if){
+    echo "Данный пользователь уже зарегестрирован";
+    exit();
+}
+
 $mysql->query("INSERT INTO `users1` (`email`, `name`, `surname`, `pass`) VALUES('$email','$name','$surname','$pass')");
 
 $mysql->close();
