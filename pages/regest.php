@@ -159,11 +159,9 @@
 <?php
 $mysql = new mysqli('localhost','root','root','regist');
 $name = $_COOKIE['user'];
-$result= $mysql->query("SELECT `email` FROM `users` WHERE `name` = '$name'");
+$result= $mysql->query("SELECT `email`, `surname` FROM `users` WHERE `name` = '$name'");
 $arr=$result->fetch_assoc();
 $email=$arr['email'];
-$result= $mysql->query("SELECT `surname` FROM `users` WHERE `name` = '$name'");
-$arr=$result->fetch_assoc();
 $surname = $arr['surname'];
 
 ?>
