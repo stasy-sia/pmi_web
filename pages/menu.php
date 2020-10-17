@@ -40,30 +40,30 @@
         <li class="nav-item">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
+
+          <form method="get" action="search.php">
+                <input type="search" name="search" placeholder="Поиск">
+                <input type="submit" name="subBtn">
+          </form>
+
+      </ul>
+        <ul class="navbar-nav">
           <?php
           if (empty($_COOKIE['user'])) :
           ?>
-        <li class="nav-item">
-          <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
+        <li class="nav-item my-2 my-lg-0">
+          <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
         </li>
           <?php
           endif;
           ?>
-      </ul>
         <?php
         if (empty($_COOKIE['user'])) :
             ?>
-      <form class="form-inline my-2 my-lg-0">
-        <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-      </form>
       <?php
-                else :
-                    ?>
-
-
+        else : ?>
+        </ul>
       <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-
       <?php
                 endif;
                 ?>
@@ -96,35 +96,35 @@
       <div class="row text-center justify-content">
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/eggs1.png" alt="" class="w-100">
           <h3>Бутерброд с яйцом</h3>
-          <p style="color: red;">100гр/250р</p>
+          <p style="color: red;">250р / 100гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/pankayk.png" alt="" class="w-100">
           <h3>Блинчики с мёдом</h3>
-          <p style="color: red;">90гр/120р</p>
+          <p style="color: red;">120р / 90гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kasha.png" alt="" class="w-100">
           <h3>Домашняя овсяная каша</h3>
-          <p style="color: red;">250гр/150р</p>
+          <p style="color: red;">150р / 250гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/skrambl.png" alt="" class="w-100">
           <h3>Скрамбл</h3>
-          <p style="color: red;">100гр/260р</p>
+          <p style="color: red;">260р / 100гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/avakado.png" alt="" class="w-100">
           <h3>Авакадо-Тост с лососем</h3>
-          <p style="color: red;">120гр/410р</p>
+          <p style="color: red;">410р / 120гр/</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/granola.png" alt="" class="w-100">
           <h3>Гранола c йогуртом</h3>
-          <p style="color: red;">150гр/260р</p>
+          <p style="color: red;">260р / 150гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/iogurt.png" alt="" class="w-100">
           <h3>Домашний йогурт с ягодным соусом</h3>
-          <p style="color: red;">250гр/180р</p>
+          <p style="color: red;">180р / 250гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sirniki.png" alt="" class="w-100">
           <h3>Сырники</h3>
-          <p style="color: red;">130гр/270р</p>
+          <p style="color: red;">270р / 130гр</p>
         </div>
       </div>
     </div>
@@ -137,35 +137,35 @@
       <div class="row text-center justify-content">
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kurini_sup.png" alt="" class="w-100">
           <h3>Куриный супчик с домашней лапшой</h3>
-          <p style="color: red;">240гр/300р</p>
+          <p style="color: red;">300р / 240гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/losos.png" alt="" class="w-100">
           <h3>Лосось с Птитином</h3>
-          <p style="color: red;">270гр/620р</p>
+          <p style="color: red;">620р / 270гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tereaki.png" alt="" class="w-100">
           <h3>Рис с курицей Тереяки</h3>
-          <p style="color: red;">230гр/410р</p>
+          <p style="color: red;">410р / 230гр </p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sup_tik.png" alt="" class="w-100">
           <h3>Суп-крем тыквенный </h3>
-          <p style="color: red;">300гр/290р</p>
+          <p style="color: red;">290р / 300гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/staik.png" alt="" class="w-100">
           <h3>Стейк из вырезки говядины под перечным соусом</h3>
-          <p style="color: red;">180гр/750р</p>
+          <p style="color: red;">750р / 180гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/befstrog.png" alt="" class="w-100">
           <h3>Бефстроганов с картофельным пюре по особому рецепту</h3>
-          <p style="color: red;">350гр/510р</p>
+          <p style="color: red;">510р / 350гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kotletakiev.png" alt="" class="w-100">
           <h3>Котлета по-киевски</h3>
-          <p style="color: red;">310гр/410р</p>
+          <p style="color: red;">410р / 310гр</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kalmar.png" alt="" class="w-100">
           <h3>Кальмар в сливочном соусе с булгуром</h3>
-          <p style="color: red;">290гр/470р</p>
+          <p style="color: red;">470р / 290гр/</p>
         </div>
       </div>
     </div>
@@ -221,35 +221,35 @@
       <div class="row text-center justify-content">
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tealatte.png" alt="" class="w-100">
           <h3>TEALATTE</h3>
-          <p style="color: red;">350мл/190р</p>
+          <p style="color: red;">190р / 350мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/malintea.png" alt="" class="w-100">
           <h3>Малиновый чай с мёдом и мятой</h3>
-          <p style="color: red;">600мл/290р</p>
+          <p style="color: red;">290р / 600мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sencha.png" alt="" class="w-100">
           <h3>Сенча</h3>
-          <p style="color: red;">600мл/250р</p>
+          <p style="color: red;">250р / 600мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/ulun.png" alt="" class="w-100">
           <h3>Молочный улун</h3>
-          <p style="color: red;">600мл/250р</p>
+          <p style="color: red;">250р / 600мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/latte.png" alt="" class="w-100">
           <h3>Латте</h3>
-          <p style="color: red;">250мл/160р</p>
+          <p style="color: red;">160р / 250мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/glasse.png" alt="" class="w-100">
           <h3>Гляссе</h3>
-          <p style="color: red;">250мл/190р</p>
+          <p style="color: red;">190р / 250мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/capuchino.png" alt="" class="w-100">
           <h3>Капучино</h3>
-          <p style="color: red;">200мл/150р</p>
+          <p style="color: red;">150р / 200мл</p>
         </div>
         <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/grog.png" alt="" class="w-100">
           <h3>Грог</h3>
-          <p style="color: red;">1л/580р</p>
+          <p style="color: red;">580р / 1000мл</p>
         </div>
       </div>
     </div>

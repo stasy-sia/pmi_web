@@ -1,4 +1,3 @@
-<!doctype html>
 <html lang="ru">
 
 <head>
@@ -15,6 +14,7 @@
 </head>
 
 <body>
+
   <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #FFBF73;">
     <a href="#" class="navbar-brend">
       <img src="https://sun9-23.userapi.com/V52b4W3F4tIyICwnARlr2NUZ2Lso8luh_J5JyA/FXpViQ2dhvg.jpg" width="30"
@@ -40,6 +40,7 @@
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
           <?php
+
           if (empty($_COOKIE['user'])) :
               ?>
               <li class="nav-item">
@@ -52,10 +53,6 @@
       <?php
                 if (empty($_COOKIE['user'])) :
                     ?>
-      <form class="form-inline my-2 my-lg-0">
-        <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-      </form>
       <?php
                 else :
                     ?>
