@@ -87,10 +87,10 @@
 </div>
 
 <div class="container-fluid">
-    <?php
-    if($_COOKIE['user'] == ''):
-    ?>
-    <div class="container">
+        <?php
+        if($_COOKIE['user'] == ''):
+        ?>
+        <div class="container">
 
         <div class="row text-left justify-content-around">
 
@@ -106,7 +106,7 @@
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" required>
+                            <input type="checkbox" class="form-check-input">
                             Запомнить меня
                         </label>
                     </div>
