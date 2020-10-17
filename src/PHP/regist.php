@@ -1,4 +1,5 @@
 <?php
+session_start();
 $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
 $surname = filter_var(trim($_POST['surname']), FILTER_SANITIZE_STRING);
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
@@ -24,11 +25,14 @@ $mysql = new mysqli('localhost', 'root', 'root', 'regist');
 $result = $mysql->query("SELECT * FROM `users1` WHERE `email` = '$email'");
 $check_if = mysqli_num_rows($result);
 if($check_if){
-    echo "Данный пользователь уже зарегестрирован";
+
+    $_SESSION['message2']='Данный пользователь уже зарегестрирован';
+    header('Location: ../../pages/regest.php');
     exit();
 }
 
 $mysql->query("INSERT INTO `users1` (`email`, `name`, `surname`, `pass`) VALUES('$email','$name','$surname','$pass')");
+$_SESSION['message2']='Регистрация прошла успешно';
 
 $mysql->close();
 

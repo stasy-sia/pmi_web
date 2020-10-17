@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="ru">
 
@@ -40,7 +43,7 @@
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
           <?php
-          if (empty($_COOKIE['user'])) :
+          if($_SESSION['user'] == ''):
               ?>
               <li class="nav-item">
                   <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
@@ -50,7 +53,7 @@
           ?>
       </ul>
       <?php
-                if (empty($_COOKIE['user'])) :
+      if($_SESSION['user'] == ''):
                     ?>
       <form class="form-inline my-2 my-lg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
@@ -61,7 +64,7 @@
                     ?>
 
 
-        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
 
       <?php
                 endif;

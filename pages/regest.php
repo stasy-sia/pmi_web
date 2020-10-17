@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="ru">
 
@@ -40,7 +43,7 @@
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
             <?php
-            if (empty($_COOKIE['user'])) :
+            if($_SESSION['user'] == ''):
                 ?>
                 <li class="nav-item">
                     <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
@@ -50,7 +53,7 @@
             ?>
         </ul>
         <?php
-        if (empty($_COOKIE['user'])) :
+        if($_SESSION['user'] == ''):
             ?>
             <form class="form-inline my-2 my-lg-0">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
@@ -59,7 +62,7 @@
         <?php
         else :
             ?>
-            <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php
         endif;
         ?>
@@ -88,7 +91,7 @@
 
 <div class="container-fluid">
         <?php
-        if($_COOKIE['user'] == ''):
+        if($_SESSION['user'] == ''):
         ?>
         <div class="container">
 
@@ -111,8 +114,12 @@
                         </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Войти</button>
+                    <?php
+                    if($_SESSION['message1'])
+                        echo '<div class="msg">'. $_SESSION['message1'] .'</div>';
+                    unset($_SESSION['message1']);
+                    ?>
                 </form>
-
             </div>
             <div class="col-xs-2 col-sm-2 col-lg-4 ">
                 <form action="../src/PHP/regist.php" method="post" class="auth">
@@ -148,7 +155,12 @@
                             Согласие на обработку данных
                         </label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Регестрация</button>
+                    <button type="submit" class="btn btn-primary">Регистрация</button>
+                    <?php
+                    if($_SESSION['message2'])
+                    echo '<div class="msg">'. $_SESSION['message2'] .'</div>';
+                    unset($_SESSION['message2']);
+                    ?>
                 </form>
             </div>
         </div>
@@ -156,22 +168,12 @@
 
 </div>
 <?php else: ?>
-<?php
-$mysql = new mysqli('localhost','root','root','regist');
-$name = $_COOKIE['user'];
-$result= $mysql->query("SELECT `email`, `surname` FROM `users1` WHERE `name` = '$name'");
-$arr=$result->fetch_assoc();
-$email=$arr['email'];
-$surname = $arr['surname'];
-
-?>
 <div class="back_text">
-    <p>Имя: <?= $_COOKIE['user'] ?></p>
-    <p>Фамилия: <?=$surname?></p>
-    <p>Email: <?=$email?></p>
+    <p>Имя: <?= $_SESSION['user']['name'] ?></p>
+    <p>Фамилия: <?=$_SESSION['user']['surname']?></p>
+    <p>Email: <?=$_SESSION['user']['email']?></p>
 </div>
 <?php
-$mysql->close();
 ?>
 <?php endif; ?>
 <div id="footer" style="position:absolute;">
@@ -191,5 +193,4 @@ $mysql->close();
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 </body>
-
 </html>
