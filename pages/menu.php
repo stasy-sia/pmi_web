@@ -54,7 +54,7 @@ session_start();
           ?>
       </ul>
         <?php
-        if($_SESSION['user'] == ''):
+        if(!isset($_SESSION['user'])):
             ?>
       <form class="form-inline my-2 my-lg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">

@@ -43,7 +43,7 @@ session_start();
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
             <?php
-            if($_SESSION['user'] == ''):
+            if(!isset($_SESSION['user'])):
                 ?>
                 <li class="nav-item">
                     <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
@@ -53,7 +53,7 @@ session_start();
             ?>
         </ul>
         <?php
-        if($_SESSION['user'] == ''):
+        if(!isset($_SESSION['user'])):
             ?>
             <form class="form-inline my-2 my-lg-0">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
@@ -168,12 +168,22 @@ session_start();
 
 </div>
 <?php else: ?>
+<?php
+$mysql = new mysqli('localhost','root','root','regist');
+$email = $_SESSION['user']['email'];
+$result= $mysql->query("SELECT `name`, `surname` FROM `users1` WHERE `email` = '$email'");
+$arr=$result->fetch_assoc();
+$name=$arr['name'];
+$surname = $arr['surname'];
+
+?>
 <div class="back_text">
-    <p>Имя: <?= $_SESSION['user']['name'] ?></p>
-    <p>Фамилия: <?=$_SESSION['user']['surname']?></p>
+    <p>Имя: <?= $name ?></p>
+    <p>Фамилия: <?=$surname?></p>
     <p>Email: <?=$_SESSION['user']['email']?></p>
 </div>
 <?php
+$mysql->close();
 ?>
 <?php endif; ?>
 <div id="footer" style="position:absolute;">

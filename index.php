@@ -43,7 +43,7 @@ session_start();
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
           <?php
-          if($_SESSION['user'] == ''):
+          if(!isset($_SESSION['user'])):
               ?>
               <li class="nav-item">
                   <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
@@ -53,7 +53,7 @@ session_start();
           ?>
       </ul>
       <?php
-      if($_SESSION['user'] == ''):
+      if(!isset($_SESSION['user'])):
                     ?>
       <form class="form-inline my-2 my-lg-0">
         <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
