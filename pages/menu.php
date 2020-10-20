@@ -55,7 +55,7 @@ session_start();
       </ul>
         <ul class="navbar-nav">
           <?php
-          if (empty($_COOKIE['user'])) :
+          if(!isset($_SESSION['user'])) :
           ?>
         <li class="nav-item my-2 my-lg-0">
           <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>

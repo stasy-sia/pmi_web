@@ -43,28 +43,26 @@ session_start();
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
-          
+
+        </ul>
+
+        <ul class="navbar-nav">
             <?php
-            if(!isset($_SESSION['user'])):
+            if(!isset($_SESSION['user'])) :
                 ?>
-                <li class="nav-item">
-                    <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
+                <li class="nav-item active my-2 my-lg-0">
+                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
                 </li>
             <?php
             endif;
             ?>
+            <?php
+            if(!isset($_SESSION['user'])):
+                ?>
+            <?php
+            else : ?>
         </ul>
-        <?php
-        if(!isset($_SESSION['user'])):
-            ?>
-            <form class="form-inline my-2 my-lg-0">
-                <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </form>
-        <?php
-        else :
-            ?>
-            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php
         endif;
         ?>
