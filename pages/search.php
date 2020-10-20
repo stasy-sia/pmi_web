@@ -39,28 +39,28 @@
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
-            <form method="get" action="search.php">
-                <input type="search" name="search" placeholder="Поиск" value="<?= $_GET['search'] ?>">
-                <input type="submit" name="subBtn">
+            <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
+                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" autofocus >
+                <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
             </form>
+        </ul>
+        <ul class="navbar-nav">
             <?php
             if (empty($_COOKIE['user'])) :
                 ?>
-                <li class="nav-item">
-                    <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
+                <li class="nav-item my-2 my-lg-0">
+                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
                 </li>
             <?php
             endif;
             ?>
+            <?php
+            if (empty($_COOKIE['user'])) :
+                ?>
+            <?php
+            else : ?>
         </ul>
-        <?php
-        if (empty($_COOKIE['user'])) :
-            ?>
-
-        <?php
-        else :
-            ?>
-            <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php
         endif;
         ?>
@@ -91,10 +91,11 @@
 $connect = new mysqli("127.0.0.1", "root", "root", "search");
 $search_get = $_GET['search'];
 $sql = "SELECT * FROM `menu` WHERE `name` LIKE '%$search_get%'";
+//$sql = "SELECT * MATCH(`name`) AGAINST('$search_get') FROM `menu`";
 $select = $connect->query($sql);
+$select_wile = $select->fetch_assoc();
 $categoryes = '';
 $i = 0;
-$select_wile = $select->fetch_assoc();
 while ($i < mysqli_num_rows($select) - 1){
     if($select_wile['category'] != $categoryes){?>
     <div class="container-fluid p-0">

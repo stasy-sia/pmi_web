@@ -39,30 +39,28 @@
         <li class="nav-item">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
-          <?php
 
-          if (empty($_COOKIE['user'])) :
-              ?>
-              <li class="nav-item">
-                  <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
-              </li>
-          <?php
-          endif;
-          ?>
       </ul>
-      <?php
-                if (empty($_COOKIE['user'])) :
-                    ?>
-      <?php
-                else :
-                    ?>
-
-
-        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-
-      <?php
-                endif;
+        <ul class="navbar-nav">
+            <?php
+            if (empty($_COOKIE['user'])) :
                 ?>
+                <li class="nav-item my-2 my-lg-0">
+                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
+                </li>
+            <?php
+            endif;
+            ?>
+            <?php
+            if (empty($_COOKIE['user'])) :
+                ?>
+            <?php
+            else : ?>
+        </ul>
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <?php
+        endif;
+        ?>
     </div>
   </nav>
 
