@@ -124,7 +124,7 @@ while ($i < mysqli_num_rows($select)){
                         if($select_wile['category'] == 'Десерты'){
                             ?>
                     <div class="row justify-content-around">
-                            <p style="color: red;"><?= $select_wile['price'];?>р</p>
+                            <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
@@ -136,7 +136,7 @@ while ($i < mysqli_num_rows($select)){
                         }elseif ($select_wile['category'] == 'Напитки'){
                             ?>
                     <div class="row justify-content-around">
-                            <p style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
+                            <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
@@ -148,7 +148,7 @@ while ($i < mysqli_num_rows($select)){
                         }else{
                             ?>
                     <div class="row justify-content-around">
-                            <p style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                            <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">

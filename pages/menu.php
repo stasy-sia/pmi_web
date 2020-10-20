@@ -124,11 +124,11 @@ while ($i < mysqli_num_rows($select)){
                         if($select_wile['category'] == 'Десерты'){
                             ?>
                         <div class="row justify-content-around">
-                            <p style="color: red;"><?= $select_wile['price'];?>р</p>
+                            <p class ="my-1" style="color: red;"><?= $select_wile['price'];?>р</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-primary" >В корзину</button>
+                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
                         </div>
@@ -136,11 +136,11 @@ while ($i < mysqli_num_rows($select)){
                         }elseif ($select_wile['category'] == 'Напитки'){
                             ?>
                         <div class="row justify-content-around">
-                            <p style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
+                            <p class ="my-1" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-primary" >В корзину</button>
+                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
                         </div>
@@ -148,11 +148,11 @@ while ($i < mysqli_num_rows($select)){
                         }else{
                             ?>
                         <div class="row  justify-content-around">
-                            <p class ="my-2  "style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                            <p class ="my-1" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-primary" >В корзину</button>
+                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
                         </div>
