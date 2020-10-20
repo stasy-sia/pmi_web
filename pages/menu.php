@@ -93,7 +93,7 @@ session_start();
 </div>
 
 <?php
-$connect = new mysqli("127.0.0.1", "root", "root", "search");
+$connect = new mysqli("127.0.0.1", "root", "root", "regist");
 $sql = "SELECT * FROM `menu`";
 $select = $connect->query($sql);
 $select_wile = $select->fetch_assoc();

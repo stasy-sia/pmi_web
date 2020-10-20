@@ -91,7 +91,7 @@ session_start();
 
 
 <?php
-$connect = new mysqli("127.0.0.1", "root", "root", "search");
+$connect = new mysqli("127.0.0.1", "root", "root", "regist");
 $search_get = $_GET['search'];
 $sql = "SELECT * FROM `menu` WHERE `name` LIKE '%$search_get%'";
 //$sql = "SELECT * MATCH(`name`) AGAINST('$search_get') FROM `menu`";
