@@ -36,7 +36,7 @@ session_start();
             <li class="nav-item">
                 <a href="menu.php" class="nav-link">Меню</a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a href="#" class="nav-link">Контакты</a>
             </li>
             <li class="nav-item">
@@ -62,7 +62,7 @@ session_start();
         <?php
         else :
             ?>
-            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php
         endif;
         ?>
@@ -91,11 +91,17 @@ session_start();
 
 <div class="container-fluid container row text-center justify-content">
     <?php
+    if (!isset($_SESSION['basket'])) :
+    ?>
 
-
-        foreach ($_SESSION['basket'] as $b => $v){
-            echo "\$_SESSION['basket'][$b] => $v\n";
+        <h3 style="text-align: center"> Корзина пуста</h3>
+    <?php
+    else :
+        foreach ($_SESSION['basket'] as $id => $i){
+            foreach ($i as $k => $j)
+            echo " $j ";
         }
+    endif;
     ?>
 
 </div>

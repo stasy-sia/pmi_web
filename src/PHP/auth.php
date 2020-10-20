@@ -24,5 +24,5 @@ if(!$check_if){
 
 $mysql->close();
 
-header('Location: ../../pages/regest.php');
+header('Location: ../../pages/korzina.php');
 ?>
