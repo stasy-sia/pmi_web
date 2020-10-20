@@ -99,7 +99,7 @@ $select = $connect->query($sql);
 $select_wile = $select->fetch_assoc();
 $categoryes = '';
 $i = 0;
-while ($i < mysqli_num_rows($select) - 1){
+while ($i < mysqli_num_rows($select)){
     if($select_wile['category'] != $categoryes){?>
     <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
         <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
@@ -112,7 +112,7 @@ while ($i < mysqli_num_rows($select) - 1){
         <div class="container">
             <div class="row text-center justify-content">
                 <?php
-                    for (; $i < mysqli_num_rows($select) - 1; $i++) {
+                    for (; $i < mysqli_num_rows($select); $i++) {
                         if($select_wile['category'] != $categoryes){
                             break;
                         }
@@ -123,15 +123,39 @@ while ($i < mysqli_num_rows($select) - 1){
                     <?php
                         if($select_wile['category'] == 'Десерты'){
                             ?>
+                    <div class="row justify-content-around">
                             <p style="color: red;"><?= $select_wile['price'];?>р</p>
+                            <form action="../src/PHP/order.php" method="post">
+                                <p>
+                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                    <button type="submit" class="btn btn-primary" >Заказать</button>
+                                </p>
+                            </form>
+                    </div>
                             <?php
                         }elseif ($select_wile['category'] == 'Напитки'){
                             ?>
+                    <div class="row justify-content-around">
                             <p style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
+                            <form action="../src/PHP/order.php" method="post">
+                                <p>
+                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                    <button type="submit" class="btn btn-primary" >Заказать</button>
+                                </p>
+                            </form>
+                    </div>
                             <?php
                         }else{
                             ?>
+                    <div class="row justify-content-around">
                             <p style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                            <form action="../src/PHP/order.php" method="post">
+                                <p>
+                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                    <button type="submit" class="btn btn-primary" >Заказать</button>
+                                </p>
+                            </form>
+                    </div>
                             <?php
                         }
                         ?>
