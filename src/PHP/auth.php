@@ -16,7 +16,7 @@ if(!$check_if){
     exit();
 }
 
-$_SESSION['user'] = [
+    $_SESSION['user'] = [
     "email" => $user['email'],
     "name" => $user['name']
 ];

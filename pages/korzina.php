@@ -36,11 +36,11 @@ session_start();
             <li class="nav-item">
                 <a href="menu.php" class="nav-link">Меню</a>
             </li>
-            <li class="nav-item">
-                <a href="contacts.php" class="nav-link">Контакты</a>
+            <li class="nav-item active">
+                <a href="#" class="nav-link">Контакты</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
+                <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
             <?php
             if(!isset($_SESSION['user'])):
@@ -62,7 +62,10 @@ session_start();
         <?php
         else :
             ?>
+
+
             <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+
         <?php
         endif;
         ?>
@@ -89,103 +92,12 @@ session_start();
     </div>
 </div>
 
-<div class="container-fluid">
-        <?php
-        if (!isset($_SESSION['user'])):
-        ?>
-        <div class="container">
+<div class="container-fluid container row text-center justify-content">
+    <?php
 
-        <div class="row text-left justify-content-around">
-
-            <div class="col-xs-3 col-sm-2 col-lg-4">
-                <form action="../src/PHP/auth.php" method="post" class="auth">
-                    <div class="form-froup">
-                        <h5 class="Modal-title">Авторизация</h5>
-                        <input type="text" class="form-control" name="email" placeholder="Email" required>
-                        <label></label>
-                        <label></label>
-                        <input type="password" class="form-control" name="pass" placeholder="Пароль" required>
-                        <label></label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                            Запомнить меня
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Войти</button>
-                    <?php
-                    if($_SESSION['message1'])
-                        echo '<div class="msg">'. $_SESSION['message1'] .'</div>';
-                    unset($_SESSION['message1']);
-                    ?>
-                </form>
-            </div>
-            <div class="col-xs-2 col-sm-2 col-lg-4 ">
-                <form action="../src/PHP/regist.php" method="post" class="auth">
-                    <h5 class="Modal-title">Регистрация</h5>
-                    <div class="row">
-                        <div class="col">
-                            <div class="form-froup">
-
-                                <input type="text" class="form-control" name="name" placeholder="Имя" required>
-
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="form-froup">
-
-                                <input type="text" class="form-control" name="surname" placeholder="Фамилия" required>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-froup">
-                        <label ></label>
-                        <input type="email" class="form-control" name="email" placeholder="Email" required>
-                        <label></label>
-                        <label ></label>
-                        <input type="password" class="form-control" name="pass" placeholder="Пароль" required>
-                        <label></label>
-                        <label></label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" required>
-                            Согласие на обработку данных
-                        </label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Регистрация</button>
-                    <?php
-                    if($_SESSION['message2'])
-                    echo '<div class="msg">'. $_SESSION['message2'] .'</div>';
-                    unset($_SESSION['message2']);
-                    ?>
-                </form>
-            </div>
-        </div>
-    </div>
-
+    ?>
 </div>
-<?php else: ?>
-<?php
-$mysql = new mysqli('localhost','root','root','regist');
-$email = $_SESSION['user']['email'];
-$result= $mysql->query("SELECT `name`, `surname` FROM `users1` WHERE `email` = '$email'");
-$arr=$result->fetch_assoc();
-$name=$arr['name'];
-$surname = $arr['surname'];
 
-?>
-<div class="back_text">
-    <p>Имя: <?= $name ?></p>
-    <p>Фамилия: <?=$surname?></p>
-    <p>Email: <?=$_SESSION['user']['email']?></p>
-</div>
-<?php
-$mysql->close();
-?>
-<?php endif; ?>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8
@@ -203,4 +115,5 @@ $mysql->close();
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 </body>
+
 </html>
