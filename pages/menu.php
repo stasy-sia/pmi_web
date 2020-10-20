@@ -11,7 +11,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
   <title>Меню "У Папы Сантьяго"</title>
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -26,7 +26,7 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive;">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item ">
           <a href="../index.php" class="nav-link">Главная</a>
@@ -88,171 +88,173 @@
       </div>
     </div>
   </div>
-  <div class="container-fluid p-0">
-    <h1 class="text-center" style="background-color:#FFBF73">Завтраки</h1>
-  </div>
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row text-center justify-content">
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/eggs1.png" alt="" class="w-100">
-          <h3>Бутерброд с яйцом</h3>
-          <p style="color: red;">250р / 100гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/pankayk.png" alt="" class="w-100">
-          <h3>Блинчики с мёдом</h3>
-          <p style="color: red;">120р / 90гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kasha.png" alt="" class="w-100">
-          <h3>Домашняя овсяная каша</h3>
-          <p style="color: red;">150р / 250гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/skrambl.png" alt="" class="w-100">
-          <h3>Скрамбл</h3>
-          <p style="color: red;">260р / 100гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/avakado.png" alt="" class="w-100">
-          <h3>Авакадо-Тост с лососем</h3>
-          <p style="color: red;">410р / 120гр/</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/granola.png" alt="" class="w-100">
-          <h3>Гранола c йогуртом</h3>
-          <p style="color: red;">260р / 150гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/iogurt.png" alt="" class="w-100">
-          <h3>Домашний йогурт с ягодным соусом</h3>
-          <p style="color: red;">180р / 250гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sirniki.png" alt="" class="w-100">
-          <h3>Сырники</h3>
-          <p style="color: red;">270р / 130гр</p>
+  <div style="font-family: 'Lobster', cursive; ">
+      <div class="container-fluid p-0">
+        <h1 class="text-center" style="background-color:#FFBF73">Завтрак</h1>
+      </div>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row text-center justify-content">
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/eggs1.png" alt="" class="w-100">
+              <h3>Бутерброд с яйцом</h3>
+              <p style="color: red;">250р / 100гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/pankayk.png" alt="" class="w-100">
+              <h3>Блинчики с мёдом</h3>
+              <p style="color: red;">120р / 90гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kasha.png" alt="" class="w-100">
+              <h3>Домашняя овсяная каша</h3>
+              <p style="color: red;">150р / 250гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/skrambl.png" alt="" class="w-100">
+              <h3>Скрамбл</h3>
+              <p style="color: red;">260р / 100гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/avakado.png" alt="" class="w-100">
+              <h3>Авакадо-Тост с лососем</h3>
+              <p style="color: red;">410р / 120гр/</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/granola.png" alt="" class="w-100">
+              <h3>Гранола c йогуртом</h3>
+              <p style="color: red;">260р / 150гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/iogurt.png" alt="" class="w-100">
+              <h3>Домашний йогурт с ягодным соусом</h3>
+              <p style="color: red;">180р / 250гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sirniki.png" alt="" class="w-100">
+              <h3>Сырники</h3>
+              <p style="color: red;">270р / 130гр</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid p-0">
-    <h1 class="text-center" style="background-color:#FFBF73">Обед&Ужин</h1>
-  </div>
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row text-center justify-content">
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kurini_sup.png" alt="" class="w-100">
-          <h3>Куриный супчик с домашней лапшой</h3>
-          <p style="color: red;">300р / 240гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/losos.png" alt="" class="w-100">
-          <h3>Лосось с Птитином</h3>
-          <p style="color: red;">620р / 270гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tereaki.png" alt="" class="w-100">
-          <h3>Рис с курицей Тереяки</h3>
-          <p style="color: red;">410р / 230гр </p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sup_tik.png" alt="" class="w-100">
-          <h3>Суп-крем тыквенный </h3>
-          <p style="color: red;">290р / 300гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/staik.png" alt="" class="w-100">
-          <h3>Стейк из вырезки говядины под перечным соусом</h3>
-          <p style="color: red;">750р / 180гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/befstrog.png" alt="" class="w-100">
-          <h3>Бефстроганов с картофельным пюре по особому рецепту</h3>
-          <p style="color: red;">510р / 350гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kotletakiev.png" alt="" class="w-100">
-          <h3>Котлета по-киевски</h3>
-          <p style="color: red;">410р / 310гр</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kalmar.png" alt="" class="w-100">
-          <h3>Кальмар в сливочном соусе с булгуром</h3>
-          <p style="color: red;">470р / 290гр/</p>
+      <div class="container-fluid p-0">
+        <h1 class="text-center" style="background-color:#FFBF73">Обед / Ужин</h1>
+      </div>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row text-center justify-content">
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kurini_sup.png" alt="" class="w-100">
+              <h3>Куриный супчик с домашней лапшой</h3>
+              <p style="color: red;">300р / 240гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/losos.png" alt="" class="w-100">
+              <h3>Лосось с Птитином</h3>
+              <p style="color: red;">620р / 270гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tereaki.png" alt="" class="w-100">
+              <h3>Рис с курицей Тереяки</h3>
+              <p style="color: red;">410р / 230гр </p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sup_tik.png" alt="" class="w-100">
+              <h3>Суп-крем тыквенный </h3>
+              <p style="color: red;">290р / 300гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/staik.png" alt="" class="w-100">
+              <h3>Стейк из вырезки говядины под перечным соусом</h3>
+              <p style="color: red;">750р / 180гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/befstrog.png" alt="" class="w-100">
+              <h3>Бефстроганов с картофельным пюре по особому рецепту</h3>
+              <p style="color: red;">510р / 350гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kotletakiev.png" alt="" class="w-100">
+              <h3>Котлета по-киевски</h3>
+              <p style="color: red;">410р / 310гр</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kalmar.png" alt="" class="w-100">
+              <h3>Кальмар в сливочном соусе с булгуром</h3>
+              <p style="color: red;">470р / 290гр/</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid p-0">
-    <h1 class="text-center" style="background-color:#FFBF73">Десерты</h1>
-  </div>
+      <div class="container-fluid p-0">
+        <h1 class="text-center" style="background-color:#FFBF73">Десерты</h1>
+      </div>
 
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row text-center justify-content">
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/chizcaick.png" alt="" class="w-100">
-          <h3>Торт "Чизкейк"</h3>
-          <p style="color: red;">150р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/mango_cake.png" alt="" class="w-100">
-          <h3>Торт "Манго"</h3>
-          <p style="color: red;">150р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tiramisu.png" alt="" class="w-100">
-          <h3>Пирожное "Тирамису"</h3>
-          <p style="color: red;">140р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/napoleon.png" alt="" class="w-100">
-          <h3>Пирожное "Наполеон"</h3>
-          <p style="color: red;">130р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/si4nik.png" alt="" class="w-100">
-          <h3>Пирожное "Сочник"</h3>
-          <p style="color: red;">50р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/applesharlota.png" alt="" class="w-100">
-          <h3>Яблочная шарлотка</h3>
-          <p style="color: red;">120р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/medovik.png" alt="" class="w-100">
-          <h3>Торт "Медовик"</h3>
-          <p style="color: red;">130р</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/maffin.png" alt="" class="w-100">
-          <h3>Маффин с шоколадом</h3>
-          <p style="color: red;">100р</p>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row text-center justify-content">
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/chizcaick.png" alt="" class="w-100">
+              <h3>Торт "Чизкейк"</h3>
+              <p style="color: red;">150р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/mango_cake.png" alt="" class="w-100">
+              <h3>Торт "Манго"</h3>
+              <p style="color: red;">150р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tiramisu.png" alt="" class="w-100">
+              <h3>Пирожное "Тирамису"</h3>
+              <p style="color: red;">140р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/napoleon.png" alt="" class="w-100">
+              <h3>Пирожное "Наполеон"</h3>
+              <p style="color: red;">130р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/si4nik.png" alt="" class="w-100">
+              <h3>Пирожное "Сочник"</h3>
+              <p style="color: red;">50р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/applesharlota.png" alt="" class="w-100">
+              <h3>Яблочная шарлотка</h3>
+              <p style="color: red;">120р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/medovik.png" alt="" class="w-100">
+              <h3>Торт "Медовик"</h3>
+              <p style="color: red;">130р</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/maffin.png" alt="" class="w-100">
+              <h3>Маффин с шоколадом</h3>
+              <p style="color: red;">100р</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="container-fluid p-0">
-    <h1 class="text-center" style="background-color:#FFBF73">Напитки</h1>
-  </div>
+      <div class="container-fluid p-0">
+        <h1 class="text-center" style="background-color:#FFBF73">Напитки</h1>
+      </div>
 
-  <div class="container-fluid">
-    <div class="container">
-      <div class="row text-center justify-content">
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tealatte.png" alt="" class="w-100">
-          <h3>TEALATTE</h3>
-          <p style="color: red;">190р / 350мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/malintea.png" alt="" class="w-100">
-          <h3>Малиновый чай с мёдом и мятой</h3>
-          <p style="color: red;">290р / 600мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sencha.png" alt="" class="w-100">
-          <h3>Сенча</h3>
-          <p style="color: red;">250р / 600мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/ulun.png" alt="" class="w-100">
-          <h3>Молочный улун</h3>
-          <p style="color: red;">250р / 600мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/latte.png" alt="" class="w-100">
-          <h3>Латте</h3>
-          <p style="color: red;">160р / 250мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/glasse.png" alt="" class="w-100">
-          <h3>Гляссе</h3>
-          <p style="color: red;">190р / 250мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/capuchino.png" alt="" class="w-100">
-          <h3>Капучино</h3>
-          <p style="color: red;">150р / 200мл</p>
-        </div>
-        <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/grog.png" alt="" class="w-100">
-          <h3>Грог</h3>
-          <p style="color: red;">580р / 1000мл</p>
+      <div class="container-fluid">
+        <div class="container">
+          <div class="row text-center justify-content">
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tealatte.png" alt="" class="w-100">
+              <h3>TEALATTE</h3>
+              <p style="color: red;">190р / 350мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/malintea.png" alt="" class="w-100">
+              <h3>Малиновый чай с мёдом и мятой</h3>
+              <p style="color: red;">290р / 600мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sencha.png" alt="" class="w-100">
+              <h3>Сенча</h3>
+              <p style="color: red;">250р / 600мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/ulun.png" alt="" class="w-100">
+              <h3>Молочный улун</h3>
+              <p style="color: red;">250р / 600мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/latte.png" alt="" class="w-100">
+              <h3>Латте</h3>
+              <p style="color: red;">160р / 250мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/glasse.png" alt="" class="w-100">
+              <h3>Гляссе</h3>
+              <p style="color: red;">190р / 250мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/capuchino.png" alt="" class="w-100">
+              <h3>Капучино</h3>
+              <p style="color: red;">150р / 200мл</p>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/grog.png" alt="" class="w-100">
+              <h3>Грог</h3>
+              <p style="color: red;">580р / 1000мл</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
   </div>
   <div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.: 8

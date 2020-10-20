@@ -10,7 +10,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
     <title>Поиск "У Папы Сантьяго": <?php echo $_GET['search']?></title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
@@ -25,7 +25,7 @@
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive;">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
                 <a href="../index.php" class="nav-link">Главная</a>
@@ -40,7 +40,7 @@
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
             <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
-                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" autofocus >
+                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" >
                 <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
             </form>
         </ul>
@@ -98,14 +98,14 @@ $categoryes = '';
 $i = 0;
 while ($i < mysqli_num_rows($select) - 1){
     if($select_wile['category'] != $categoryes){?>
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
         <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
     </div>
         <?php
     $categoryes = $select_wile['category'];
     }
     ?>
-    <div class="container-fluid">
+    <div class="container-fluid" style="font-family: 'Lobster', cursive; ">
         <div class="container">
             <div class="row text-center justify-content">
                 <?php
@@ -140,6 +140,10 @@ while ($i < mysqli_num_rows($select) - 1){
             </div>
          </div>
      </div>
+    <?php
+}
+if($i == 0) {?>
+    <h3 style="text-align: center"> Ничего не найдено</h3>
     <?php
 }
 ?>
