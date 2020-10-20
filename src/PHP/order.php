@@ -8,12 +8,12 @@ $result = $mysql->query("SELECT `name` FROM `menu` WHERE `id`='$id'");
 $arr = $result->fetch_assoc();
 $name = $arr['name'];
 
-if (!isset($_SESSION['basket'][$id])) {
-    $_SESSION['basket'] = array();
-    $_SESSION['basket'][$id] = array('name' => $name, 'count' => 0);
+if (!isset($_SESSION['basket']['id'])) {
+
+    $_SESSION['basket'] = array('id' => $id, 'name' => $name, 'count' => 1);
 }
 else
-    $_SESSION['basket'][$id]['count']++; // another of this item to the cart
+    $_SESSION['basket']['count']++; // another of this item to the cart
 
 print_r($_SESSION);
 

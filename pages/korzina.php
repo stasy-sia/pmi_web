@@ -62,10 +62,7 @@ session_start();
         <?php
         else :
             ?>
-
-
             <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-
         <?php
         endif;
         ?>
@@ -95,7 +92,12 @@ session_start();
 <div class="container-fluid container row text-center justify-content">
     <?php
 
+
+        foreach ($_SESSION['basket'] as $b => $v){
+            echo "\$_SESSION['basket'][$b] => $v\n";
+        }
     ?>
+
 </div>
 
 <div id="footer" style="position:absolute;">
