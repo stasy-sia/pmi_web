@@ -11,12 +11,14 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-    <title>Меню "У Папы Сантьяго"</title>
-    <link rel="stylesheet" href="../assets/css/style.css">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+  <title>Меню "У Папы Сантьяго"</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 
 <body>
@@ -29,46 +31,45 @@ session_start();
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a href="../index.php" class="nav-link">Главная</a>
-            </li>
-            <li class="nav-item active">
-                <a href="menu.php" class="nav-link">Меню</a>
-            </li>
-            <li class="nav-item">
-                <a href="contacts.php" class="nav-link">Контакты</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-            </li>
-            <?php
-            if ($_SESSION['user'] == ''):
-                ?>
-                <li class="nav-item">
-                    <a href="/pages/regest.php" class="nav-link">Войти/Зарегистрироваться</a>
-                </li>
-            <?php
-            endif;
-            ?>
-        </ul>
-        <?php
-        if (!isset($_SESSION['user'])):
-            ?>
-            <form class="form-inline my-2 my-lg-0">
-                <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </form>
-        <?php
-        else :
-            ?>
-            <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php"> Личный
-                    кабинет </a><a href="/src/PHP/exit.php">Выйти</a></li>
 
-        <?php
-        endif;
-        ?>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive;">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item ">
+          <a href="../index.php" class="nav-link">Главная</a>
+        </li>
+        <li class="nav-item active">
+          <a href="menu.php" class="nav-link">Меню</a>
+        </li>
+        <li class="nav-item">
+          <a href="contacts.php" class="nav-link">Контакты</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
+        </li>
+          <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
+                  <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Search" autofocus>
+                  <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
+              </form>
+          </li>
+      </ul>
+        <ul class="navbar-nav">
+          <?php
+          if (empty($_COOKIE['user'])) :
+          ?>
+        <li class="nav-item my-2 my-lg-0">
+          <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
+        </li>
+          
+
+      <?php
+        else : ?>
+        </ul>
+      <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php"> Личный кабинет </a><a href="/src/PHP/exit.php">Выйти</a></li>
+      <?php
+                endif;
+                ?>
+
     </div>
 </nav>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
@@ -89,7 +90,9 @@ session_start();
             </div>
         </div>
     </div>
+
 </div>
+ <div style="font-family: 'Lobster', cursive; ">
 <div class="container-fluid p-0">
     <h1 class="text-center" style="background-color:#FFBF73">Завтраки</h1>
 </div>
@@ -385,6 +388,7 @@ session_start();
             </div>
         </div>
     </div>
+</div>
 </div>
 <div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.: 8

@@ -14,7 +14,8 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Столовая "У папы Сантьяго"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <title>Регестрация "У папы Сантьяго"</title>
 </head>
 
 <body>
@@ -28,7 +29,7 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive; ">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a href="../index.php" class="nav-link">Главная</a>
@@ -42,6 +43,7 @@ session_start();
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
+          
             <?php
             if(!isset($_SESSION['user'])):
                 ?>
@@ -66,6 +68,7 @@ session_start();
         <?php
         endif;
         ?>
+
     </div>
 </nav>
 

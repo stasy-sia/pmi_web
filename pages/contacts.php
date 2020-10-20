@@ -14,7 +14,8 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <title>Столовая "У папы Сантьяго"</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <title>Контакты "У папы Сантьяго"</title>
 </head>
 
 <body>
@@ -28,7 +29,7 @@ session_start();
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive; ">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="../index.php" class="nav-link">Главная</a>
@@ -42,33 +43,27 @@ session_start();
                 <li class="nav-item">
                     <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
                 </li>
-                <?php
-                if(!isset($_SESSION['user'])):
-              ?>
-                <li class="nav-item">
-                    <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
-                </li>
-                <?php
-          endif;
-          ?>
             </ul>
+             <ul class="navbar-nav">
+            <?php
+            if(!isset($_SESSION['user'])) :
+                ?>
+                <li class="nav-item my-2 my-lg-0">
+                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
+                </li>
+            <?php
+            endif;
+            ?>
             <?php
             if(!isset($_SESSION['user'])):
-                    ?>
-            <form class="form-inline my-2 my-lg-0">
-                <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </form>
-            <?php
-                else :
-                    ?>
-
-
-            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-
-            <?php
-                endif;
                 ?>
+            <?php
+            else : ?>
+        </ul>
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <?php
+        endif;
+        ?>
         </div>
     </nav>
 
