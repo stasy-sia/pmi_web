@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html lang="ru">
 
@@ -41,26 +44,26 @@
                     <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
                 </li>
             </ul>
-            <ul class="navbar-nav">
-                <?php
-                if (empty($_COOKIE['user'])) :
-                    ?>
-                    <li class="nav-item my-2 my-lg-0">
-                        <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
-                    </li>
-                <?php
-                endif;
+             <ul class="navbar-nav">
+            <?php
+            if(!isset($_SESSION['user'])) :
                 ?>
-                <?php
-                if (empty($_COOKIE['user'])) :
-                    ?>
-                <?php
-                else : ?>
-            </ul>
-            <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+                <li class="nav-item my-2 my-lg-0">
+                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
+                </li>
             <?php
             endif;
             ?>
+            <?php
+            if(!isset($_SESSION['user'])):
+                ?>
+            <?php
+            else : ?>
+        </ul>
+        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/regest.php" > Личный кабинет </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <?php
+        endif;
+        ?>
         </div>
     </nav>
 

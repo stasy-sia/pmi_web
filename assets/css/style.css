@@ -10,7 +10,7 @@ IMG.displayed {
 }
 
 #footer {
-        position: flex; /* Фиксированное положение */
+        position: flex; /* свободное положение */
         text-align: center;
         bottom: 0; /* Левый нижний угол */
         padding: 10px; /* Поля вокруг текста */
@@ -20,7 +20,12 @@ IMG.displayed {
        }
 .auth{
     padding-top: 10px;
+
 }
 
-
-
+.msg {
+    text-align: center;
+    margin-top: 10px;
+    color: red;
+    font-weight: bold;
+}

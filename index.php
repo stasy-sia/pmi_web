@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+
+?>
+<!doctype html>
+
 <html lang="ru">
 <head>
 
@@ -40,10 +47,11 @@
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
 
+
       </ul>
         <ul class="navbar-nav">
             <?php
-            if (empty($_COOKIE['user'])) :
+            if(!isset($_SESSION['user'])) :
                 ?>
                 <li class="nav-item my-2 my-lg-0">
                     <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
@@ -52,7 +60,7 @@
             endif;
             ?>
             <?php
-            if (empty($_COOKIE['user'])) :
+            if(!isset($_SESSION['user'])):
                 ?>
             <?php
             else : ?>

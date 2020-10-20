@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
 $pass = filter_var(trim($_POST['pass']), FILTER_SANITIZE_STRING);
 
@@ -11,12 +11,16 @@ $result = $mysql->query("SELECT * FROM `users1` WHERE `email`='$email' AND `pass
 $check_if = mysqli_num_rows($result);//считает кол во элементов если есть совпадения запишет сколько эл, если нет 0
 $user = $result->fetch_assoc(); //преобразует объекты в ассоциативгый массив
 if(!$check_if){
-    echo "Неверный email или пароль";
+    $_SESSION['message1']='Неверный логин или пароль';
     header('Location: ../../pages/regest.php');
     exit();
 }
 
-setcookie('user',$user['name'], time() + 3600, "/"); // / - работает на всех страницах сайта
+    $_SESSION['user'] = [
+    "email" => $user['email'],
+    "name" => $user['name']
+];
+
 
 $mysql->close();
 
