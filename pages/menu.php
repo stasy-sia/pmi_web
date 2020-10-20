@@ -112,58 +112,72 @@ session_start();
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/pankayk.png" alt="" class="w-100">
                 <h3>Блинчики с мёдом</h3>
                 <p style="color: red;">90гр/120р</p>
-                <p>
-                    <input type="hidden" value="2" name="id">
-                    <a href="#" class="btn btn-primary">Заказать</a>
-                </p>
+                <form action="../src/PHP/order.php" method="post">
+                    <p>
+                        <input type="hidden" value="2" name="id">
+                        <button type="submit" class="btn btn-primary" >Заказать</button> <!-- кнопка добавления в карзину -->
+                    </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kasha.png" alt="" class="w-100">
                 <h3>Домашняя овсяная каша</h3>
                 <p style="color: red;">250гр/150р</p>
-                <p>
-                    <input type="hidden" value="3" name="id">
-                    <a href="#" class="btn btn-primary">Заказать</a>
-                </p>
+                <form action="../src/PHP/order.php" method="post">
+                    <p>
+                        <input type="hidden" value="3" name="id">
+                        <button type="submit" class="btn btn-primary" >Заказать</button> <!-- кнопка добавления в карзину -->
+                    </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/skrambl.png" alt="" class="w-100">
                 <h3>Скрамбл</h3>
                 <p style="color: red;">100гр/260р</p>
-                <p>
-                    <input type="hidden" value="4" name="id">
-                    <a href="#" class="btn btn-primary">Заказать</a>
-                </p>
+                <form action="../src/PHP/order.php" method="post">
+                    <p>
+                        <input type="hidden" value="4" name="id">
+                        <button type="submit" class="btn btn-primary" >Заказать</button> <!-- кнопка добавления в карзину -->
+                    </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/avakado.png" alt="" class="w-100">
                 <h3>Авакадо-Тост с лососем</h3>
                 <p style="color: red;">120гр/410р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="5" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/granola.png" alt="" class="w-100">
                 <h3>Гранола c йогуртом</h3>
                 <p style="color: red;">150гр/260р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="6" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/iogurt.png" alt="" class="w-100">
                 <h3>Домашний йогурт с ягодным соусом</h3>
                 <p style="color: red;">250гр/180р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="7" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sirniki.png" alt="" class="w-100">
                 <h3>Сырники</h3>
                 <p style="color: red;">130гр/270р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="8" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
         </div>
     </div>
@@ -177,66 +191,82 @@ session_start();
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kurini_sup.png" alt="" class="w-100">
                 <h3>Куриный супчик с домашней лапшой</h3>
                 <p style="color: red;">240гр/300р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="9" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/losos.png" alt="" class="w-100">
                 <h3>Лосось с Птитином</h3>
                 <p style="color: red;">270гр/620р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="10" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tereaki.png" alt="" class="w-100">
                 <h3>Рис с курицей Тереяки</h3>
                 <p style="color: red;">230гр/410р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="11" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sup_tik.png" alt="" class="w-100">
                 <h3>Суп-крем тыквенный </h3>
                 <p style="color: red;">300гр/290р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="12" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/staik.png" alt="" class="w-100">
                 <h3>Стейк из вырезки говядины под перечным соусом</h3>
                 <p style="color: red;">180гр/750р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="13" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/befstrog.png" alt="" class="w-100">
                 <h3>Бефстроганов с картофельным пюре по особому рецепту</h3>
                 <p style="color: red;">350гр/510р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="14" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kotletakiev.png" alt="" class="w-100">
                 <h3>Котлета по-киевски</h3>
                 <p style="color: red;">310гр/410р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="15" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/kalmar.png" alt="" class="w-100">
                 <h3>Кальмар в сливочном соусе с булгуром</h3>
                 <p style="color: red;">290гр/470р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="16" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
         </div>
     </div>
@@ -251,66 +281,82 @@ session_start();
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/chizcaick.png" alt="" class="w-100">
                 <h3>Торт "Чизкейк"</h3>
                 <p style="color: red;">150р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="17" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/mango_cake.png" alt="" class="w-100">
                 <h3>Торт "Манго"</h3>
                 <p style="color: red;">150р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="18" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tiramisu.png" alt="" class="w-100">
                 <h3>Пирожное "Тирамису"</h3>
                 <p style="color: red;">140р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="19" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/napoleon.png" alt="" class="w-100">
                 <h3>Пирожное "Наполеон"</h3>
                 <p style="color: red;">130р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="20" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/si4nik.png" alt="" class="w-100">
                 <h3>Пирожное "Сочник"</h3>
                 <p style="color: red;">50р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="21" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/applesharlota.png" alt="" class="w-100">
                 <h3>Яблочная шарлотка</h3>
                 <p style="color: red;">120р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="22" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/medovik.png" alt="" class="w-100">
                 <h3>Торт "Медовик"</h3>
                 <p style="color: red;">130р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="23" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/maffin.png" alt="" class="w-100">
                 <h3>Маффин с шоколадом</h3>
                 <p style="color: red;">100р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="24" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
         </div>
     </div>
@@ -325,66 +371,82 @@ session_start();
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/tealatte.png" alt="" class="w-100">
                 <h3>TEALATTE</h3>
                 <p style="color: red;">350мл/190р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="25" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/malintea.png" alt="" class="w-100">
                 <h3>Малиновый чай с мёдом и мятой</h3>
                 <p style="color: red;">600мл/290р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="26" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/sencha.png" alt="" class="w-100">
                 <h3>Сенча</h3>
                 <p style="color: red;">600мл/250р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="27" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/ulun.png" alt="" class="w-100">
                 <h3>Молочный улун</h3>
                 <p style="color: red;">600мл/250р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="28" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/latte.png" alt="" class="w-100">
                 <h3>Латте</h3>
                 <p style="color: red;">250мл/160р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="29" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/glasse.png" alt="" class="w-100">
                 <h3>Гляссе</h3>
                 <p style="color: red;">250мл/190р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="30" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/capuchino.png" alt="" class="w-100">
                 <h3>Капучино</h3>
                 <p style="color: red;">200мл/150р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="31" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
             <div class="col-xs-12 col-sm-4 col-lg-3"><img src="../assets/images/grog.png" alt="" class="w-100">
                 <h3>Грог</h3>
                 <p style="color: red;">1л/580р</p>
+                <form action="../src/PHP/order.php" method="post">
                 <p>
                     <input type="hidden" value="32" name="id">
                     <a href="#" class="btn btn-primary">Заказать</a>
                 </p>
+                </form>
             </div>
         </div>
     </div>
