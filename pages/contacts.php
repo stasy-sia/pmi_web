@@ -29,7 +29,7 @@ session_start();
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive; ">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent"">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                     <a href="../index.php" class="nav-link">Главная</a>
@@ -103,9 +103,8 @@ session_start();
                         <h4>Адрес: г. Волгоград, 
                         проспект Университетский, д. 100</h4>
                         <h4>Тел.: +8 (800)-555-35-35;</h4>
-                    </h4>
-
                 </div>
+
                 <div class="col-xs-2 col-sm-2 col-lg-4 ">
                     <form>
                         <div class="row">

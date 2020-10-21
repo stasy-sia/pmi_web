@@ -14,6 +14,7 @@ session_start();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
     <title>Столовая "У папы Сантьяго"</title>
 </head>
 
@@ -43,7 +44,7 @@ session_start();
                 <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
             <?php
-            if(!isset($_SESSION['user'])):
+            if (!isset($_SESSION['user'])):
                 ?>
                 <li class="nav-item">
                     <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
@@ -53,7 +54,7 @@ session_start();
             ?>
         </ul>
         <?php
-        if(!isset($_SESSION['user'])):
+        if (!isset($_SESSION['user'])):
             ?>
             <form class="form-inline my-2 my-lg-0">
                 <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
@@ -62,7 +63,8 @@ session_start();
         <?php
         else :
             ?>
-            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+            <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php"> Корзина </a><a
+                        href="/src/PHP/exit.php">Выйти</a></li>
         <?php
         endif;
         ?>
@@ -88,23 +90,54 @@ session_start();
         </div>
     </div>
 </div>
-
-<div class="container-fluid container row text-center justify-content">
-    <?php
-    if (!isset($_SESSION['basket'])) :
+<?php
+if (!isset($_SESSION['basket'])){
     ?>
+    <h3 style="text-align: center"> Корзина пуста</h3>
+<?php
+}else{?>
 
-        <h3 style="text-align: center"> Корзина пуста</h3>
     <?php
-    else :
-        foreach ($_SESSION['basket'] as $id => $i){
-            foreach ($i as $k => $j)
-            echo " $j ";
+    foreach ($_SESSION['basket'] as $id => $i) {
+        ?>
+        <div class="container-fluid container row text-center justify-content">
+            <div class="row col-xs-3 col-sm-2 col-lg-12">
+                    <img src="../assets/images/<?= $id; ?>.png" alt="" style=" width: 210px; height: 210px">
+                     <div>
+        <?php
+        foreach ($i as $k => $j) {
+            if ($k == 'name') {
+                ?>
+                <h3><?= $j; ?></h3>
+                <?php
+            }
+            if ($k == 'price') {
+                ?>
+                <h3>Цена <?= $j; ?>р</h3>
+                <?php
+            }
+            if ($k == 'count') {
+                ?>
+                    <h4>
+                        Количество:
+                        <input value="<?= $j ?>" type="text" style="margin-left: 10px;  width: 40px; height: 40px">
+                        шт.
+                    </h4>
+                <?php
+            }?>
+
+                <?php
         }
-    endif;
-    ?>
+        ?>
+        </div>
+            </div>
+        </div>
+        <?php
+    }?>
 
-</div>
+<?php
+}?>
+
 
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:

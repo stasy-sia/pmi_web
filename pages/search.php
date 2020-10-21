@@ -19,7 +19,7 @@ session_start();
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #FFBF73;">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top"">
     <a href="#" class="navbar-brend">
         <img src="https://sun9-23.userapi.com/V52b4W3F4tIyICwnARlr2NUZ2Lso8luh_J5JyA/FXpViQ2dhvg.jpg" width="30"
              height="30" alt="logo">
@@ -28,7 +28,7 @@ session_start();
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
                 <a href="../index.php" class="nav-link">Главная</a>
@@ -101,14 +101,14 @@ $categoryes = '';
 $i = 0;
 while ($i < mysqli_num_rows($select)){
     if($select_wile['category'] != $categoryes){?>
-    <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
+    <div class="container-fluid p-0" ">
         <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
     </div>
         <?php
     $categoryes = $select_wile['category'];
     }
     ?>
-    <div class="container-fluid" style="font-family: 'Lobster', cursive; ">
+    <div class="container-fluid"">
         <div class="container">
             <div class="row text-center justify-content">
                 <?php
@@ -118,7 +118,7 @@ while ($i < mysqli_num_rows($select)){
                         }
                  ?>
                 <div class="col-xs-12 col-sm-4 col-lg-3">
-                    <img src="../assets/images/<?= $select_wile['picture'];?>" alt="" class="w-100">
+                    <img src="../assets/images/<?= $select_wile['id'];?>.png" alt="" class="w-100">
                     <h3><?= $select_wile['name'];?></h3>
                     <?php
                         if($select_wile['category'] == 'Десерты'){

@@ -29,7 +29,7 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive; ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a href="../index.php" class="nav-link">Главная</a>
@@ -62,7 +62,7 @@ session_start();
             <?php
             else : ?>
         </ul>
-        <li class="nav-link" >Привет, <?= $_COOKIE['user'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php
         endif;
         ?>
@@ -91,9 +91,6 @@ session_start();
 </div>
 
 <div class="container-fluid">
-        <?php
-        if (!isset($_SESSION['user'])):
-        ?>
         <div class="container">
 
         <div class="row text-left justify-content-around">
@@ -168,25 +165,6 @@ session_start();
     </div>
 
 </div>
-<?php else: ?>
-<?php
-$mysql = new mysqli('localhost','root','root','regist');
-$email = $_SESSION['user']['email'];
-$result= $mysql->query("SELECT `name`, `surname` FROM `users1` WHERE `email` = '$email'");
-$arr=$result->fetch_assoc();
-$name=$arr['name'];
-$surname = $arr['surname'];
-
-?>
-<div class="back_text">
-    <p>Имя: <?= $name ?></p>
-    <p>Фамилия: <?=$surname?></p>
-    <p>Email: <?=$_SESSION['user']['email']?></p>
-</div>
-<?php
-$mysql->close();
-?>
-<?php endif; ?>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8

@@ -32,7 +32,7 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="font-family: 'Lobster', cursive;">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
                 <a href="../index.php" class="nav-link">Главная</a>
@@ -108,7 +108,7 @@ while ($i < mysqli_num_rows($select)){
         $categoryes = $select_wile['category'];
     }
     ?>
-    <div class="container-fluid" style="font-family: 'Lobster', cursive; ">
+    <div class="container-fluid "">
         <div class="container">
             <div class="row text-center justify-content">
                 <?php
@@ -118,7 +118,7 @@ while ($i < mysqli_num_rows($select)){
                     }
                     ?>
                     <div class="col-xs-12 col-sm-4 col-lg-3">
-                        <img src="../assets/images/<?= $select_wile['picture'];?>" alt="" class="w-100">
+                        <img src="../assets/images/<?= $select_wile['id'];?>.png" alt="" class="w-100">
                         <h3><?= $select_wile['name'];?></h3>
                         <?php
                         if($select_wile['category'] == 'Десерты'){
