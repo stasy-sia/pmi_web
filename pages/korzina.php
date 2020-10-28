@@ -139,7 +139,7 @@ if (!isset($_SESSION['basket'])){
 }?>
 
 
-<div id="footer" style="position:absolute;">
+<div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8
     800 555-35-35

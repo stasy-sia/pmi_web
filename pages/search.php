@@ -19,7 +19,7 @@ session_start();
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light sticky-top"">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top"style="background-color: #FFBF73;">
     <a href="#" class="navbar-brend">
         <img src="https://sun9-23.userapi.com/V52b4W3F4tIyICwnARlr2NUZ2Lso8luh_J5JyA/FXpViQ2dhvg.jpg" width="30"
              height="30" alt="logo">
@@ -128,7 +128,7 @@ while ($i < mysqli_num_rows($select)){
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-primary" >Заказать</button>
+                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
                     </div>
@@ -152,7 +152,7 @@ while ($i < mysqli_num_rows($select)){
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
                                     <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-primary" >Заказать</button>
+                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
                     </div>
