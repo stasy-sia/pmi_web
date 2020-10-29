@@ -2,24 +2,27 @@
 session_start();
 ?>
 <!DOCTYPE html>
-
+<!doctype html>
 <html lang="ru">
+
 
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
-    <title>Поиск "У Папы Сантьяго": <?php echo $_GET['search']?></title>
+    <title>Меню "У Папы Сантьяго"</title>
     <link rel="stylesheet" href="../assets/css/style.css">
+
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light sticky-top"style="background-color: #FFBF73;">
+<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #FFBF73;">
     <a href="#" class="navbar-brend">
         <img src="https://sun9-23.userapi.com/V52b4W3F4tIyICwnARlr2NUZ2Lso8luh_J5JyA/FXpViQ2dhvg.jpg" width="30"
              height="30" alt="logo">
@@ -28,6 +31,7 @@ session_start();
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent"">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item ">
@@ -42,10 +46,12 @@ session_start();
             <li class="nav-item">
                 <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
             </li>
-            <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
-                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" >
-                <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
-            </form>
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
+                    <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Search" autofocus>
+                    <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
+                </form>
+            </li>
         </ul>
         <ul class="navbar-nav">
             <?php
@@ -54,19 +60,16 @@ session_start();
                 <li class="nav-item my-2 my-lg-0">
                     <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
                 </li>
-            <?php
-            endif;
-            ?>
-            <?php
-            if(!isset($_SESSION['user'])) :
-                ?>
+
+
             <?php
             else : ?>
         </ul>
-        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php"> Корзина </a><a href="/src/PHP/exit.php">Выйти</a></li>
         <?php
         endif;
         ?>
+
     </div>
 </nav>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
@@ -88,42 +91,36 @@ session_start();
         </div>
     </div>
 </div>
-
-
 <?php
 $connect = new mysqli("127.0.0.1", "root", "root", "regist");
-$search_get = $_GET['search'];
-$sql = "SELECT * FROM `menu` WHERE `name` LIKE '%$search_get%'";
-//$sql = "SELECT * MATCH(`name`) AGAINST('$search_get') FROM `menu`";
+$sql = "SELECT * FROM `menu`";
 $select = $connect->query($sql);
 $select_wile = $select->fetch_assoc();
 $categoryes = '';
 $i = 0;
 while ($i < mysqli_num_rows($select)){
     if($select_wile['category'] != $categoryes){?>
-    <div class="container-fluid p-0" ">
-        <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
-    </div>
+        <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
+            <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
+        </div>
         <?php
-    $categoryes = $select_wile['category'];
+        $categoryes = $select_wile['category'];
     }
     ?>
-    <div class="container-fluid"">
+    <div class="container-fluid "">
         <div class="container">
-            <div class="row text-center justify-content">
+            <div class="row text-center justify-content ">
+                <div class="card-deck">
                 <?php
-                    for (; $i < mysqli_num_rows($select); $i++) {
-                        if($select_wile['category'] != $categoryes){
-                            break;
-                        }
-                 ?>
-                <div class="col-xs-12 col-sm-4 col-lg-3">
-                    <img src="../assets/images/<?= $select_wile['id'];?>.png" alt="" class="w-100">
-                    <h3><?= $select_wile['name'];?></h3>
-                    <?php
-                        if($select_wile['category'] == 'Десерты'){
-                            ?>
-                    <div class="row justify-content-around">
+                for (; $i < mysqli_num_rows($select); $i++) {
+                    if($select_wile['category'] != $categoryes){
+                        break;
+                    }
+                    ?>
+                    <div class="card">
+                        <img src="../assets/images/<?= $select_wile['id'];?>.png" alt="">
+                        <h3><?= $select_wile['name'];?></h3>
+                        <div class="card-body">
                             <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р</p>
                             <form action="../src/PHP/order.php" method="post">
                                 <p>
@@ -131,50 +128,18 @@ while ($i < mysqli_num_rows($select)){
                                     <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
                                 </p>
                             </form>
+                        </div>
                     </div>
-                            <?php
-                        }elseif ($select_wile['category'] == 'Напитки'){
-                            ?>
-                    <div class="row justify-content-around">
-                            <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
-                            <form action="../src/PHP/order.php" method="post">
-                                <p>
-                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                </p>
-                            </form>
-                    </div>
-                            <?php
-                        }else{
-                            ?>
-                    <div class="row justify-content-around">
-                            <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
-                        <form action="../src/PHP/order.php" method="post">
-                            <p>
-                                <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                            </p>
-                        </form>
-                    </div>
-                            <?php
-                        }
-                        ?>
-
+                    <?php
+                    $select_wile = $select->fetch_assoc();
+                }
+                ?>
                 </div>
-
-                        <?php
-                        $select_wile = $select->fetch_assoc();
-                    }
-                    ?>
-
             </div>
-         </div>
-     </div>
+        </div>
+    </div>
     <?php
-}
-if($i == 0) {?>
-    <h3 style="text-align: center"> Ничего не найдено</h3>
-    <?php
+
 }
 ?>
 
