@@ -66,6 +66,51 @@ session_start();
           ?>
         </div>
     </nav>
+<div style="padding-top: 10px; margin-left: 15px ">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Gramm</th>
+            <th>Category</th>
+        </tr>
+
+        <?php
+        $mysql = new mysqli('localhost', 'root', 'root', 'regist');
+        $add = $mysql->query("SELECT * FROM `admin`");
+        $add = mysqli_fetch_all($add);
+        foreach ($add as $product) {
+            ?>
+            <tr>
+                <td><?= $product[0] ?></td>
+                <td><?= $product[1] ?></td>
+                <td><?= $product[2] ?></td>
+                <td><?= $product[3] ?></td>
+                <td><?= $product[5] ?>$</td>
+
+            </tr>
+            <?php
+        }
+        ?>
+    </table>
+    <br></br>
+    <H4>Add new product</H4>
+    <form action ="/src/PHP/admin.php" method="post">
+        <P>Name</P>
+        <input tupe="text" name="name">
+        <P>Price</P>
+        <input tupe="number" name="price">
+        <P>Gramm</P>
+        <input tupe="number" name="gramm">
+        <P>picture</P>
+        <input tupe="text" name="picture">
+        <P>Category</P>
+        <input tupe="text" name="category"> <br></br>
+        <button type="submit">Add new product</button>
+
+    </form>
+</div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
         aria-hidden="true">
