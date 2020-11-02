@@ -20,6 +20,7 @@ if($cat == 3) {
     $result = $mysql->query("SELECT `name`, `price`, FROM `drinks` WHERE `id`='$id'");
     $category = 'drinks';
 }
+
 $arr = $result->fetch_assoc();
 $name = $arr['name'];
 $price = $arr['price'];

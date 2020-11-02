@@ -65,39 +65,46 @@ session_start();
           ?>
         </div>
     </nav>
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">name</th>
-        <th scope="col">priсe</th>
-        <th scope="col">gramm</th>
-        <th scope="col">picture</th>
-        <th scope="col">category</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
         <?php
+        $mass = array(
+            "breakfast", "dinner", "dessert", "drinks"
+        );
         $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-        $add = $mysql->query("SELECT * FROM `admin`");
-        $add = mysqli_fetch_all($add);
-        foreach ($add as $product) {
-        ?>
-    <tr>
-        <td><?= $product[0] ?></td>
-        <td><?= $product[1] ?></td>
-        <td><?= $product[2] ?></td>
-        <td><?= $product[3] ?></td>
-        <td><?= $product[4] ?></td>
-        <td><?= $product[5] ?></td>
-        <td><a href="UpAdmin.php?id=<?= $product[0] ?>">Update</a></td>
-        <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>">Delete</a></td>
-    </tr>
-    <?php
-    }
+        for($j = 0; $j < 4;$j++){
+            $add = $mysql->query("SELECT * FROM `$mass[$j]`");
+            $add = mysqli_fetch_all($add);
+            ?>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">name</th>
+                            <th scope="col">priсe</th>
+                            <th scope="col">gramm</th>
+                            <th scope="col">picture</th>
+                            <th scope="col">category</th>
+                            <th scope="col">Update</th>
+                            <th scope="col">Delete</th>
+                        </tr>
+                    </thead>
+                <tbody>
+        <tr>
+            <?php
+            foreach ($add as $product) {
+            ?>
+        <tr>
+            <td><?= $product[0] ?></td>
+            <td><?= $product[1] ?></td>
+            <td><?= $product[2] ?></td>
+            <td><?= $product[3] ?></td>
+            <td><?= $product[4] ?></td>
+            <td><?= $product[5] ?></td>
+            <td><a href="UpAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>">Update</a></td>
+            <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>">Delete</a></td>
+        </tr>
+        <?php
+        }
+        }
     ?>
     </tbody>
 </table>
@@ -115,7 +122,13 @@ session_start();
         <P>picture</P>
         <input tupe="text" name="picture">
         <P>Category</P>
-        <input tupe="text" name="category"> <br></br>
+        <p><select name="category" size="4" multiple>
+                <option selected value="breakfast">Завтрак</option>
+                <option value="dinner">Обед</option>
+                <option value="dessert">Десерты</option>
+                <option value="drinks">Напики</option>
+            </select>
+            <br></br>
         <button type="submit">Add new product</button>
 
     </form>
@@ -143,7 +156,7 @@ session_start();
 
     
 
-    <div id="footer" style="position:absolute;">
+    <div id="footer" style="position:flex;">
         © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
         8
         800 555-35-35

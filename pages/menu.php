@@ -78,9 +78,9 @@ session_start();
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
-                <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Сlose">
                     <span aria-hidden="true">&times;</span>
-                </buttom>
+                </button>
             </div>
             <div class="modal-body">
                 <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
@@ -123,9 +123,34 @@ for($j = 0; $j < 4;$j++){
                         }
                         ?>
                         <div class="col-xs-12 col-sm-4 col-lg-3">
-                            <img src="../assets/images/<?= $mass[$j];?>/<?= $select_wile['id'];?>.png" alt="" class="w-100">
+                            <img  src="../assets/images/<?= $mass[$j];?>/<?= $select_wile['id'];?>.png" alt="" class="w-100">
                             <h3><?= $select_wile['name'];?></h3>
                             <?
+                            if ($select_wile['category'] == 'Завтрак'){
+                                ?>
+                                <div class="row  justify-content-around">
+                                    <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                                    <form action="../src/PHP/order.php?id=0" method="post">
+                                        <p>
+                                            <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                            <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                        </p>
+                                    </form>
+                                </div>
+                                <?php
+                            }if ($select_wile['category'] == 'Обед'){
+                                ?>
+                                <div class="row  justify-content-around">
+                                    <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                                    <form action="../src/PHP/order.php?id=1" method="post">
+                                        <p>
+                                            <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                            <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                        </p>
+                                    </form>
+                                </div>
+                                <?php
+                            }
                             if($select_wile['category'] == 'Десерты'){
                                 ?>
                             <div class="row justify-content-around">
@@ -149,30 +174,6 @@ for($j = 0; $j < 4;$j++){
                                     </p>
                                 </form>
                             </div>
-                                <?php
-                            }if ($select_wile['category'] == 'Завтрак'){
-                                ?>
-                            <div class="row  justify-content-around">
-                                <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
-                                <form action="../src/PHP/order.php?id=0" method="post">
-                                    <p>
-                                        <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                        <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                    </p>
-                                </form>
-                            </div>
-                                <?php
-                            }if ($select_wile['category'] == 'Обед'){
-                                ?>
-                                <div class="row  justify-content-around">
-                                    <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
-                                    <form action="../src/PHP/order.php?id=1" method="post">
-                                        <p>
-                                            <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                            <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                        </p>
-                                    </form>
-                                </div>
                                 <?php
                             }
                             ?>

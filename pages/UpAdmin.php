@@ -1,8 +1,9 @@
 <?php
 session_start();
 $update_id = $_GET['id'];
+$category = $_GET['cat'];
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-$update =  $mysql->query("SELECT * FROM `admin` WHERE `id` = '$update_id'");
+$update =  $mysql->query("SELECT * FROM `$category` WHERE `id` = '$update_id'");
 $update = mysqli_fetch_assoc($update);
 ?>
 <!doctype html>
@@ -84,10 +85,6 @@ $update = mysqli_fetch_assoc($update);
         <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
         <P>picture</P>
         <input tupe="text" name="picture" value="<?=$update['picture']?>">
-        <P>Category</P>
-        <input tupe="text" name="category" value="<?=$update['category']?>"> <br></br>
-        <button type="submit">Update product</button>
-
     </form>
 </div>
 
