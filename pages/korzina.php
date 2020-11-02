@@ -100,9 +100,10 @@ if (!isset($_SESSION['basket'])){
     <?php
     foreach ($_SESSION['basket'] as $id => $i) {
         ?>
+
         <div class="container-fluid container row text-center justify-content">
             <div class="row col-xs-3 col-sm-2 col-lg-12">
-                    <img src="../assets/images/<?= $id; ?>.png" alt="" style=" width: 210px; height: 210px">
+                    <img src="../assets/images/<?=$_SESSION['basket'][$id]['category']?>/<?= $id; ?>.png" alt="" style=" width: 210px; height: 210px">
                      <div>
         <?php
         foreach ($i as $k => $j) {

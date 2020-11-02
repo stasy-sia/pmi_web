@@ -93,82 +93,99 @@ session_start();
 </div>
 
 <?php
+$mass = array(
+    "breakfast", "dinner", "dessert", "drinks"
+);
 $connect = new mysqli("127.0.0.1", "root", "root", "regist");
-$sql = "SELECT * FROM `menu`";
-$select = $connect->query($sql);
-$select_wile = $select->fetch_assoc();
-$categoryes = '';
-$i = 0;
-while ($i < mysqli_num_rows($select)){
-    if($select_wile['category'] != $categoryes){?>
-        <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
-            <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
-        </div>
-        <?php
-        $categoryes = $select_wile['category'];
-    }
-    ?>
-    <div class="container-fluid "">
-        <div class="container">
-            <div class="row text-center justify-content">
-                <?php
-                for (; $i < mysqli_num_rows($select); $i++) {
-                    if($select_wile['category'] != $categoryes){
-                        break;
-                    }
-                    ?>
-                    <div class="col-xs-12 col-sm-4 col-lg-3">
-                        <img src="../assets/images/<?= $select_wile['id'];?>.png" alt="" class="w-100">
-                        <h3><?= $select_wile['name'];?></h3>
-                        <?php
-                        if($select_wile['category'] == 'Десерты'){
-                            ?>
-                        <div class="row justify-content-around">
-                            <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р</p>
-                            <form action="../src/PHP/order.php" method="post">
-                                <p>
-                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                </p>
-                            </form>
-                        </div>
-                            <?php
-                        }elseif ($select_wile['category'] == 'Напитки'){
-                            ?>
-                        <div class="row justify-content-around">
-                            <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
-                            <form action="../src/PHP/order.php" method="post">
-                                <p>
-                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                </p>
-                            </form>
-                        </div>
-                            <?php
-                        }else{
-                            ?>
-                        <div class="row  justify-content-around">
-                            <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
-                            <form action="../src/PHP/order.php" method="post">
-                                <p>
-                                    <input type="hidden" value="<?= $select_wile['id']?>" name="id">
-                                    <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
-                                </p>
-                            </form>
-                        </div>
-                            <?php
+for($j = 0; $j < 4;$j++){
+
+    $sql = "SELECT * FROM `$mass[$j]`";
+    $select = $connect->query($sql);
+    $select_wile = $select->fetch_assoc();
+    $categoryes = '';
+    $i = 0;
+    while ($i < mysqli_num_rows($select)){
+        if($select_wile['category'] != $categoryes){?>
+            <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
+                <h1 class="text-center" style="background-color:#FFBF73"><?= $select_wile['category'] ?></h1>
+            </div>
+            <?php
+            $categoryes = $select_wile['category'];
+        }
+        ?>
+        <div class="container-fluid "">
+            <div class="container">
+                <div class="row text-center justify-content">
+                    <?php
+                    for (; $i < mysqli_num_rows($select); $i++) {
+                        if($select_wile['category'] != $categoryes){
+                            break;
                         }
                         ?>
-                    </div>
-                    <?php
-                    $select_wile = $select->fetch_assoc();
-                }
-                ?>
+                        <div class="col-xs-12 col-sm-4 col-lg-3">
+                            <img src="../assets/images/<?= $mass[$j];?>/<?= $select_wile['id'];?>.png" alt="" class="w-100">
+                            <h3><?= $select_wile['name'];?></h3>
+                            <?php
+                            if($select_wile['category'] == 'Десерты'){
+                                ?>
+                            <div class="row justify-content-around">
+                                <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р</p>
+                                <form action="../src/PHP/order.php?id=2" method="post">
+                                    <p>
+                                        <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                        <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                    </p>
+                                </form>
+                            </div>
+                                <?php
+                            }elseif ($select_wile['category'] == 'Напитки'){
+                                ?>
+                            <div class="row justify-content-around">
+                                <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
+                                <form action="../src/PHP/order.php?id=3" method="post">
+                                    <p>
+                                        <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                        <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                    </p>
+                                </form>
+                            </div>
+                                <?php
+                            }elseif ($select_wile['category'] == 'Завтрак'){
+                                ?>
+                            <div class="row  justify-content-around">
+                                <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                                <form action="../src/PHP/order.php?id=0" method="post">
+                                    <p>
+                                        <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                        <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                    </p>
+                                </form>
+                            </div>
+                                <?php
+                            }else{
+                                ?>
+                                <div class="row  justify-content-around">
+                                    <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                                    <form action="../src/PHP/order.php?id=1" method="post">
+                                        <p>
+                                            <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                            <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                        </p>
+                                    </form>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
+                        <?php
+                        $select_wile = $select->fetch_assoc();
+                    }
+                    ?>
+                </div>
             </div>
         </div>
-    </div>
     <?php
-
+    }
 }
 ?>
 
