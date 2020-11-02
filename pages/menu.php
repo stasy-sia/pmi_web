@@ -125,7 +125,7 @@ for($j = 0; $j < 4;$j++){
                         <div class="col-xs-12 col-sm-4 col-lg-3">
                             <img src="../assets/images/<?= $mass[$j];?>/<?= $select_wile['id'];?>.png" alt="" class="w-100">
                             <h3><?= $select_wile['name'];?></h3>
-                            <?php
+                            <?
                             if($select_wile['category'] == 'Десерты'){
                                 ?>
                             <div class="row justify-content-around">
@@ -138,7 +138,7 @@ for($j = 0; $j < 4;$j++){
                                 </form>
                             </div>
                                 <?php
-                            }elseif ($select_wile['category'] == 'Напитки'){
+                            }if ($select_wile['category'] == 'Напитки'){
                                 ?>
                             <div class="row justify-content-around">
                                 <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
@@ -150,7 +150,7 @@ for($j = 0; $j < 4;$j++){
                                 </form>
                             </div>
                                 <?php
-                            }elseif ($select_wile['category'] == 'Завтрак'){
+                            }if ($select_wile['category'] == 'Завтрак'){
                                 ?>
                             <div class="row  justify-content-around">
                                 <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
@@ -162,7 +162,7 @@ for($j = 0; $j < 4;$j++){
                                 </form>
                             </div>
                                 <?php
-                            }else{
+                            }if ($select_wile['category'] == 'Обед'){
                                 ?>
                                 <div class="row  justify-content-around">
                                     <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>

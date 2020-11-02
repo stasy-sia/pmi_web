@@ -23,14 +23,12 @@ if($cat == 3) {
 $arr = $result->fetch_assoc();
 $name = $arr['name'];
 $price = $arr['price'];
-if (!isset($_SESSION['basket'][$id])) {
+if (!isset($_SESSION['basket'][$cat][$id])) {
 
-    $_SESSION['basket'][$id] = array('name' => $name, 'price' => $price, 'count' => 1, 'category' => $category);
+    $_SESSION['basket'][$cat][$id] = array('id' => $id ,'name' => $name, 'price' => $price, 'count' => 1);
 }
 else
-    $_SESSION['basket'][$id]['count']++; // another of this item to the cart
-
-
+    $_SESSION['basket'][$cat][$id]['count']++; // another of this item to the cart
 $mysql->close();
 
 header('Location: ../../pages/menu.php');

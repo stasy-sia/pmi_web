@@ -92,18 +92,38 @@ session_start();
 </div>
 <?php
 if (!isset($_SESSION['basket'])){
+    /*
+    $_SESSION['test']['brek']['1']['name'] = 'test';
+   echo $_SESSION['test']['brek']['1']['name'];
+   $_SESSION['test']['brek']['2']['name'] = 'test2';
+    echo $_SESSION['test']['brek']['2']['name'];
+    */
     ?>
+
     <h3 style="text-align: center"> Корзина пуста</h3>
 <?php
 }else{?>
 
     <?php
-    foreach ($_SESSION['basket'] as $id => $i) {
+    foreach ($_SESSION['basket'] as $cat => $category ) {
+        if($cat == 0) {
+            $image = 'breakfast';
+        }
+        if($cat == 1) {
+            $image = 'dinner';
+        }
+        if($cat == 2){
+            $image = 'dessert';
+        }
+        if($cat == 3) {
+            $image = 'drinks';
+        }
+        foreach ($category as $i){
         ?>
 
         <div class="container-fluid container row text-center justify-content">
             <div class="row col-xs-3 col-sm-2 col-lg-12">
-                    <img src="../assets/images/<?=$_SESSION['basket'][$id]['category']?>/<?= $id; ?>.png" alt="" style=" width: 210px; height: 210px">
+                    <img src="../assets/images/<?=$image?>/<?=$i['id']; ?>.png" alt="" style=" width: 210px; height: 210px">
                      <div>
         <?php
         foreach ($i as $k => $j) {
@@ -137,6 +157,7 @@ if (!isset($_SESSION['basket'])){
     }?>
 
 <?php
+    }
 }?>
 
 

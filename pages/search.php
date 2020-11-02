@@ -130,7 +130,7 @@ for($j = 0; $j < 4;$j++){
                             ?>
                             <div class="row justify-content-around">
                                 <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р</p>
-                                <form action="../src/PHP/order.php" method="post">
+                                <form action="../src/PHP/order.php?id=2" method="post">
                                     <p>
                                         <input type="hidden" value="<?= $select_wile['id']?>" name="id">
                                         <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
@@ -142,7 +142,19 @@ for($j = 0; $j < 4;$j++){
                             ?>
                             <div class="row justify-content-around">
                                 <p class ="my-2" style="color: red;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>мл</p>
-                                <form action="../src/PHP/order.php" method="post">
+                                <form action="../src/PHP/order.php?id=3" method="post">
+                                    <p>
+                                        <input type="hidden" value="<?= $select_wile['id']?>" name="id">
+                                        <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
+                                    </p>
+                                </form>
+                            </div>
+                            <?php
+                        }elseif ($select_wile['category'] == 'Завтрак'){
+                            ?>
+                            <div class="row  justify-content-around">
+                                <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
+                                <form action="../src/PHP/order.php?id=0" method="post">
                                     <p>
                                         <input type="hidden" value="<?= $select_wile['id']?>" name="id">
                                         <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
@@ -154,7 +166,7 @@ for($j = 0; $j < 4;$j++){
                             ?>
                             <div class="row  justify-content-around">
                                 <p class ="my-2" style="color: #ff0000;"><?= $select_wile['price'];?>р / <?= $select_wile['gramm'];?>гр</p>
-                                <form action="../src/PHP/order.php" method="post">
+                                <form action="../src/PHP/order.php?id=1" method="post">
                                     <p>
                                         <input type="hidden" value="<?= $select_wile['id']?>" name="id">
                                         <button type="submit" class="btn btn-success btn-sm my-2 my-sm-0">В корзину</button>
