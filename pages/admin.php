@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: /pages/regest.php');
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="ru">
@@ -36,7 +40,7 @@ session_start();
                 <li class="nav-item">
                     <a href="menu.php" class="nav-link">Меню</a>
                 </li>
-                <li class="nav-item active">
+                <li class="nav-item ">
                     <a href="#" class="nav-link">Контакты</a>
                 </li>
                 <li class="nav-item">
@@ -53,16 +57,22 @@ session_start();
             <?php
             endif;
             ?>
-            <?php
-            if(!isset($_SESSION['user'])):
-                ?>
-            <?php
-            else : ?>
-          </ul>
-          <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-          <?php
-          endif;
-          ?>
+                 <?php
+                 if(isset($_SESSION['user'])){
+                 ?>
+
+                 <?php if($_SESSION['user']['id']==7): ?>
+             </ul>
+        <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <?php else: ?>
+            <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+
+        <?php
+        endif;
+        ?>
+        <?php
+        }
+        ?>
         </div>
     </nav>
         <?php

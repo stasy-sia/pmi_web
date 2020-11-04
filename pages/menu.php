@@ -55,20 +55,21 @@ session_start();
         </ul>
         <ul class="navbar-nav">
             <?php
-            if(!isset($_SESSION['user'])) :
-                ?>
-                <li class="nav-item my-2 my-lg-0">
-                    <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
-                </li>
+            if(isset($_SESSION['user'])){
+            ?>
 
-
-            <?php
-            else : ?>
+            <?php if($_SESSION['user']['id']==7): ?>
         </ul>
-        <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php"> Корзина </a><a href="/src/PHP/exit.php">Выйти</a></li>
-        <?php
-        endif;
-        ?>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+    <?php else: ?>
+        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+
+    <?php
+    endif;
+    ?>
+    <?php
+    }
+    ?>
 
     </div>
 </nav>

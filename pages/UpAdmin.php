@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: /pages/regest.php');
+    exit();
+}
 $update_id = $_GET['id'];
 $category = $_GET['cat'];
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
@@ -64,7 +68,7 @@ $update = mysqli_fetch_assoc($update);
             <?php
             else : ?>
           </ul>
-          <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+          <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
           <?php
           endif;
           ?>

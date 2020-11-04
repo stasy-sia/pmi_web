@@ -1,5 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: /pages/regest.php');
+    exit();
+}
 ?>
 <!doctype html>
 <html lang="ru">
@@ -29,45 +33,47 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a href="../index.php" class="nav-link">Главная</a>
-            </li>
-            <li class="nav-item">
-                <a href="menu.php" class="nav-link">Меню</a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">Контакты</a>
-            </li>
-            <li class="nav-item">
-                <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-            </li>
-            <?php
-            if (!isset($_SESSION['user'])):
-                ?>
-                <li class="nav-item">
-                    <a href="regest.php" class="nav-link">Войти/Зарегистрироваться</a>
-                </li>
-            <?php
-            endif;
-            ?>
-        </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a href="../index.php" class="nav-link">Главная</a>
+        </li>
+        <li class="nav-item">
+            <a href="menu.php" class="nav-link">Меню</a>
+        </li>
+        <li class="nav-item ">
+            <a href="#" class="nav-link">Контакты</a>
+        </li>
+        <li class="nav-item">
+            <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
+        </li>
+    </ul>
+    <ul class="navbar-nav">
         <?php
-        if (!isset($_SESSION['user'])):
+        if(!isset($_SESSION['user'])) :
             ?>
-            <form class="form-inline my-2 my-lg-0">
-                <input type="text" class="form-control mr-sm-2" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0">Search</button>
-            </form>
-        <?php
-        else :
-            ?>
-            <li class="nav-link">Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php"> Корзина </a><a
-                        href="/src/PHP/exit.php">Выйти</a></li>
+            <li class="nav-item my-2 my-lg-0">
+                <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
+            </li>
         <?php
         endif;
         ?>
+        <?php
+        if(isset($_SESSION['user'])){
+        ?>
+
+        <?php if($_SESSION['user']['id']==7): ?>
+    </ul>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+    <?php else: ?>
+        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+
+    <?php
+    endif;
+    ?>
+    <?php
+    }
+    ?>
     </div>
 </nav>
 

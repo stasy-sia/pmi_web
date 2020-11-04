@@ -17,7 +17,7 @@ if(!$check_if){
 }
 
     $_SESSION['user'] = [
-    "email" => $user['email'],
+    "id" => $user['id'],
     "name" => $user['name']
 ];
 
