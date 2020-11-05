@@ -89,6 +89,8 @@ $update = mysqli_fetch_assoc($update);
         <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
         <P>picture</P>
         <input tupe="text" name="picture" value="<?=$update['picture']?>">
+        <br></br>
+        <button type="submit">Update product</button>
     </form>
 </div>
 
