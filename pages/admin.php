@@ -109,7 +109,7 @@ if (!isset($_SESSION['user'])) {
             <td><?= $product[3] ?></td>
             <td><?= $product[4] ?></td>
             <td><?= $product[5] ?></td>
-            <td><a href="UpAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>">Update</a></td>
+            <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$mass[$j]?>">Update</a></td>
             <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>">Delete</a></td>
         </tr>
         <?php

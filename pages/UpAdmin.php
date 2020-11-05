@@ -81,6 +81,7 @@ $update = mysqli_fetch_assoc($update);
     <H4>UPdate Product</H4>
     <form action ="/src/PHP/UpAdmin.php" method="post">
         <input type="hidden" name="id" value="<?=$update['id']?>">
+        <input type="hidden" name="cat" value="<?=$category?>">
         <P>Name</P>
         <input tupe="text" name="name" value="<?=$update['name']?>">
         <P>Price</P>
