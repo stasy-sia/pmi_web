@@ -46,7 +46,7 @@ session_start();
         </li>
         <li class="nav-item">
             <form class="form-inline my-2 my-lg-0" method="get" action="prob.php">
-                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Search" autofocus>
+                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" autofocus >
                 <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
             </form>
         </li>
@@ -102,11 +102,12 @@ session_start();
 </div>
 
 <?php
-if (isset($_GET)) {
+if (isset($_GET['search']) and strlen($_GET['search'])) {
     $search = $_GET['search'];
+    $j = -1;
     for ($i = 1; $i <= 32; $i++) {
         $text = file_get_contents('../html/' . $i . '.html');
-        $pos = strripos($text, $search);
+        $pos = strpos($text, $search);
         if ($pos) {
             if (($pos - 30) > 0) {
                 $j = $pos - 30;
@@ -119,13 +120,20 @@ if (isset($_GET)) {
                 $k = strlen($text) - $pos;
             }
             ?>
-            <div>
-                <a style="font-size: 200%" href="../html/<?= $i ?>.html" class="nav-link"><?= $i ?>.html</a>
-                <h5 style="opacity: 0.7;">...<?= substr($text, $j,  $k)?>...</h5>
-            </div>
+            <a style="font-size: 200%" href="../html/<?= $i ?>.html" class="nav-link"><?= $i ?>.html</a>
+            <h5 style="opacity: 0.7;">...<?= substr($text, $j, $k) ?>...</h5>
             <?php
         }
     }
+    if ($j == -1) {
+        ?>
+        <h3 style="text-align: center">Ничего не найдено</h3>
+        <?php
+    }
+} else {
+    ?>
+    <h3 style="text-align: center"> Пустой запрос</h3>
+    <?php
 }
 ?>
 
