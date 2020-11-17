@@ -38,11 +38,17 @@ session_start();
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
             <a href="#" class="nav-link">Контакты</a>
         </li>
         <li class="nav-item">
             <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline my-2 my-lg-0" method="get" action="prob.php">
+                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Search" autofocus>
+                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
+            </form>
         </li>
     </ul>
     <ul class="navbar-nav">
@@ -102,11 +108,21 @@ if (isset($_GET)) {
         $text = file_get_contents('../html/' . $i . '.html');
         $pos = strripos($text, $search);
         if ($pos) {
+            if (($pos - 30) > 0) {
+                $j = $pos - 30;
+            } else {
+                $j = 0;
+            }
+            if (($pos + 100) < strlen($text)) {
+                $k = 100;
+            } else {
+                $k = strlen($text) - $pos;
+            }
             ?>
-                <div>
-                    <a href="../html/<?=$i?>.html" class="nav-link"><?=$i?>.html</a>
-                    <h6>текст</h6>
-                </div>
+            <div>
+                <a style="font-size: 200%" href="../html/<?= $i ?>.html" class="nav-link"><?= $i ?>.html</a>
+                <h5 style="opacity: 0.7;">...<?= substr($text, $j,  $k)?>...</h5>
+            </div>
             <?php
         }
     }
