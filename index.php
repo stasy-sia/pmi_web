@@ -46,7 +46,12 @@ session_start();
         <li class="nav-item">
           <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
-
+          <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0" method="get" action="pages/prob.php">
+                  <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" aria-label="Search" autofocus>
+                  <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
+              </form>
+          </li>
 
       </ul>
         <ul class="navbar-nav">
