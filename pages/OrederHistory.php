@@ -96,14 +96,54 @@ if (!isset($_SESSION['user'])) {
         </div>
     </div>
 </div>
+<?php
+$userid = $_SESSION['user']['id'];
+$mysql = new mysqli('localhost', 'root', 'root', 'regist');
+$result = $mysql->query("SELECT * FROM `orders` WHERE usser_id = '$userid'");
 
-<div class="row">
-    <div class="col">.col-4</div>
-    <div class="col">.col-4</div>
-    <div class="col">.col-4</div>
-    <div class="col">.col-4</div>
-</div>
+for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+    $orders = $result->fetch_assoc();
+    ?>
+    <div class="row">
+        <div class="col">
+            <h4>Номер заказа: <?=$orders['id']; ?></h4>
+            <h6 style="opacity: 0.7;"><?=$orders['date']?></h6>
+        </div>
 
+        <?php
+        if($orders['status'] == "Доставлено"){
+        ?>
+        <div class="col text-success">
+            <h4><?= $orders['status']; ?></h4>
+        </div>
+        <?php
+        }
+        ?>
+        <?php
+        if($orders['status'] == "В пути"){
+            ?>
+            <div class="col text-warning">
+                <h4><?= $orders['status']; ?></h4>
+            </div>
+            <?php
+        }
+        ?>
+        <?php
+        if($orders['status'] == "Обрабатывается"){
+            ?>
+            <div class="col text-info">
+                <h4><?= $orders['status']; ?></h4>
+            </div>
+            <?php
+        }
+        ?>
+        <div class="col">
+            <h4><?= $orders['price']; ?> рублей</h4>
+        </div>
+    </div>
+    <?php
+}
+?>
 
 
 

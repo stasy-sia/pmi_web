@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
 }
 ?>
 <!doctype html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -167,9 +167,14 @@ if (!isset($_SESSION['basket'])){
         <div class="card-header">
             <h2> Итоговая цена</h2>
         </div>
-        <div class="card-body">
+        <div class="card-body" >
             <h3 class="card-text"><?=$itog?> рублей </h3>
-            <a href="../src/PHP/History.php" class="btn btn-success">Оплатить</a>
+            <form action=../src/PHP/History.php?" method="post">
+                <p>
+                    <input type="hidden" value="<?= $itog?>" name="itog">
+                    <button type="submit" class="btn btn-success">Оплатить</button>
+                </p>
+            </form>
         </div>
     </div>
 <?php
