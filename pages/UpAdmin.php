@@ -69,6 +69,7 @@ $update = mysqli_fetch_assoc($update);
             else : ?>
           </ul>
           <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
+            <li class="nav-link" ><a href="OrederHistory.php" >История заказов</a></li>
           <?php
           endif;
           ?>
