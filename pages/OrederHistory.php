@@ -44,7 +44,7 @@ if (!isset($_SESSION['user'])) {
         <li class="nav-item ">
             <a href="#" class="nav-link">Контакты</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item">
             <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
         </li>
     </ul>
@@ -96,84 +96,16 @@ if (!isset($_SESSION['user'])) {
         </div>
     </div>
 </div>
-<?php
-if (!isset($_SESSION['basket'])){
-    /*
-    $_SESSION['test']['brek']['1']['name'] = 'test';
-   echo $_SESSION['test']['brek']['1']['name'];
-   $_SESSION['test']['brek']['2']['name'] = 'test2';
-    echo $_SESSION['test']['brek']['2']['name'];
-    */
-    ?>
 
-    <h3 style="text-align: center"> Корзина пуста</h3>
-<?php
-}else{?>
-    <?php
-    $itog = 0;
-    $price = 0;
-    foreach ($_SESSION['basket'] as $cat => $category ) {
-        if($cat == 0) {
-            $image = 'breakfast';
-        }
-        if($cat == 1) {
-            $image = 'dinner';
-        }
-        if($cat == 2){
-            $image = 'dessert';
-        }
-        if($cat == 3) {
-            $image = 'drinks';
-        }
-        foreach ($category as $i){
-            ?>
+<div class="row">
+    <div class="col">.col-4</div>
+    <div class="col">.col-4</div>
+    <div class="col">.col-4</div>
+    <div class="col">.col-4</div>
+</div>
 
-            <div class="container-fluid container row text-center justify-content">
-                <div class="row col-xs-3 col-sm-2 col-lg-12">
-                        <img src="../assets/images/<?=$image?>/<?=$i['id']; ?>.png" alt="" style=" width: 210px; height: 210px">
-                         <div>
-            <?php
-            foreach ($i as $k => $j) {
-                if ($k == 'name') {
-                    ?>
-                    <h3><?= $j; ?></h3>
-                    <?php
-                }
-                if ($k == 'price') {
-                    $price = $j;
-                    ?>
-                    <h3>Цена <?= $j; ?>р</h3>
-                    <?php
-                }
-                if ($k == 'count') {
-                    $itog += $price * $j;
-                    ?>
-                        <h4>
-                            Количество:
-                            <input value="<?= $j ?>" type="text" style="margin-left: 10px;  width: 40px; height: 40px">
-                            шт.
-                        </h4>
-                    <?php
-                }
-            }
-        ?>
-                         </div>
-                </div>
-            </div>
-        <?php
-        }
-    }?>
-    <div class="card text-white bg-dark">
-        <div class="card-header">
-            <h2> Итоговая цена</h2>
-        </div>
-        <div class="card-body">
-            <h3 class="card-text"><?=$itog?> рублей </h3>
-            <a href="../src/PHP/History.php" class="btn btn-success">Оплатить</a>
-        </div>
-    </div>
-<?php
-}?>
+
+
 
 <div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
