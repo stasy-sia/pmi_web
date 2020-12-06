@@ -71,11 +71,11 @@ session_start();
             <?php if($_SESSION['user']['id']==7): ?>
 
         </ul>
-      <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-      <li class="nav-link" ><a href="/pages/OrederHistory.php" >История заказов</a></li>
+      <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+      <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
       <?php else: ?>
-          <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/src/PHP/exit.php" >Выйти</a></li>
-          <li class="nav-link" ><a href="/pages/OrederHistory.php" >История заказов</a></li>
+          <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+          <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
       <?php
       endif;
       ?>
