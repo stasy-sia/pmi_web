@@ -17,7 +17,7 @@ if($cat == 2){
     $category = 'dessert';
 }
 if($cat == 3) {
-    $result = $mysql->query("SELECT `name`, `price`, FROM `drinks` WHERE `id`='$id'");
+    $result = $mysql->query("SELECT `name`, `price` FROM `drinks` WHERE `id`='$id'");
     $category = 'drinks';
 }
 
