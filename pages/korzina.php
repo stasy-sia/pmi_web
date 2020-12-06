@@ -109,8 +109,9 @@ if (!isset($_SESSION['basket'])){
     <h3 style="text-align: center"> Корзина пуста</h3>
 <?php
 }else{?>
-
     <?php
+    $itog = 0;
+    $price = 0;
     foreach ($_SESSION['basket'] as $cat => $category ) {
         if($cat == 0) {
             $image = 'breakfast';
@@ -139,11 +140,13 @@ if (!isset($_SESSION['basket'])){
                 <?php
             }
             if ($k == 'price') {
+                $price = $j;
                 ?>
                 <h3>Цена <?= $j; ?>р</h3>
                 <?php
             }
             if ($k == 'count') {
+                $itog += $price * $j;
                 ?>
                     <h4>
                         Количество:
@@ -165,7 +168,15 @@ if (!isset($_SESSION['basket'])){
 <?php
     }
 }?>
-
+<div class="card text-white bg-dark">
+    <div class="card-header">
+        <h2> Итоговая цена</h2>
+    </div>
+    <div class="card-body">
+        <h3 class="card-text"><?=$itog?> рублей </h3>
+        <a href="#" class="btn btn-success">Оплатить</a>
+    </div>
+</div>
 
 <div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
