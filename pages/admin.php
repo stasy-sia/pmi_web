@@ -80,7 +80,6 @@ if (!isset($_SESSION['user'])) {
         <?php
         }
         ?>
-        </div>
     </nav>
         <?php
         $mass = array(

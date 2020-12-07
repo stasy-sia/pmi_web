@@ -19,6 +19,7 @@ if (!isset($_SESSION['user'])) {
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Столовая "У папы Сантьяго"</title>
 </head>
 
@@ -255,6 +256,15 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
         ?>
         <div class="col">
             <h4><?= $orders['price']; ?> рублей</h4>
+        </div>
+        <div class="col">
+            <form action="../src/PHP/Del_History.php" method="post">
+                <h4>
+                    Удалить
+                    <input type="hidden" value="<?=$orderid?>" name="orderid">
+                    <button type="submit" class="delbtn" style="" ><i class="fa fa-trash"></i></button>
+                </h4>
+            </form>
         </div>
     </div>
     <?php
