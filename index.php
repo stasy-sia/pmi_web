@@ -17,6 +17,7 @@ session_start();
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+
   <title>Столовая "У папы Сантьяго"</title>
 </head>
 
@@ -74,8 +75,13 @@ session_start();
       <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
       <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
       <?php else: ?>
-          <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
-          <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
+          <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
+
+              <div id="myDropdown" class="dropdown-content">
+                  <a href="/pages/korzina.php">Корзина</a>
+                  <a href="/pages/OrederHistory.php">История заказов</a>
+                  <a href="/src/PHP/exit.php">Выйти</a>
+              </div>
       <?php
       endif;
       ?>
@@ -133,6 +139,7 @@ session_start();
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="src/js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
   </script>

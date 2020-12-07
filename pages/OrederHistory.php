@@ -105,8 +105,6 @@ $mysql = new mysqli('localhost', 'root', 'root', 'regist');
 $result = $mysql->query("SELECT * FROM `orders` WHERE usser_id = '$userid'");
 $orders = $result->fetch_assoc();
 
-
-
 for ($i = 0; $i < mysqli_num_rows($result); $i++) {
     $orderid = $orders['id'];
     $result2 = $mysql->query("SELECT * FROM `oreder_prod` WHERE order_id = '$orderid'");
