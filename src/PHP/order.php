@@ -26,7 +26,7 @@ $name = $arr['name'];
 $price = $arr['price'];
 if (!isset($_SESSION['basket'][$cat][$id])) {
 
-    $_SESSION['basket'][$cat][$id] = array('id' => $id ,'neam' => $name, 'price' => $price, 'count' => 1);
+    $_SESSION['basket'][$cat][$id] = array('id' => $id ,'name' => $name, 'price' => $price, 'count' => 1);
 }
 else
     $_SESSION['basket'][$cat][$id]['count']++; // another of this item to the cart

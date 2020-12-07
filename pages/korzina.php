@@ -19,6 +19,7 @@ if (!isset($_SESSION['user'])) {
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Столовая "У папы Сантьяго"</title>
 </head>
 
@@ -134,8 +135,8 @@ if (!isset($_SESSION['basket'])){
             $image = 'drinks';
         }
         foreach ($category as $i){
+            $id_del = $i['id'];
             ?>
-
             <div class="container-fluid container row text-center justify-content">
                 <div class="row col-xs-3 col-sm-2 col-lg-12">
                         <img src="../assets/images/<?=$image?>/<?=$i['id']; ?>.png" alt="" style=" width: 210px; height: 210px">
@@ -144,7 +145,7 @@ if (!isset($_SESSION['basket'])){
             foreach ($i as $k => $j) {
                 if ($k == 'name') {
                     ?>
-                    <h3><?= $j; ?></h3>
+                    <h3><?=$j;?></h3>
                     <?php
                 }
                 if ($k == 'price') {
@@ -161,6 +162,17 @@ if (!isset($_SESSION['basket'])){
                             <input value="<?= $j ?>" type="text" style="margin-left: 10px;  width: 40px; height: 40px">
                             шт.
                         </h4>
+                    <form action="../src/PHP/Del_prod.php" method="post">
+                        <h4>
+                            Удалить
+                            <input type="hidden" value="<?=$id_del?>" name="id">
+                            <input type="hidden" value="<?=$cat?>" name="cat">
+                            <button type="submit" class="delbtn" style="" ><i class="fa fa-trash"></i></button>
+                        </h4>
+                    </form>
+
+
+
                     <?php
                 }
             }
