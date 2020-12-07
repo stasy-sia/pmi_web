@@ -142,7 +142,7 @@ if (!isset($_SESSION['user'])) {
         <h4>Gramm</h4>
         <input tupe="number" name="gramm" placeholder="gramm">
         <h4>picture</h4>
-        <input readonly="readonly" tupe="text" name="picture" placeholder="Загрузите файл" value="<?=$_SESSION['name_file'][0]?>">
+        <input readonly="readonly" tupe="text" name="picture" placeholder="Загрузите файл" value="<?=$_SESSION['name_file']?>">
         <h4>Category</h4>
         <p><select name="category" size="4" multiple style="min-width: 240px; ">
                 <option selected value="breakfast">Завтрак</option>

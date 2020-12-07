@@ -1,7 +1,5 @@
 <?
 session_start();
-//echo $_FILES['file']['name'][0];
-
 if(isset($_FILES)) {
     $allowedTypes = array('image/jpeg','image/png','image/gif');
     $uploadDir = "../../assets/images/breakfast/";
@@ -15,13 +13,10 @@ if(isset($_FILES)) {
             }
         }
         if($fileChecked[$i]) { //Если формат допустим, перемещаем файл по указанному адресу
-          //  if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $uploadFile[$i])) {
-            echo "Aplod: ",  $uploadFile[$i];
-            echo " tmp: ", $_FILES['file']['tmp_name'][$i];
-                $_SESSION['name_file'][0] = $_FILES['file']['name'][$i];
-                $_SESSION['name_file'][1] = $_FILES['file']['tmp_name'][$i];
-                // header('Location: ../../pages/admin.php');
-        //    }
+            if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $uploadFile[$i])) {
+                $_SESSION['name_file'] = $_FILES['file']['name'][$i];
+                 header('Location: ../../pages/admin.php');
+             }
         } else {
             echo "Недопустимый формат <br>";
         }
