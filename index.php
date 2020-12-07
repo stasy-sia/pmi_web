@@ -80,7 +80,10 @@ session_start();
               <div id="myDropdown" class="dropdown-content">
                   <a href="/pages/korzina.php">Корзина</a>
                   <a href="/pages/OrederHistory.php">История заказов</a>
-                  <a href="/src/PHP/exit.php">Выйти</a>
+                  <a href="/src/PHP/exit.php" style="color: red">Выйти</a>
+
+                  </ul>
+
               </div>
       <?php
       endif;
