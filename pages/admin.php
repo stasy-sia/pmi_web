@@ -129,17 +129,22 @@ if (!isset($_SESSION['user'])) {
     </table>
     <br></br>
     <H4>Add new product</H4>
-    <form action ="/src/PHP/admin.php" method="post">
-        <P>Name</P>
-        <input tupe="text" name="name">
-        <P>Price</P>
-        <input tupe="number" name="price">
-        <P>Gramm</P>
-        <input tupe="number" name="gramm">
-        <P>picture</P>
-        <input tupe="text" name="picture">
-        <P>Category</P>
-        <p><select name="category" size="4" multiple>
+        <form method='post' action="../src/PHP/test_file.php" enctype="multipart/form-data">
+            <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
+            <input type='file' name='file[]' class='file-drop' id='file-drop' multiple required><br>
+            <input type='submit' value='Загрузить' >
+        </form>
+    <form action ="../src/PHP/admin.php" method="post">
+        <h4>Name</h4>
+        <input tupe="text" name="name" placeholder="name">
+        <h4>Price</h4>
+        <input tupe="number" name="price" placeholder="price">
+        <h4>Gramm</h4>
+        <input tupe="number" name="gramm" placeholder="gramm">
+        <h4>picture</h4>
+        <input readonly="readonly" tupe="text" name="picture" placeholder="Загрузите файл" value="<?=$_SESSION['name_file'][0]?>">
+        <h4>Category</h4>
+        <p><select name="category" size="4" multiple style="min-width: 240px; ">
                 <option selected value="breakfast">Завтрак</option>
                 <option value="dinner">Обед</option>
                 <option value="dessert">Десерты</option>
@@ -147,8 +152,7 @@ if (!isset($_SESSION['user'])) {
             </select>
             <br></br>
         <button type="submit">Add new product</button>
-
-    </form>
+        <div class='message-div message-div_hidden' id='message-div'></div>
 </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
