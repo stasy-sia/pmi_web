@@ -136,7 +136,7 @@ for($j = 0; $j < 4;$j++){
                     }
                     ?>
                     <div class="col-xs-12 col-sm-4 col-lg-3">
-                        <img src="../assets/images/<?= $mass[$j];?>/<?= $select_wile['id'];?>.png" alt="" class="w-100">
+                        <img src="../assets/images/<?= $mass[$j];?>/<?=$select_wile['picture']?>" alt="" class="w-100">
                         <h3><?= $select_wile['name'];?></h3>
                         <?php
                         if($select_wile['category'] == 'Десерты'){
