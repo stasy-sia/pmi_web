@@ -72,19 +72,18 @@ session_start();
             <?php if($_SESSION['user']['id']==7): ?>
 
         </ul>
+
       <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
       <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
       <?php else: ?>
+      <div class="dropdown">
           <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
-
               <div id="myDropdown" class="dropdown-content">
                   <a href="/pages/korzina.php">Корзина</a>
                   <a href="/pages/OrederHistory.php">История заказов</a>
                   <a href="/src/PHP/exit.php" style="color: red">Выйти</a>
-
-                  </ul>
-
               </div>
+      </div>
       <?php
       endif;
       ?>

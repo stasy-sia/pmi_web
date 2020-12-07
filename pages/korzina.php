@@ -67,8 +67,14 @@ if (!isset($_SESSION['user'])) {
     <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
     <?php else: ?>
-        <li class="nav-link" >Привет, <?= $_SESSION['user']['name'] ?>.<a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
-        <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
+        <div class="dropdown">
+            <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="korzina.php">Корзина</a>
+                <a href="OrederHistory.php">История заказов</a>
+                <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
+            </div>
+        </div>
     <?php
     endif;
     ?>
@@ -108,6 +114,7 @@ if (!isset($_SESSION['basket'])){
     ?>
 
     <h3 style="text-align: center"> Корзина пуста</h3>
+
 <?php
 }else{?>
     <?php
@@ -188,6 +195,7 @@ if (!isset($_SESSION['basket'])){
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../src/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
@@ -197,6 +205,7 @@ if (!isset($_SESSION['basket'])){
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
+
 </body>
 
 </html>

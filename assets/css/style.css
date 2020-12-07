@@ -47,6 +47,7 @@ IMG.displayed {
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
+
     display: none;
     position: absolute;
     background-color: #FFBF73;
