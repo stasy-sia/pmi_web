@@ -106,12 +106,6 @@ if (!isset($_SESSION['user'])) {
 </div>
 <?php
 if (!isset($_SESSION['basket'])){
-    /*
-    $_SESSION['test']['brek']['1']['name'] = 'test';
-   echo $_SESSION['test']['brek']['1']['name'];
-   $_SESSION['test']['brek']['2']['name'] = 'test2';
-    echo $_SESSION['test']['brek']['2']['name'];
-    */
     ?>
 
     <h3 style="text-align: center"> Корзина пуста</h3>
@@ -182,7 +176,14 @@ if (!isset($_SESSION['basket'])){
             </div>
         <?php
         }
-    }?>
+    }
+    if($itog == 0){
+        ?>
+        <h3 style="text-align: center"> Корзина пуста</h3>
+            <?php
+    }else{
+    ?>
+
     <div class="card text-white bg-dark">
         <div class="card-header">
             <h2> Итоговая цена</h2>
@@ -198,6 +199,7 @@ if (!isset($_SESSION['basket'])){
         </div>
     </div>
 <?php
+}
 }?>
 
 <div id="footer">
