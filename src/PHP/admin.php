@@ -50,7 +50,9 @@ if(isset($_FILES)) {
                 $first_name = $id;
                 $_FILES['file']['name'][0] = "$first_name$second_name";
                 $picture =  $_FILES['file']['name'][0];
+                $uploadFile = $uploadDir . basename($_FILES['file']['name'][0]);
                 $mysql->query("UPDATE `$cat` SET  `picture` = '$picture' WHERE `$cat`.`id` = $id");
+
             }
         /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
         move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
@@ -58,7 +60,9 @@ if(isset($_FILES)) {
     } else {
         echo "Недопустимый формат <br>";
     }
-} else {
+}
+else {
 echo "Вы не прислали файл!" ;
 }
+
 ?>
