@@ -23,6 +23,7 @@ $update = mysqli_fetch_assoc($update);
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Контакты "У папы Сантьяго"</title>
 </head>
 
@@ -80,19 +81,23 @@ $update = mysqli_fetch_assoc($update);
     </table>
     <br></br>
     <H4>UPdate Product</H4>
-    <form action ="/src/PHP/UpAdmin.php" method="post">
+    <form action ="/src/PHP/UpAdmin.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?=$update['id']?>">
         <input type="hidden" name="cat" value="<?=$category?>">
-        <P>Name</P>
+        <h4>Name</h4>
         <input tupe="text" name="name" value="<?=$update['name']?>">
-        <P>Price</P>
+        <h4>Price</h4>
         <input tupe="number" name="price" value="<?=$update['price']?>">
-        <P>Gramm</P>
+        <h4>Gramm</h4>
         <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
-        <P>picture</P>
-        <input tupe="text" name="picture" value="<?=$update['picture']?>">
+        <h4>picture</h4>
+        <input  readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
+        Удалить
+        <input type="checkbox" name="Del" value="tru"><Br>
         <br></br>
-        <button type="submit">Update product</button>
+        <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
+        <input type='file' name='file[]' class='file-drop' id='file-drop' multiple required><br>
+        <input type='submit' value='Update product' >
     </form>
 </div>
 
@@ -118,7 +123,7 @@ $update = mysqli_fetch_assoc($update);
 
     
 
-    <div id="footer" style="position:absolute;">
+    <div id="footer" style="position:flex;">
         © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
         8
         800 555-35-35
