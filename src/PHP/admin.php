@@ -15,45 +15,50 @@ if(isset($_FILES)) {
         $category = 'Десерты';
     if($cat == 'drinks')
         $category = 'Напитки';
-    /*  Проверка на копии  */
-    $search = $mysql->query("SELECT * FROM `breakfast`");
-    for($k = 0; $k < mysqli_num_rows($search); $k++) {
-        $result = $search->fetch_assoc();
-        for ($p = 0; $p < count($_FILES['file']['name']); $p++) {
-            if ($result['picture'] == $_FILES['file']['name'][$p]) {
-                $second_name = $_FILES['file']['name'][$p];
-                $first_name = mysqli_num_rows($search) + 1;
-                $_FILES['file']['name'][$p] = "$first_name$second_name";
-            }
-        }
-    }
-    /*                  */
 
-    /* Проверка на павильность файла */
+
+    /*                                                       Проверка на павильность файла */
     $allowedTypes = array('image/jpeg','image/png','image/gif');
     $uploadDir = "../../assets/images/$cat/";
-    for($i = 0; $i < count($_FILES['file']['name']); $i++) { //Перебираем загруженные файлы
-        $uploadFile[$i] = $uploadDir . basename($_FILES['file']['name'][$i]);
-        $fileChecked[$i] = false;
-        for($j = 0; $j < count($allowedTypes); $j++) { //Проверяем на соответствие допустимым форматам
-            if($_FILES['file']['type'][$i] == $allowedTypes[$j]) {
-                $fileChecked[$i] = true;
+    $uploadFile = $uploadDir . basename($_FILES['file']['name'][0]);
+    $fileChecked = false;
+    for($j = 0; $j < count($allowedTypes); $j++) {
+        if($_FILES['file']['type'][0] == $allowedTypes[$j]) {
+            $fileChecked = true;
+            break;
+        }
+    }
+    /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
+    if($fileChecked) {
+        $picture = $_FILES['file']['name'][0];
+        $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`) VALUES ('$name', '$price', '$gramm', '$picture', '$category')");
+
+        /*                                                          Проверка на копии  */
+        $search = $mysql->query("SELECT * FROM `$cat`");
+        $p = 0;
+        for($k = 0; $k < mysqli_num_rows($search); $k++) {
+            $result = $search->fetch_assoc();
+            if ($result['picture'] == $_FILES['file']['name'][0] and ($k + 1) != mysqli_num_rows($search)) {
+                $second_name = $_FILES['file']['name'][0];
+                $p = 1;
+                $k = mysqli_num_rows($search) - 1;
                 break;
             }
         }
-        /*                         */
-        if($fileChecked[$i]) { //Если формат допустим, создаём элемент
-
-            if(move_uploaded_file($_FILES['file']['tmp_name'][$i], $uploadFile[$i])) {
-                $picture = $_FILES['file']['name'][$i];
-                $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`) VALUES ('$name', '$price', '$gramm', '$picture', '$category')");
-                header('Location: ../../pages/admin.php');
+            if ($p == 1) {
+                $id = $result['id'];
+                $first_name = $id;
+                $_FILES['file']['name'][0] = "$first_name$second_name";
+                $picture =  $_FILES['file']['name'][0];
+                $mysql->query("UPDATE `$cat` SET  `picture` = '$picture' WHERE `$cat`.`id` = $id");
             }
-        } else {
-            echo "Недопустимый формат <br>";
-        }
+        /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
+        move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
+        header('Location: ../../pages/admin.php');
+    } else {
+        echo "Недопустимый формат <br>";
     }
 } else {
-    echo "Вы не прислали файл!" ;
+echo "Вы не прислали файл!" ;
 }
 ?>
