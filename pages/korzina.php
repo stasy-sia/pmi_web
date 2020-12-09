@@ -133,10 +133,16 @@ if (!isset($_SESSION['basket'])){
             ?>
             <div class="container-fluid container row text-center justify-content">
                 <div class="row col-xs-3 col-sm-2 col-lg-12">
-                        <img src="../assets/images/<?=$image?>/<?=$i['id']; ?>.png" alt="" style=" width: 210px; height: 210px">
+                        <img src="../assets/images/<?=$image?>/<?=$i['picture']?>" alt="" style=" width: 210px; height: 210px">
                          <div>
             <?php
+           echo $i['picture'];
             foreach ($i as $k => $j) {
+                if ($k == 'gramm') {
+                    ?>
+                    <h3><?=$j;?></h3>
+                    <?php
+                }
                 if ($k == 'name') {
                     ?>
                     <h3><?=$j;?></h3>

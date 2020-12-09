@@ -48,30 +48,7 @@ if(isset($_FILES)) {
         $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category')");
         header('Location: ../../pages/admin.php');
         /*                                                          Проверка на копии  */
-        /*
-        $search = $mysql->query("SELECT * FROM `$cat`");
-        $p = 0;
-        for($k = 0; $k < mysqli_num_rows($search); $k++) {
-            $result = $search->fetch_assoc();
-            if ($result['picture'] == $_FILES['file']['name'][0] and ($k + 1) != mysqli_num_rows($search)) {
-                $second_name = $_FILES['file']['name'][0];
-                $p = 1;
-                $k = mysqli_num_rows($search) - 1;
-                break;
-            }
-        }
-            if ($p == 1) {
-                $id = $result['id'];
-                $first_name = $id;
-                $_FILES['file']['name'][0] = "$first_name$second_name";
-                $picture =  $_FILES['file']['name'][0];
-                $uploadFile = $uploadDir . basename($_FILES['file']['name'][0]);
-                $mysql->query("UPDATE `$cat` SET  `picture` = '$picture' WHERE `$cat`.`id` = $id");
 
-            }*/
-        /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
-      //  move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
-      //  header('Location: ../../pages/admin.php');
     } else {
         echo "Недопустимый формат <br>";
     }
