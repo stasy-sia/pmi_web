@@ -13,9 +13,16 @@ if($_POST['Del'] == "tru") {
     $picture = NULL;
 } else {
     if (isset($_FILES)) {
-        $allowedTypes = array('image/jpeg', 'image/png', 'image/gif');
         $uploadDir = "../../assets/images/$cat/";
-        $uploadFile = $uploadDir . basename($_FILES['file']['name'][0]);
+        $name_file =preg_replace("/[^A-Z0-9._-]/i","_",$_FILES['file']['name'][0]);
+        $allowedTypes = array('image/jpeg', 'image/png', 'image/gif');
+        $p = 0;
+        $parts = pathinfo($name_file);
+        while (file_exists($uploadDir.$name_file)){
+            $p++;
+            $name_file = $parts["filename"] . "-" . $p . "." . $parts["extension"];
+        }
+        $uploadFile = $uploadDir . basename($name_file);
         $fileChecked = false;
         for ($j = 0; $j < count($allowedTypes); $j++) {
             if ($_FILES['file']['type'][0] == $allowedTypes[$j]) {
@@ -23,14 +30,15 @@ if($_POST['Del'] == "tru") {
                 break;
             }
         }
-
         if ($fileChecked) {
-            $picture = $_FILES['file']['name'][0];
-            $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture' WHERE `$cat`.`id` = $id");
-
+            move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
+            header('Location: ../../pages/admin.php');
+            $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file' WHERE `$cat`.`id` = $id");
             /*                                                          Проверка на копии  */
+            /*
             $search = $mysql->query("SELECT * FROM `$cat`");
             $p = 0;
+            $parts = pathinfo($picture)
             for ($k = 0; $k < mysqli_num_rows($search); $k++) {
                 $result = $search->fetch_assoc();
                 if ($result['picture'] == $_FILES['file']['name'][0] and ($k + 1) != mysqli_num_rows($search)) {
@@ -47,10 +55,10 @@ if($_POST['Del'] == "tru") {
                 $picture = $_FILES['file']['name'][0];
                 $uploadFile = $uploadDir . basename($_FILES['file']['name'][0]);
                 $mysql->query("UPDATE `$cat` SET  `picture` = '$picture' WHERE `$cat`.`id` = $id");
-            }
+            }*/
             /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
-            move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
-            header('Location: ../../pages/admin.php');
+           // move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
+          //  header('Location: ../../pages/admin.php');
         } else {
             echo "Недопустимый формат <br>";
         }
