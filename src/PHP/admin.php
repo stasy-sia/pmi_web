@@ -28,6 +28,7 @@ if(isset($_FILES)) {
             break;
         }
     }
+    $name_file =preg_replace("/[A-Z0-0._=]i","_",$_FILES['file']['name']);
     /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
     if($fileChecked) {
         $picture = $_FILES['file']['name'][0];
