@@ -2,6 +2,7 @@
 session_start();
 
 if(isset($_FILES)) {
+
     $mysql = new mysqli('localhost', 'root', 'root', 'regist');
     $name = $_POST['name'];
     $price = $_POST['price'];
@@ -19,7 +20,8 @@ if(isset($_FILES)) {
 
     /*                                                       Проверка на павильность файла */
     $uploadDir = "../../assets/images/$cat/";
-    $name_file =preg_replace("/[^A-Z0-9._-]/i","_",$_FILES['file']['name'][0]);
+    $myFile = $_FILES['file'];
+    $name_file =preg_replace("/[^A-Z0-9._-]/i","_",$myFile['name'][0]);
     $allowedTypes = array('image/jpeg', 'image/png', 'image/gif');
     $p = 0;
     $parts = pathinfo($name_file);
@@ -30,17 +32,21 @@ if(isset($_FILES)) {
     $uploadFile = $uploadDir . basename($name_file);
     $fileChecked = false;
     for ($j = 0; $j < count($allowedTypes); $j++) {
-        if ($_FILES['file']['type'][0] == $allowedTypes[$j]) {
+        if ($myFile['type'][0] == $allowedTypes[$j]) {
             $fileChecked = true;
             break;
         }
     }
     /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
     if($fileChecked) {
-        move_uploaded_file($_FILES['file']['tmp_name'][0], $uploadFile);
-        header('Location: ../../pages/admin.php');
+        $success = move_uploaded_file($myFile['tmp_name'][0], $uploadFile);
+        if(!$success){
+            echo "<p>Не удалось загрузить файл.</p>";
+            exit;
+        }
+        chmod($uploadDir.$name_file, 0644);
         $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category')");
-
+        header('Location: ../../pages/admin.php');
         /*                                                          Проверка на копии  */
         /*
         $search = $mysql->query("SELECT * FROM `$cat`");
