@@ -96,7 +96,7 @@ $update = mysqli_fetch_assoc($update);
         <input type="checkbox" name="Del" value="tru"><Br>
         <br></br>
         <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
-        <input type='file' name='file[]' class='file-drop' id='file-drop' multiple required><br>
+        <input type='file' name='file' class='file-drop' id='file-drop'><br>
         <input type='submit' value='Update product' >
     </form>
 </div>

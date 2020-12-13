@@ -130,11 +130,11 @@ if (!isset($_SESSION['user'])) {
     <H4>Add new product</H4>
     <form action ="../src/PHP/admin.php" method="post" enctype="multipart/form-data" >
         <h4>Name</h4>
-        <input tupe="text" name="name" placeholder="name">
+        <input tupe="text" name="name" placeholder="name" required>
         <h4>Price</h4>
-        <input tupe="number" name="price" placeholder="price">
+        <input tupe="number" name="price" placeholder="price" required>
         <h4>Gramm</h4>
-        <input tupe="number" name="gramm" placeholder="gramm">
+        <input tupe="number" name="gramm" placeholder="gramm" required>
         <h4>Category</h4>
         <p><select name="category" size="4" multiple style="min-width: 240px; ">
                 <option selected value="breakfast">Завтрак</option>
@@ -144,12 +144,9 @@ if (!isset($_SESSION['user'])) {
             </select>
                 <br></br>
             <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
-            <input type='file' name='file[]' class='file-drop' id='file-drop' multiple required><br>
+            <input type='file' name='file' class='file-drop' id='file-drop' required ><br>
             <input type='submit' value='Add new product' >
         </p>
-    </form>
-        <div class='message-div message-div_hidden' id='message-div'></div>
-
 </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
@@ -171,6 +168,7 @@ if (!isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
+
 
     
 

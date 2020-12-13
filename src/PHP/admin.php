@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if(isset($_FILES)) {
+if(!empty($_FILES['file']['name'])) {
 
     $mysql = new mysqli('localhost', 'root', 'root', 'regist');
     $name = $_POST['name'];
@@ -21,7 +21,7 @@ if(isset($_FILES)) {
     /*                                                       Проверка на павильность файла */
     $uploadDir = "../../assets/images/$cat/";
     $myFile = $_FILES['file'];
-    $name_file =preg_replace("/[^A-Z0-9._-]/i","_",$myFile['name'][0]);
+    $name_file =preg_replace("/[^A-Z0-9._-]/i","_",$myFile['name']);
     $allowedTypes = array('image/jpeg', 'image/png', 'image/gif');
     $p = 0;
     $parts = pathinfo($name_file);
@@ -32,14 +32,14 @@ if(isset($_FILES)) {
     $uploadFile = $uploadDir . basename($name_file);
     $fileChecked = false;
     for ($j = 0; $j < count($allowedTypes); $j++) {
-        if ($myFile['type'][0] == $allowedTypes[$j]) {
+        if ($myFile['type'] == $allowedTypes[$j]) {
             $fileChecked = true;
             break;
         }
     }
     /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////  */
     if($fileChecked) {
-        $success = move_uploaded_file($myFile['tmp_name'][0], $uploadFile);
+        $success = move_uploaded_file($myFile['tmp_name'], $uploadFile);
         if(!$success){
             echo "<p>Не удалось загрузить файл.</p>";
             exit;
