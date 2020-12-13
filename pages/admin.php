@@ -43,9 +43,7 @@ if (!isset($_SESSION['user'])) {
                 <li class="nav-item ">
                     <a href="#" class="nav-link">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-                </li>
+
             </ul>
              <ul class="navbar-nav">
             <?php

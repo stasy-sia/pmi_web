@@ -41,9 +41,7 @@ session_start();
         <li class="nav-item ">
             <a href="#" class="nav-link">Контакты</a>
         </li>
-        <li class="nav-item">
-            <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-        </li>
+
         <li class="nav-item">
             <form class="form-inline my-2 my-lg-0" method="get" action="prob.php">
                 <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" autofocus >

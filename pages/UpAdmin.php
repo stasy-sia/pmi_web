@@ -49,9 +49,7 @@ $update = mysqli_fetch_assoc($update);
                 <li class="nav-item active">
                     <a href="#" class="nav-link">Контакты</a>
                 </li>
-                <li class="nav-item">
-                    <a href="contacts.php" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-                </li>
+               
             </ul>
              <ul class="navbar-nav">
             <?php

@@ -39,9 +39,7 @@ session_start();
             <li class="nav-item">
                 <a href="contacts.php" class="nav-link">Контакты</a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link" data-toggle="modal" data-target="#exampleModal">Заказ</a>
-            </li>
+
             <form class="form-inline my-2 my-lg-0" method="get" action="search.php">
                 <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" >
                 <button type="submit" name="subBtn" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
