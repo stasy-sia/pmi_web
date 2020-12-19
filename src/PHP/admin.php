@@ -7,6 +7,7 @@ if(!empty($_FILES['file']['name'])) {
     $name = $_POST['name'];
     $price = $_POST['price'];
     $gramm = $_POST['gramm'];
+    $name_page = $_POST['name_page']. '.html';
     $cat = $_POST['category'];
     if($cat == 'breakfast')
         $category = 'Завтрак';
@@ -45,7 +46,7 @@ if(!empty($_FILES['file']['name'])) {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category')");
+        $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`, `name_page`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category', '$name_page')");
         header('Location: ../../pages/admin.php');
         /*                                                          Проверка на копии  */
 

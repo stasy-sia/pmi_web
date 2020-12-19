@@ -97,6 +97,7 @@ if (!isset($_SESSION['user'])) {
                             <th scope="col">gramm</th>
                             <th scope="col">picture</th>
                             <th scope="col">category</th>
+                            <th scope="col">name_pages</th>
                             <th scope="col">Update</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -113,6 +114,7 @@ if (!isset($_SESSION['user'])) {
             <td><?= $product[3] ?></td>
             <td><?= $product[4] ?></td>
             <td><?= $product[5] ?></td>
+            <td><?= $product[6] ?></td>
             <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$mass[$j]?>">Update</a></td>
             <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
         </tr>
@@ -133,6 +135,8 @@ if (!isset($_SESSION['user'])) {
         <input tupe="number" name="price" placeholder="price" required>
         <h4>Gramm</h4>
         <input tupe="number" name="gramm" placeholder="gramm" required>
+        <h4>Name page</h4>
+        <input tupe="text" name="name_page" placeholder="name page" required>
         <h4>Category</h4>
         <p><select name="category" size="4" multiple style="min-width: 240px; ">
                 <option selected value="breakfast">Завтрак</option>

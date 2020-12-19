@@ -5,6 +5,7 @@ $id = $_POST['id'];
 $name = $_POST['name'];
 $price = $_POST['price'];
 $gramm = $_POST['gramm'];
+$name_page = $_POST['name_page'].'.html';
 $picture = $_POST['picture'];
 $cat = $_POST['cat'];
 if($_POST['Del'] == "tru") {
@@ -13,7 +14,7 @@ if($_POST['Del'] == "tru") {
         unlink($link);
     }
     $picture = NULL;
-    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture' WHERE `$cat`.`id` = $id");
+    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
     header('Location: ../../pages/admin.php');
 } else if(!empty($_FILES['file']['name'])) {
     if($picture != NULL){
@@ -45,13 +46,13 @@ if($_POST['Del'] == "tru") {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file' WHERE `$cat`.`id` = $id");
+        $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
         header('Location: ../../pages/admin.php');
     } else {
         echo "Недопустимый формат <br>";
     }
 } else {
-    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm' WHERE `$cat`.`id` = $id");
+    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
     header('Location: ../../pages/admin.php');
 }
 ?>

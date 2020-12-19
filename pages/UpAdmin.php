@@ -89,6 +89,8 @@ $update = mysqli_fetch_assoc($update);
         <h4>Gramm</h4>
         <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
         <h4>picture</h4>
+        <input  tupe="text" name="name_page" value="<?=$update['name_page']?>">
+        <h4>picture</h4>
         <input  readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
         Удалить
         <input type="checkbox" name="Del" value="tru"><Br>

@@ -110,8 +110,11 @@ session_start();
 if (isset($_GET['search']) and strlen($_GET['search'])) {
     $search = $_GET['search'];
     $j = -1;
-    for ($i = 1; $i <= 32; $i++) {
-        $text = file_get_contents('../html/' . $i . '.html');
+    $dir = '../html';
+    $pages = scandir($dir);
+    $count_pages = count($pages);
+    for ($i = 2; $i < $count_pages; $i++) {
+        $text = file_get_contents('../html/' . $pages[$i]);
         $pos = strpos($text, $search);
         if ($pos) {
             if (($pos - 30) > 0) {
@@ -125,7 +128,7 @@ if (isset($_GET['search']) and strlen($_GET['search'])) {
                 $k = strlen($text) - $pos;
             }
             ?>
-            <a style="font-size: 200%" href="../html/<?= $i ?>.html" class="nav-link"><?= $i ?>.html</a>
+            <a style="font-size: 200%" href="../html/<?= $pages[$i] ?>" class="nav-link"><?= $pages[$i] ?></a>
             <h5 style="opacity: 0.7;">...<?= substr($text, $j, $k) ?>...</h5>
             <?php
         }
