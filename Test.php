@@ -3,9 +3,9 @@ session_start();
 ?>
 <!DOCTYPE html>
 <!doctype html>
-<html>
+<html lang="ru">
 <head>
-    <title>Простая форма передачи AJAX JQUERY</title>
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
@@ -17,6 +17,7 @@ session_start();
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
 </head>
+
 <body>
 <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #FFBF73;">
     <a href="#" class="navbar-brend">
@@ -124,11 +125,18 @@ session_start();
 </form>
 
 <div id="results">Тут будет выведен результат</div>
+
+
 <div id="footer">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.: 8
     800 555-35-35
 </div>
 
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+</script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
 </script>
@@ -137,4 +145,5 @@ session_start();
 </script>
 <script src="../src/js/script.js"></script>
 </body>
+
 </html>
