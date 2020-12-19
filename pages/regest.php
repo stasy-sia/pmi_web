@@ -141,14 +141,12 @@ if (isset($_SESSION['user'])) {
                     <div class="row">
                         <div class="col">
                             <div class="form-froup">
-
-                                <input type="text" class="form-control" name="name" placeholder="Имя" required>
+                                <input type="text" class="form-control" name="name" id="usrname" placeholder="Имя" required>
 
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-froup">
-
                                 <input type="text" class="form-control" name="surname" placeholder="Фамилия" required>
 
                             </div>
@@ -159,7 +157,8 @@ if (isset($_SESSION['user'])) {
                         <input type="email" class="form-control" name="email" placeholder="Email" required>
                         <label></label>
                         <label ></label>
-                        <input type="password" class="form-control" name="pass" placeholder="Пароль" required>
+                        <input type="password" class="form-control" name="pass"  id="psw" placeholder="Пароль" required
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
                         <label></label>
                         <label></label>
                     </div>
@@ -169,6 +168,10 @@ if (isset($_SESSION['user'])) {
                             Согласие на обработку данных
                         </label>
                     </div>
+
+                    <div class="g-recaptcha" data-sitekey="6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji"></div>
+
+                    <div class="text-danger" id="recaptchaError"></div>
                     <button type="submit" class="btn btn-primary">Регистрация</button>
                     <?php
                     if($_SESSION['message2'])
@@ -179,7 +182,13 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-
+    <div id="message">
+        <h3>Password must contain the following:</h3>
+        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+        <p id="number" class="invalid">A <b>number</b></p>
+        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+    </div>
 </div>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
@@ -188,7 +197,10 @@ if (isset($_SESSION['user'])) {
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="../src/js/script.js"></script>
+
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>

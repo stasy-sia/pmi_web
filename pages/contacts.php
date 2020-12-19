@@ -115,52 +115,48 @@ session_start();
                         проспект Университетский, д. 100</h4>
                         <h4>Тел.: +8 (800)-555-35-35;</h4>
                 </div>
-
                 <div class="col-xs-2 col-sm-2 col-lg-4 ">
                     <form>
                         <div class="row">
                             <div class="col">
-                     <div class="form-froup">
-                         <label></label>
-                         <input class="form-control" placeholder="Имя">
-                         
-                     </div>   
-                    </div>
-                    <div class="col">
-                         <div class="form-froup">
-                             <label></label>
-                             <input class="form-control" placeholder="Фамилия">
-                             
-                         </div>
+                                <div class="form-froup">
+                                    <label></label>
+                                        <input class="form-control" placeholder="Имя">
+                                </div>
+                            </div>
+                            <div class="col">
+                                 <div class="form-froup">
+                                     <label></label>
+                                     <input class="form-control" placeholder="Фамилия">
+                                 </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-froup">
-                        <label for="exampleInputEmail"></label>
-                        <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
-                        <label></label>
-                        
-                    </div>
+                        <div class="form-froup">
+                            <label for="exampleInputEmail"></label>
+                            <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email">
+                            <label></label>
+                        </div>
                          <form>
                             <div class="input-group">
-                                
                                 <textarea class="form-control" placeholder="Ваш отзыв"></textarea>
                               </div>
                         </form>
-                         <div class="form-check">
+                        <div class="form-check">
                              <label class="form-check-label">
                                  <input type="checkbox" class="form-check-input">
                                  Согласие на обработку данных
-                             </label>
-                         </div> 
-                         <button class="btn btn-primary">Отправить</button>
-                    </form>
+                                 </label>
+                        </div>
+                        <button class="btn btn-primary">Отправить</button>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+
 
     <div id="footer" style="position:absolute;">
+        <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Addeccc7dc0b81210638709fd2ed7ca4bd638547ca7248b38153001afc49aada1&amp;width=100%25&amp;height=398&amp;lang=ru_RU&amp;scroll=true"></script>
+
         © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
         8
         800 555-35-35
@@ -168,6 +164,9 @@ session_start();
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="../src/js/script.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=ваш API-ключ&lang=ru_RU"
+            type="text/javascript">
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>

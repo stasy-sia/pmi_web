@@ -13,8 +13,8 @@ if(mb_strlen($email) < 5 || mb_strlen($email) > 50) {
 } else if(mb_strlen($surname) < 2 || mb_strlen($surname) > 50) {
     echo "Недопустимая длина фамилии";
     exit();
-} else if(mb_strlen($pass) < 2 || mb_strlen($pass) > 10) {
-    echo "Недопустимая длина пароля (от 2 до 10 символов)";
+} else if(mb_strlen($pass) < 8 || mb_strlen($pass) > 32) {
+    echo "Недопустимая длина пароля (от 8 до 32 символов)";
     exit();
 }
 
