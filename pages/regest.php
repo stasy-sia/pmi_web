@@ -162,6 +162,13 @@ if (isset($_SESSION['user'])) {
                         <label></label>
                         <label></label>
                     </div>
+                    <div id="message" style="font-family: unset">
+                        <h3>Пароль должен содержать следующее:</h3>
+                        <p id="letter" class="invalid">Хотябы одна строчная буква Английская</p>
+                        <p id="capital" class="invalid">Хотябы одна заглавня буква< Английская</p>
+                        <p id="number" class="invalid">Число</p>
+                        <p id="length" class="invalid">Минимум 8 символов</p>
+                    </div>
                     <div class="form-check">
                         <label class="form-check-label">
                             <input type="checkbox" class="form-check-input" required>
@@ -182,13 +189,7 @@ if (isset($_SESSION['user'])) {
             </div>
         </div>
     </div>
-    <div id="message">
-        <h3>Password must contain the following:</h3>
-        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-        <p id="number" class="invalid">A <b>number</b></p>
-        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-    </div>
+
 </div>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
