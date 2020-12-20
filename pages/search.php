@@ -104,13 +104,16 @@ session_start();
 <?php
 $k = 0;
 $mass = array(
+    "Завтрак", "Обед / Ужин", "Десерты", "Напитки"
+);
+$folder = array(
     "breakfast", "dinner", "dessert", "drinks"
 );
 $search_get = $_GET['search'];
 $connect = new mysqli("127.0.0.1", "root", "root", "regist");
 for($j = 0; $j < 4;$j++){
 
-    $sql = "SELECT * FROM `$mass[$j]` WHERE `name` LIKE '%$search_get%'";
+    $sql = "SELECT * FROM `menu` WHERE category = '$mass[$j]' AND `name` LIKE '%$search_get%'";
     $select = $connect->query($sql);
     $select_wile = $select->fetch_assoc();
     $categoryes = '';
@@ -134,7 +137,7 @@ for($j = 0; $j < 4;$j++){
                     }
                     ?>
                     <div class="col-xs-12 col-sm-4 col-lg-3">
-                        <img src="../assets/images/<?= $mass[$j];?>/<?=$select_wile['picture']?>" alt="" class="w-100">
+                        <img src="../assets/images/<?= $folder[$j];?>/<?=$select_wile['picture']?>" alt="" class="w-100">
                         <h3><?= $select_wile['name'];?></h3>
                         <?php
                         if($select_wile['category'] == 'Десерты'){
