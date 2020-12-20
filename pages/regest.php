@@ -4,6 +4,10 @@ if (isset($_SESSION['user'])) {
     header('Location: /pages/korzina.php');
     exit();
 }
+define('SITE_KEY', '6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji');
+define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
+
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -175,10 +179,7 @@ if (isset($_SESSION['user'])) {
                             Согласие на обработку данных
                         </label>
                     </div>
-
-                    <div class="g-recaptcha" data-sitekey="6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji"></div>
-
-                    <div class="text-danger" id="recaptchaError"></div>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" /><br >
                     <button type="submit" class="btn btn-primary">Регистрация</button>
                     <?php
                     if($_SESSION['message2'])
@@ -186,6 +187,16 @@ if (isset($_SESSION['user'])) {
                     unset($_SESSION['message2']);
                     ?>
                 </form>
+                <script src='https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>'></script>
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('<?php echo SITE_KEY; ?>', {action: 'homepage'})
+                            .then(function(token) {
+                                //console.log(token);
+                                document.getElementById('g-recaptcha-response').value=token;
+                            });
+                    });
+                </script>
             </div>
         </div>
     </div>
@@ -201,7 +212,7 @@ if (isset($_SESSION['user'])) {
 
 <script src="../src/js/script.js"></script>
 
-<script src='https://www.google.com/recaptcha/api.js'></script>
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>

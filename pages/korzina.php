@@ -134,7 +134,6 @@ if (!isset($_SESSION['basket'])){
                         <img src="../assets/images/<?=$image?>/<?=$i['picture']?>" alt="" style=" width: 210px; height: 210px">
                          <div>
             <?php
-           echo $i['picture'];
             foreach ($i as $k => $j) {
                 if ($k == 'gramm') {
                     ?>
