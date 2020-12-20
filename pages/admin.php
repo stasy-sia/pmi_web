@@ -120,7 +120,7 @@ if (!isset($_SESSION['user'])) {
                             <td><?= $product[5] ?></td>
                             <td><?= $product[6] ?></td>
                             <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$folder[$j]?>">Update</a></td>
-                            <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$folder[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
+                            <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$folder[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
                         </tr>
                 <?php
                     }
