@@ -8,6 +8,6 @@ if($picture != NULL) {
     $link = "../../assets/images/$category/$picture";
     unlink($link);
 }
-$mysql->query("DELETE FROM `$category` WHERE `$category`.`id` = '$id'");
+$mysql->query("DELETE FROM `menu` WHERE `menu`.`id` = '$id'");
 header('Location: ../../pages/admin.php');
 ?>

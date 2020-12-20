@@ -126,7 +126,7 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                 $cat = 'breakfast';
                 while($products['cotegory_id'] == 0 and $j < mysqli_num_rows($result2)){
                     $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `$cat` WHERE `id`='$id'");
+                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
                     $arr = $result3->fetch_assoc();
                     ?>
                         <div class="row">
@@ -151,7 +151,7 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                 $cat = 'dinner';
                 while($products['cotegory_id'] == 1 and $j < mysqli_num_rows($result2)){
                     $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `$cat` WHERE `id`='$id'");
+                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
                     $arr = $result3->fetch_assoc();
                     ?>
                     <div class="row">
@@ -175,7 +175,7 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                 $cat = 'dessert';
                 while($products['cotegory_id'] == 2 and $j < mysqli_num_rows($result2)){
                     $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `$cat` WHERE `id`='$id'");
+                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
                     $arr = $result3->fetch_assoc();
                     ?>
                     <div class="row">
@@ -199,7 +199,7 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
                 $cat = 'drinks';
                 while($products['cotegory_id'] == 3 and $j < mysqli_num_rows($result2)){
                     $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `$cat` WHERE `id`='$id'");
+                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
                     $arr = $result3->fetch_assoc();
                     ?>
                     <div class="row">

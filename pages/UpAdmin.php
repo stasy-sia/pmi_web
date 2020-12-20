@@ -7,7 +7,7 @@ if (!isset($_SESSION['user'])) {
 $update_id = $_GET['id'];
 $category = $_GET['cat'];
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-$update =  $mysql->query("SELECT * FROM `$category` WHERE `id` = '$update_id'");
+$update =  $mysql->query("SELECT * FROM `menu` WHERE `id` = '$update_id'");
 $update = mysqli_fetch_assoc($update);
 ?>
 <!doctype html>

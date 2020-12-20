@@ -14,7 +14,7 @@ if($_POST['Del'] == "tru") {
         unlink($link);
     }
     $picture = NULL;
-    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
+    $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
     header('Location: ../../pages/admin.php');
 } else if(!empty($_FILES['file']['name'])) {
     if($picture != NULL){
@@ -46,13 +46,13 @@ if($_POST['Del'] == "tru") {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
+        $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
         header('Location: ../../pages/admin.php');
     } else {
         echo "Недопустимый формат <br>";
     }
 } else {
-    $mysql->query("UPDATE `$cat` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `name_page` = '$name_page' WHERE `$cat`.`id` = $id");
+    $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
     header('Location: ../../pages/admin.php');
 }
 ?>

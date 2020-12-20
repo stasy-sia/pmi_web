@@ -12,7 +12,7 @@ if(!empty($_FILES['file']['name'])) {
     if($cat == 'breakfast')
         $category = 'Завтрак';
     if($cat == 'dinner')
-        $category = 'Обед';
+        $category = 'Обед / Ужин';
     if($cat == 'dessert')
         $category = 'Десерты';
     if($cat == 'drinks')
@@ -46,7 +46,7 @@ if(!empty($_FILES['file']['name'])) {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("INSERT INTO `$cat` (`name`, `price`, `gramm`, `picture`, `category`, `name_page`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category', '$name_page')");
+        $mysql->query("INSERT INTO `menu` (`name`, `price`, `gramm`, `picture`, `category`, `name_page`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category', '$name_page')");
         header('Location: ../../pages/admin.php');
         /*                                                          Проверка на копии  */
 

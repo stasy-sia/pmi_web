@@ -4,23 +4,7 @@ session_start();
 $id = filter_var(trim($_POST['id']), FILTER_SANITIZE_STRING);
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
 $cat = $_GET['id'];
-if($cat == 0) {
-   $result = $mysql->query("SELECT `name`, `price`,`picture` FROM `breakfast` WHERE `id`='$id'");
-    $category = 'breakfast';
-}
-if($cat == 1) {
-    $result = $mysql->query("SELECT `name`, `price`,`picture` FROM `dinner` WHERE `id`='$id'");
-    $category = 'dinner';
-}
-if($cat == 2){
-    $result = $mysql->query("SELECT `name`, `price`,`picture` FROM `dessert` WHERE `id`='$id'");
-    $category = 'dessert';
-}
-if($cat == 3) {
-    $result = $mysql->query("SELECT `name`, `price`,`picture` FROM `drinks` WHERE `id`='$id'");
-    $category = 'drinks';
-}
-
+$result = $mysql->query("SELECT `name`, `price`,`picture` FROM `menu` WHERE `id`='$id'");
 $arr = $result->fetch_assoc();
 $name = $arr['name'];
 $price = $arr['price'];

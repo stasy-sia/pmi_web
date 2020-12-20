@@ -81,11 +81,13 @@ if (!isset($_SESSION['user'])) {
     </nav>
         <?php
         $mass = array(
+            "Завтрак", "Обед / Ужин", "Десерты", "Напитки"
+        );
+        $folder = array(
             "breakfast", "dinner", "dessert", "drinks"
         );
         $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-        for($j = 0; $j < 4;$j++){
-            $add = $mysql->query("SELECT * FROM `$mass[$j]`");
+            $add = $mysql->query("SELECT * FROM `menu`");
             $add = mysqli_fetch_all($add);
             ?>
                 <table class="table">
@@ -105,22 +107,25 @@ if (!isset($_SESSION['user'])) {
                 <tbody>
         <tr>
             <?php
-            foreach ($add as $product) {
-            ?>
-        <tr>
-            <td><?= $product[0] ?></td>
-            <td><?= $product[1] ?></td>
-            <td><?= $product[2] ?></td>
-            <td><?= $product[3] ?></td>
-            <td><?= $product[4] ?></td>
-            <td><?= $product[5] ?></td>
-            <td><?= $product[6] ?></td>
-            <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$mass[$j]?>">Update</a></td>
-            <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$mass[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
-        </tr>
-        <?php
-        }
-        }
+            for($j = 0; $j < 4;$j++){
+                foreach ($add as $product) {
+                    if($mass[$j] == $product[5]){
+                    ?>
+                        <tr>
+                            <td><?= $product[0] ?></td>
+                            <td><?= $product[1] ?></td>
+                            <td><?= $product[2] ?></td>
+                            <td><?= $product[3] ?></td>
+                            <td><?= $product[4] ?></td>
+                            <td><?= $product[5] ?></td>
+                            <td><?= $product[6] ?></td>
+                            <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$folder[$j]?>">Update</a></td>
+                            <td><a style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$folder[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
+                        </tr>
+                <?php
+                    }
+                }
+            }
     ?>
     </tbody>
 </table>
