@@ -21,16 +21,15 @@ if($_POST){
 if($capcha) {
     $id = $_SESSION['user']['id'];
     $mysql = new mysqli('localhost', 'root', 'root', 'regist');
+
     if($_POST['name'] != NULL){
         $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
-        if (mb_strlen($name) <= 2 || mb_strlen($email) > 50) {
+        if (mb_strlen($name) <= 2 || mb_strlen($name) > 50) {
             $_SESSION['message2'] = 'Имя должено быть от 2 до 50 символов';
             header('Location: ../../pages/change_pass.php');
             exit();
         }
-        $_SESSION['user'] = [
-            "name" => $name
-        ];
+        $_SESSION['user']['name'] = $name;
         $mysql->query("UPDATE `users1` SET `name` = '$name' WHERE `users1`.`id` = $id");
     }
     if($_POST['surname'] != NULL){
@@ -44,7 +43,7 @@ if($capcha) {
     }
     if($_POST['email'] != NULL){
         $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
-        if (mb_strlen($name) <= 2 || mb_strlen($email) > 50) {
+        if (mb_strlen($email) <= 2 || mb_strlen($email) > 50) {
             $_SESSION['message2'] = 'Имя должено быть от 2 до 50 символов';
             header('Location: ../../pages/change_pass.php');
             exit();
