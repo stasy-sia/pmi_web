@@ -24,16 +24,16 @@ if($capcha) {
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_STRING);
     $pass = filter_var(trim($_POST['pass']), FILTER_SANITIZE_STRING);
     if (mb_strlen($email) < 5 || mb_strlen($email) > 50) {
-        echo "Недопустимая длина Email";
+        $_SESSION['message2'] = 'Email должен быть от 6 до 50 символов';
+        header('Location: ../../pages/regest.php');
         exit();
-    } else if (mb_strlen($name) < 2 || mb_strlen($email) > 50) {
-        echo "Недопустимая длина имени";
+    } else if (mb_strlen($name) <= 2 || mb_strlen($email) > 50) {
+        $_SESSION['message2'] = 'Имя должено быть от 2 до 50 символов';
+        header('Location: ../../pages/regest.php');
         exit();
-    } else if (mb_strlen($surname) < 2 || mb_strlen($surname) > 50) {
-        echo "Недопустимая длина фамилии";
-        exit();
-    } else if (mb_strlen($pass) < 8 || mb_strlen($pass) > 32) {
-        echo "Недопустимая длина пароля (от 8 до 32 символов)";
+    } else if (mb_strlen($surname) <= 2 || mb_strlen($surname) > 50) {
+        $_SESSION['message2'] = 'Фамилия должена быть от 2 до 50 символов';
+        header('Location: ../../pages/regest.php');
         exit();
     }
 

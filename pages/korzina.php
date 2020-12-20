@@ -71,6 +71,7 @@ if (!isset($_SESSION['user'])) {
             <div id="myDropdown" class="dropdown-content">
                 <a href="korzina.php">Корзина</a>
                 <a href="OrederHistory.php">История заказов</a>
+                <a href="/pages/change_pass.php">Личный кабинет</a>
                 <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
             </div>
         </div>
@@ -131,50 +132,48 @@ if (!isset($_SESSION['basket'])){
             ?>
             <div class="container-fluid container row text-center justify-content">
                 <div class="row col-xs-3 col-sm-2 col-lg-12">
-                        <img src="../assets/images/<?=$image?>/<?=$i['picture']?>" alt="" style=" width: 210px; height: 210px">
-                         <div>
-            <?php
-            foreach ($i as $k => $j) {
-                if ($k == 'gramm') {
-                    ?>
-                    <h3><?=$j;?></h3>
-                    <?php
-                }
-                if ($k == 'name') {
-                    ?>
-                    <h3><?=$j;?></h3>
-                    <?php
-                }
-                if ($k == 'price') {
-                    $price = $j;
-                    ?>
-                    <h3>Цена <?= $j; ?>р</h3>
-                    <?php
-                }
-                if ($k == 'count') {
-                    $itog += $price * $j;
-                    ?>
-                        <h4>
-                            Количество:
-                            <input value="<?= $j ?>" type="text" style="margin-left: 10px;  width: 40px; height: 40px">
-                            шт.
-                        </h4>
-                    <form action="../src/PHP/Del_prod.php" method="post">
-                        <h4>
-                            Удалить
-                            <input type="hidden" value="<?=$id_del?>" name="id">
-                            <input type="hidden" value="<?=$cat?>" name="cat">
-                            <button type="submit" class="delbtn" style="" ><i class="fa fa-trash"></i></button>
-                        </h4>
-                    </form>
+                    <img src="../assets/images/<?=$image?>/<?=$i['picture']?>" alt="" style=" width: 210px; height: 210px">
+                    <div>
+                         <?php
+                         foreach ($i as $k => $j) {
+                             if ($k == 'gramm') {
+                                ?>
+                                <h3><?=$j;?></h3>
+                                <?php
+                            }
+                            if ($k == 'name') {
+                                ?>
+                                <h3><?=$j;?></h3>
+                                <?php
+                            }
+                            if ($k == 'price') {
+                                $price = $j;
+                                ?>
+                                <h3>Цена <?= $j; ?>р</h3>
+                                <?php
+                            }
+                            if ($k == 'count') {
+                                $itog += $price * $j;
+                                ?>
+                                    <h4>
+                                        Количество:
+                                        <input value="<?= $j ?>" type="text" style="margin-left: 10px;  width: 40px; height: 40px">
+                                        шт.
+                                    </h4>
+                                <form action="../src/PHP/Del_prod.php" method="post">
+                                    <h4>
+                                        Удалить
+                                        <input type="hidden" value="<?=$id_del?>" name="id">
+                                        <input type="hidden" value="<?=$cat?>" name="cat">
+                                        <button type="submit" class="delbtn" style="" ><i class="fa fa-trash"></i></button>
+                                    </h4>
+                                </form>
 
-
-
-                    <?php
-                }
-            }
-        ?>
-                         </div>
+                                <?php
+                            }
+                         }
+                         ?>
+                    </div>
                 </div>
             </div>
         <?php

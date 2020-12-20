@@ -76,6 +76,7 @@ define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
             <div id="myDropdown" class="dropdown-content">
                 <a href="korzina.php">Корзина</a>
                 <a href="OrederHistory.php">История заказов</a>
+                <a href="/pages/change_pass.php">Личный кабинет</a>
                 <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
             </div>
         </div>
@@ -146,13 +147,11 @@ define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
                         <div class="col">
                             <div class="form-froup">
                                 <input type="text" class="form-control" name="name" id="usrname" placeholder="Имя" required>
-
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-froup">
                                 <input type="text" class="form-control" name="surname" placeholder="Фамилия" required>
-
                             </div>
                         </div>
                     </div>
@@ -171,7 +170,7 @@ define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
                         <p id="letter" class="invalid">Хотябы одна строчная буква Английская</p>
                         <p id="capital" class="invalid">Хотябы одна заглавня буква< Английская</p>
                         <p id="number" class="invalid">Число</p>
-                        <p id="length" class="invalid">Минимум 8 символов</p>
+                        <p id="length" class="invalid">От 8 до 32 символов</p>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">

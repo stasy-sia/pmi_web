@@ -78,6 +78,7 @@ session_start();
               <div id="myDropdown" class="dropdown-content">
                   <a href="/pages/korzina.php">Корзина</a>
                   <a href="/pages/OrederHistory.php">История заказов</a>
+                  <a href="/pages/change_pass.php">Личный кабинет</a>
                   <a href="/src/PHP/exit.php" style="color: red">Выйти</a>
               </div>
       </div>

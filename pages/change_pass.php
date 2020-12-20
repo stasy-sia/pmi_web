@@ -1,5 +1,13 @@
 <?php
 session_start();
+if (!isset($_SESSION['user'])) {
+    header('Location: /pages/regest.php');
+    exit();
+}
+define('SITE_KEY', '6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji');
+define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
+
+
 ?>
 <!doctype html>
 <html lang="ru">
@@ -15,7 +23,7 @@ session_start();
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Pacifico&display=swap" rel="stylesheet">
-    <title>Контакты "У папы Сантьяго"</title>
+    <title>Регестрация "У папы Сантьяго"</title>
 </head>
 
 <body>
@@ -29,8 +37,7 @@ session_start();
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent"
-    ">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent"">
     <ul class="navbar-nav mr-auto">
         <li class="nav-item">
             <a href="../index.php" class="nav-link">Главная</a>
@@ -38,32 +45,28 @@ session_start();
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item ">
-            <a href="#" class="nav-link">Контакты</a>
+        <li class="nav-item">
+            <a href="contacts.php" class="nav-link">Контакты</a>
         </li>
 
-        <li class="nav-item">
-            <form class="form-inline my-2 my-lg-0" method="get" action="prob.php">
-                <input type="search" name="search" class="form-control mr-sm-2" placeholder="Поиск" value="<?= $_GET['search'] ?>" aria-label="Search" autofocus >
-                <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Найти</button>
-            </form>
-        </li>
+
     </ul>
+
     <ul class="navbar-nav">
         <?php
-        if (!isset($_SESSION['user'])) :
+        if(!isset($_SESSION['user'])) :
             ?>
-            <li class="nav-item my-2 my-lg-0">
+            <li class="nav-item active my-2 my-lg-0">
                 <a href="/pages/regest.php" class="nav-link mr-sm-2">Войти/Зарегистрироваться</a>
             </li>
         <?php
         endif;
         ?>
         <?php
-        if (isset($_SESSION['user'])){
+        if(isset($_SESSION['user'])){
         ?>
 
-        <?php if ($_SESSION['user']['id'] == 7): ?>
+        <?php if($_SESSION['user']['id']==7): ?>
     </ul>
     <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
@@ -84,6 +87,7 @@ session_start();
     <?php
     }
     ?>
+
     </div>
 </nav>
 
@@ -107,45 +111,61 @@ session_start();
     </div>
 </div>
 
-<?php
-if (isset($_GET['search']) and strlen($_GET['search'])) {
-    $search = $_GET['search'];
-    $j = -1;
-    $dir = '../html';
-    $pages = scandir($dir);
-    $count_pages = count($pages);
-    for ($i = 2; $i < $count_pages; $i++) {
-        $text = file_get_contents('../html/' . $pages[$i]);
-        $pos = strpos($text, $search);
-        if ($pos) {
-            if (($pos - 30) > 0) {
-                $j = $pos - 30;
-            } else {
-                $j = 0;
-            }
-            if (($pos + 100) < strlen($text)) {
-                $k = 100;
-            } else {
-                $k = strlen($text) - $pos;
-            }
-            ?>
-            <a style="font-size: 200%" href="../html/<?= $pages[$i] ?>" class="nav-link"><?= $pages[$i] ?></a>
-            <h5 style="opacity: 0.7;">...<?= substr($text, $j, $k) ?>...</h5>
-            <?php
-        }
-    }
-    if ($j == -1) {
-        ?>
-        <h3 style="text-align: center">Ничего не найдено</h3>
-        <?php
-    }
-} else {
-    ?>
-    <h3 style="text-align: center"> Пустой запрос</h3>
-    <?php
-}
-?>
+<div class="container-fluid">
+    <div class="container">
+        <div class="row text-left">
+            <div class="col-xs-2 col-sm-2 col-lg-4 ">
+                <form action="../src/PHP/change_info.php" method="post" class="auth">
+                    <h5 class="Modal-title">Сменить данные: </h5>
+                    <div class="form-froup">
+                        <label ></label>
+                        <input type="text" class="form-control" name="name" id="usrname" placeholder="Имя">
+                        <label></label>
+                        <input type="text" class="form-control" name="surname" placeholder="Фамилия">
+                        <label></label>
+                        <input type="email" class="form-control" name="email" placeholder="Email" >
+                        <label></label>
+                        <input type="password" class="form-control" name="pass"  id="psw" placeholder="Пароль"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">
+                        <label></label>
+                        <label></label>
+                    </div>
+                    <div id="message" style="font-family: unset">
+                        <h3>Пароль должен содержать следующее:</h3>
+                        <p id="letter" class="invalid">Хотябы одна строчная буква Английская</p>
+                        <p id="capital" class="invalid">Хотябы одна заглавня буква< Английская</p>
+                        <p id="number" class="invalid">Число</p>
+                        <p id="length" class="invalid">От 8 до 32 символов</p>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input" required>
+                            Согласие на обработку данных
+                        </label>
+                    </div>
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" /><br >
+                    <button type="submit" class="btn btn-primary">Сменить</button>
+                    <?php
+                    if($_SESSION['message2'])
+                        echo '<div class="msg">'. $_SESSION['message2'] .'</div>';
+                    unset($_SESSION['message2']);
+                    ?>
+                </form>
+                <script src='https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>'></script>
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('<?php echo SITE_KEY; ?>', {action: 'homepage'})
+                            .then(function(token) {
+                                //console.log(token);
+                                document.getElementById('g-recaptcha-response').value=token;
+                            });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
 
+</div>
 <div id="footer" style="position:absolute;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8
@@ -153,7 +173,10 @@ if (isset($_GET['search']) and strlen($_GET['search'])) {
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
 <script src="../src/js/script.js"></script>
+
+
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
@@ -164,5 +187,4 @@ if (isset($_GET['search']) and strlen($_GET['search'])) {
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 </script>
 </body>
-
 </html>
