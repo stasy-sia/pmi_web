@@ -57,8 +57,15 @@ if($capcha) {
     $stmt1->bindParam(':surname', $surname);
     $stmt1->bindParam(':pass', $pass);
     $stmt1->execute();
+    foreach ($stmt1 as $row)
+    {
+        $_SESSION['user'] = [
+            "id" => $row['id'],
+            "name" => $row['name']
+        ];
+    }
     $_SESSION['message2'] = 'Регистрация прошла успешно';
-  //  header('Location: ../../pages/regest.php');
+    header('Location: ../../pages/regest.php');
 }else{
     $_SESSION['message2'] = 'Вы не прошли проверку reCaptcha';
     header('Location: ../../pages/regest.php');

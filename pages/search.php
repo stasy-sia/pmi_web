@@ -149,6 +149,7 @@ for($j = 0; $j < 4;$j++){
                         <div class="col-xs-12 col-sm-4 col-lg-3">
                             <img  src="../assets/images/<?= $folder[$j];?>/<?=$select_wile['picture']?>" alt="" class="w-100">
                             <h3><?= $select_wile['name'];?></h3>
+                            <a href="../html/<?= $select_wile['name_page'] ?>" class="nav-link mr-sm-2">Рецепт</a>
                             <?
                             if ($select_wile['category'] == 'Завтрак'){
                                 ?>
