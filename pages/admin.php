@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
+require_once("../src/PHP/functions.php");
 ?>
 <!doctype html>
 <html lang="ru">
@@ -87,9 +88,10 @@ if (!isset($_SESSION['user'])) {
         $folder = array(
             "breakfast", "dinner", "dessert", "drinks"
         );
-        $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-            $add = $mysql->query("SELECT * FROM `menu`");
-            $add = mysqli_fetch_all($add);
+        $pdo = PDO_OPT();
+        $add = $pdo->prepare("SELECT * FROM menu");
+        $add->execute();
+        $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
             ?>
                 <table class="table">
                     <thead class="thead-dark">
@@ -109,19 +111,19 @@ if (!isset($_SESSION['user'])) {
         <tr>
             <?php
             for($j = 0; $j < 4;$j++){
-                foreach ($add as $product) {
-                    if($mass[$j] == $product[5]){
+                foreach ($prod as $product) {
+                    if($mass[$j] == $product["category"]){
                     ?>
                         <tr>
-                            <td><?= $product[0] ?></td>
-                            <td><?= $product[1] ?></td>
-                            <td><?= $product[2] ?></td>
-                            <td><?= $product[3] ?></td>
-                            <td><?= $product[4] ?></td>
-                            <td><?= $product[5] ?></td>
-                            <td><?= $product[6] ?></td>
-                            <td><a href="UpAdmin.php?id=<?= $product[0]?>&cat=<?=$folder[$j]?>">Update</a></td>
-                            <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product[0] ?>&cat=<?=$folder[$j]?>&picture=<?=$product[4]?>">Delete</a></td>
+                            <td><?= $product["id"] ?></td>
+                            <td><?= $product["name"] ?></td>
+                            <td><?= $product["price"] ?></td>
+                            <td><?= $product["gramm"] ?></td>
+                            <td><?= $product["picture"] ?></td>
+                            <td><?= $product["category"] ?></td>
+                            <td><?= $product["name_page"] ?></td>
+                            <td><a href="UpAdmin.php?id=<?= $product["id"]?>&cat=<?=$folder[$j]?>">Update</a></td>
+                            <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
                         </tr>
                 <?php
                     }

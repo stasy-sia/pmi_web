@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require_once("functions.php");
 define('SITE_KEY', '6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji');
 define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
 
@@ -38,24 +38,27 @@ if($capcha) {
     }
 
     $pass = md5($pass . "fdhfhg2345");
-
-    $mysql = new mysqli('localhost', 'root', 'root', 'regist');
-
-    $result = $mysql->query("SELECT * FROM `users1` WHERE `email` = '$email'");
-    $check_if = mysqli_num_rows($result);
-    if ($check_if) {
-
-        $_SESSION['message2'] = 'Данный пользователь уже зарегестрирован';
-        header('Location: ../../pages/regest.php');
-        exit();
+    $pdo = PDO_OPT();
+    $stmt = $pdo->prepare("SELECT * FROM users1 WHERE email = :email");
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+    foreach ($stmt as $result)
+    {
+        if($result != NULL)
+        {
+            $_SESSION['message2'] = 'Данный пользователь уже зарегестрирован';
+            header('Location: ../../pages/regest.php');
+            exit();
+        }
     }
-
-    $mysql->query("INSERT INTO `users1` (`email`, `name`, `surname`, `pass`) VALUES('$email','$name','$surname','$pass')");
+    $stmt1 = $pdo->prepare("INSERT INTO users1 (email, name, surname, pass) VALUES (:email, :name, :surname, :pass)");
+    $stmt1->bindParam(':email', $email);
+    $stmt1->bindParam(':name', $name);
+    $stmt1->bindParam(':surname', $surname);
+    $stmt1->bindParam(':pass', $pass);
+    $stmt1->execute();
     $_SESSION['message2'] = 'Регистрация прошла успешно';
-
-    $mysql->close();
-
-    header('Location: ../../pages/regest.php');
+  //  header('Location: ../../pages/regest.php');
 }else{
     $_SESSION['message2'] = 'Вы не прошли проверку reCaptcha';
     header('Location: ../../pages/regest.php');

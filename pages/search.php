@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
 ?>
 <!DOCTYPE html>
 
@@ -111,26 +112,38 @@ $folder = array(
     "breakfast", "dinner", "dessert", "drinks"
 );
 $search_get = $_GET['search'];
-$connect = new mysqli("127.0.0.1", "root", "root", "regist");
-$sql = "SELECT * FROM `menu` WHERE `name` LIKE '%$search_get%'";
+$search_get = "%$search_get%";
+$pdo = PDO_OPT();
+$add = $pdo->prepare("SELECT * FROM menu WHERE name LIKE ?");
+$add->execute(array($search_get));
+$add->execute();
+$prod = $add ->fetchAll(PDO::FETCH_ASSOC);
+$count = 0;
 for($j = 0; $j < 4;$j++){
-
-    $select = $connect->query($sql);
-    $select_wile = $select->fetch_assoc();
+    $check = true;
     $categoryes = '';
     $i = 0;
-    ?>
-    <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
-        <h1 class="text-center" style="background-color:#FFBF73"><?= $mass[$j] ?></h1>
-    </div>
-    <?php
-    while ($i < mysqli_num_rows($select)){
+    foreach ($prod as $select_wile)
+    {
+        if($mass[$j] == $select_wile['category'])
+        {
+            ?>
+            <div class="container-fluid p-0" style="font-family: 'Lobster', cursive; ">
+                <h1 class="text-center" style="background-color:#FFBF73"><?= $mass[$j] ?></h1>
+            </div>
+            <?php
+            break;
+        }
+    }
+    while ($check == true){
         ?>
         <div class="container-fluid "">
         <div class="container">
             <div class="row text-center justify-content">
                 <?php
-                for (; $i < mysqli_num_rows($select); $i++) {
+                foreach ($prod as $select_wile)
+                {
+                    $i = 1;
                     if($mass[$j] == $select_wile['category']){
                         ?>
                         <div class="col-xs-12 col-sm-4 col-lg-3">
@@ -190,10 +203,9 @@ for($j = 0; $j < 4;$j++){
                             ?>
                         </div>
                         <?php
-
                     }
-                    $select_wile = $select->fetch_assoc();
                 }
+                $check = false;
                 ?>
             </div>
         </div>

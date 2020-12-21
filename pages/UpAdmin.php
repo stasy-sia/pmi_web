@@ -1,14 +1,19 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
+
 $update_id = $_GET['id'];
 $category = $_GET['cat'];
-$mysql = new mysqli('localhost', 'root', 'root', 'regist');
-$update =  $mysql->query("SELECT * FROM `menu` WHERE `id` = '$update_id'");
-$update = mysqli_fetch_assoc($update);
+
+$pdo = PDO_OPT();
+$stmt = $pdo->prepare("SELECT * FROM menu WHERE id = :update_id");
+$stmt->bindParam(':update_id', $update_id);
+$stmt->execute();
+$prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!doctype html>
 <html lang="ru">
@@ -75,32 +80,38 @@ $update = mysqli_fetch_assoc($update);
         </div>
     </nav>
 </table>
-    <div style="padding-top: 10px; margin-left: 15px ">
-    </table>
-    <br></br>
-    <H4>UPdate Product</H4>
-    <form action ="/src/PHP/UpAdmin.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="id" value="<?=$update['id']?>">
-        <input type="hidden" name="cat" value="<?=$category?>">
-        <h4>Name</h4>
-        <input tupe="text" name="name" value="<?=$update['name']?>">
-        <h4>Price</h4>
-        <input tupe="number" name="price" value="<?=$update['price']?>">
-        <h4>Gramm</h4>
-        <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
-        <h4>picture</h4>
-        <input  tupe="text" name="name_page" value="<?=$update['name_page']?>">
-        <h4>picture</h4>
-        <input  readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
-        Удалить
-        <input type="checkbox" name="Del" value="tru"><Br>
-        <br></br>
-        <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
-        <input type='file' name='file' class='file-drop' id='file-drop'><br>
-        <input type='submit' value='Update product' >
-    </form>
-</div>
-
+    <?php
+    foreach ($prod as $update)
+    {
+        ?>
+        <div style="padding-top: 10px; margin-left: 15px ">
+            </table>
+            <br></br>
+            <H4>UPdate Product</H4>
+            <form action ="/src/PHP/UpAdmin.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?=$update['id']?>">
+                <input type="hidden" name="cat" value="<?=$category?>">
+                <h4>Name</h4>
+                <input tupe="text" name="name" value="<?=$update['name']?>">
+                <h4>Price</h4>
+                <input tupe="number" name="price" value="<?=$update['price']?>">
+                <h4>Gramm</h4>
+                <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
+                <h4>picture</h4>
+                <input  tupe="text" name="name_page" value="<?=$update['name_page']?>">
+                <h4>picture</h4>
+                <input  readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
+                Удалить
+                <input type="checkbox" name="Del" value="tru"><Br>
+                <br></br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
+                <input type='file' name='file' class='file-drop' id='file-drop'><br>
+                <input type='submit' value='Update product' >
+            </form>
+        </div>
+    <?php
+    }
+    ?>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

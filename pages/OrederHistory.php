@@ -4,6 +4,7 @@ if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
+require_once("../src/PHP/functions.php");
 ?>
 <!doctype html>
 <html lang="ru">
@@ -105,133 +106,67 @@ if (!isset($_SESSION['user'])) {
 
 <?php
 $userid = $_SESSION['user']['id'];
+$pdo = PDO_OPT();
+$stmt = $pdo->prepare("SELECT * FROM orders WHERE usser_id = :userid");
+$stmt->bindParam(':userid', $userid);
+$stmt->execute();
+$order = $stmt ->fetchAll(PDO::FETCH_ASSOC);
 
-$mysql = new mysqli('localhost', 'root', 'root', 'regist');
-$result = $mysql->query("SELECT * FROM `orders` WHERE usser_id = '$userid'");
-$orders = $result->fetch_assoc();
 
-for ($i = 0; $i < mysqli_num_rows($result); $i++) {
+$stmt3 = $pdo->prepare("SELECT * FROM menu");
+$stmt3->execute();
+$menu = $stmt3 ->fetchAll(PDO::FETCH_ASSOC);
+
+//$mysql = new mysqli('localhost', 'root', 'root', 'regist');
+//$result = $mysql->query("SELECT * FROM `orders` WHERE usser_id = '$userid'");
+//$orders = $result->fetch_assoc();
+foreach ($order as $orders)
+{
     $orderid = $orders['id'];
-    $result2 = $mysql->query("SELECT * FROM `oreder_prod` WHERE order_id = '$orderid'");
+    $stmt2 = $pdo->prepare("SELECT * FROM oreder_prod WHERE order_id = :orderid");
+    $stmt2->bindParam(':orderid', $orderid);
+    $stmt2->execute();
+    $order_prod = $stmt2 ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     <div class="row">
         <div class="col">
             <h4>Номер заказа: <?=$orders['id']; ?></h4>
             <h6 style="opacity: 0.7;"><?=$orders['date']?></h6>
         </div>
-        <div class="col">
-            <?php
-            for ($j = 0; $j < mysqli_num_rows($result2); $j++) {
-            $products = $result2->fetch_assoc();
-            if($products['cotegory_id'] == 0){
-                $cat = 'breakfast';
-                while($products['cotegory_id'] == 0 and $j < mysqli_num_rows($result2)){
-                    $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
-                    $arr = $result3->fetch_assoc();
-                    ?>
-                        <div class="row">
-                             <div class="col">
-                                 <h5><?=$arr['name']?></h5>
-                             </div>
-                            <div class="col">
-                                <h5><?=$products['count']?> шт. </h5>
-                            </div>
-                            <div class="col">
-                                <h5><?=$arr['price']?> рублей</h5>
-                            </div>
-
-                        </div>
-                    <?php
-                    $products = $result2->fetch_assoc();
-                    $j++;
-                }
-
-            }
-            if($products['cotegory_id'] == 1){
-                $cat = 'dinner';
-                while($products['cotegory_id'] == 1 and $j < mysqli_num_rows($result2)){
-                    $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
-                    $arr = $result3->fetch_assoc();
-                    ?>
-                    <div class="row">
-                        <div class="col">
-                            <h5><?=$arr['name']?></h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$products['count']?> шт. </h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$arr['price']?> рублей</h5>
-                        </div>
-
-                    </div>
-                    <?php
-                    $products = $result2->fetch_assoc();
-                    $j++;
-                }
-            }
-            if($products['cotegory_id'] == 2){
-                $cat = 'dessert';
-                while($products['cotegory_id'] == 2 and $j < mysqli_num_rows($result2)){
-                    $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
-                    $arr = $result3->fetch_assoc();
-                    ?>
-                    <div class="row">
-                        <div class="col">
-                            <h5><?=$arr['name']?></h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$products['count']?> шт. </h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$arr['price']?> рублей</h5>
-                        </div>
-
-                    </div>
-                    <?php
-                    $products = $result2->fetch_assoc();
-                    $j++;
-                }
-            }
-            if($products['cotegory_id'] == 3){
-                $cat = 'drinks';
-                while($products['cotegory_id'] == 3 and $j < mysqli_num_rows($result2)){
-                    $id = $products['prod_id'];
-                    $result3 = $mysql->query("SELECT `name`, `price` FROM `menu` WHERE `id`='$id'");
-                    $arr = $result3->fetch_assoc();
-                    ?>
-                    <div class="row">
-                        <div class="col">
-                            <h5><?=$arr['name']?></h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$products['count']?> шт. </h5>
-                        </div>
-                        <div class="col">
-                            <h5><?=$arr['price']?> рублей</h5>
-                        </div>
-
-                    </div>
-                    <?php
-                    $products = $result2->fetch_assoc();
-                    $j++;
-                }
-            }
-
-            ?>
-
-        </div>
+    <div class="col">
         <?php
-        }
+        foreach ($order_prod as $products)
+        {
+            $cat = 'breakfast';
+            $id = $products['prod_id'];
+            foreach ($menu as $arr)
+            {
+                if($arr["id"] == $id)
+                {
+                    ?>
+                    <div class="row">
+                        <div class="col">
+                            <h5><?=$arr['name']?></h5>
+                        </div>
+                        <div class="col">
+                            <h5><?=$products['count']?> шт. </h5>
+                        </div>
+                        <div class="col">
+                            <h5><?=$arr['price']?> рублей</h5>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+        }?>
+    </div>
+        <?php
         if($orders['status'] == "Доставлено"){
-        ?>
-        <div class="col text-success">
-            <h4><?= $orders['status']; ?></h4>
-        </div>
-        <?php
+            ?>
+            <div class="col text-success">
+                <h4><?= $orders['status']; ?></h4>
+            </div>
+            <?php
         }
         ?>
         <?php
@@ -266,7 +201,6 @@ for ($i = 0; $i < mysqli_num_rows($result); $i++) {
         </div>
     </div>
     <?php
-    $orders = $result->fetch_assoc();
 }
 ?>
 

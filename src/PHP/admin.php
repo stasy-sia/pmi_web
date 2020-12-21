@@ -1,9 +1,7 @@
 <?php
 session_start();
-
+require_once("functions.php");
 if(!empty($_FILES['file']['name'])) {
-
-    $mysql = new mysqli('localhost', 'root', 'root', 'regist');
     $name = $_POST['name'];
     $price = $_POST['price'];
     $gramm = $_POST['gramm'];
@@ -46,7 +44,15 @@ if(!empty($_FILES['file']['name'])) {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("INSERT INTO `menu` (`name`, `price`, `gramm`, `picture`, `category`, `name_page`) VALUES ('$name', '$price', '$gramm', '$name_file', '$category', '$name_page')");
+        $pdo = PDO_OPT();
+        $stmt = $pdo->prepare("INSERT INTO menu (name, price, gramm, picture, category, name_page) VALUES (:name, :price, :gramm, :name_file, :category, :name_page)");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':price', $price);
+        $stmt->bindParam(':gramm', $gramm);
+        $stmt->bindParam(':name_file', $name_file);
+        $stmt->bindParam(':category', $category);
+        $stmt->bindParam(':name_page', $name_page);
+        $stmt->execute();
         header('Location: ../../pages/admin.php');
         /*                                                          Проверка на копии  */
 

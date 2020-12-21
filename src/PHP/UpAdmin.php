@@ -1,10 +1,12 @@
 <?php
 session_start();
+require_once("functions.php");
 $mysql = new mysqli('localhost', 'root', 'root', 'regist');
 $id = $_POST['id'];
 $name = $_POST['name'];
 $price = $_POST['price'];
 $gramm = $_POST['gramm'];
+$pdo = PDO_OPT();
 $name_page = $_POST['name_page'].'.html';
 $picture = $_POST['picture'];
 $cat = $_POST['cat'];
@@ -14,7 +16,14 @@ if($_POST['Del'] == "tru") {
         unlink($link);
     }
     $picture = NULL;
-    $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$picture', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
+    $stmt = $pdo->prepare("UPDATE menu SET name = :name, price = :price, gramm = :gramm, picture = :picture, name_page = :name_page WHERE menu.`id` = :id");
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':gramm', $gramm);
+    $stmt->bindParam(':picture', $picture);
+    $stmt->bindParam(':name_page', $name_page);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
     header('Location: ../../pages/admin.php');
 } else if(!empty($_FILES['file']['name'])) {
     if($picture != NULL){
@@ -46,13 +55,25 @@ if($_POST['Del'] == "tru") {
             exit;
         }
         chmod($uploadDir.$name_file, 0644);
-        $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `picture` = '$name_file', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
+        $stmt2 = $pdo->prepare("UPDATE menu SET name = :name, price = :price, gramm = :gramm, picture = :picture, name_page = :name_page WHERE menu.`id` = :id");
+        $stmt2->bindParam(':name', $name);
+        $stmt2->bindParam(':price', $price);
+        $stmt2->bindParam(':gramm', $gramm);
+        $stmt2->bindParam(':picture', $name_file);
+        $stmt2->bindParam(':name_page', $name_page);
+        $stmt2->bindParam(':id', $id);
+        $stmt2->execute();
         header('Location: ../../pages/admin.php');
     } else {
         echo "Недопустимый формат <br>";
     }
 } else {
-    $mysql->query("UPDATE `menu` SET `name` = '$name', `price` = '$price', `gramm` = '$gramm', `name_page` = '$name_page' WHERE `menu`.`id` = $id");
+    $stmt = $pdo->prepare("UPDATE menu SET name = :name, price = :price, gramm = :gramm, name_page = :name_page WHERE menu.`id` = :id");
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':price', $price);
+    $stmt->bindParam(':gramm', $gramm);
+    $stmt->bindParam(':name_page', $name_page);
+    $stmt->bindParam(':id', $id);;
     header('Location: ../../pages/admin.php');
 }
 ?>

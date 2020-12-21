@@ -1,9 +1,9 @@
 <?php
 session_start();
+require_once("functions.php");
 
 define('SITE_KEY', '6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji');
 define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
-
 if($_POST){
     function getCaptcha($SecretKey){
         $Response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=".SECRET_KEY."&response={$SecretKey}");
@@ -30,7 +30,11 @@ if($capcha) {
             exit();
         }
         $_SESSION['user']['name'] = $name;
-        $mysql->query("UPDATE `users1` SET `name` = '$name' WHERE `users1`.`id` = $id");
+        $pdo = PDO_OPT();
+        $stmt = $pdo->prepare("UPDATE users1 SET name = :name WHERE users1.id = :id");
+        $stmt->bindParam(':name', $name);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
     }
     if($_POST['surname'] != NULL){
         $surname = filter_var(trim($_POST['surname']), FILTER_SANITIZE_STRING);
@@ -55,12 +59,19 @@ if($capcha) {
             header('Location: ../../pages/change_pass.php');
             exit();
         }
-        $mysql->query("UPDATE `users1` SET `email` = '$email' WHERE `users1`.`id` = $id");
+        $stmt2 = $pdo->prepare("UPDATE users1 SET email = :email WHERE users1.id = :id");
+        $stmt2->bindParam(':email', $email);
+        $stmt2->bindParam(':id', $id);
+        $stmt2->execute();
     }
     if($_POST['pass'] != NULL){
         $pass = filter_var(trim($_POST['pass']), FILTER_SANITIZE_STRING);
         $pass = md5($pass . "fdhfhg2345");
-        $mysql->query("UPDATE `users1` SET `pass` = '$pass' WHERE `users1`.`id` = $id");
+
+        $stmt2 = $pdo->prepare("UPDATE users1 SET pass = :pass WHERE users1.id = :id");
+        $stmt2->bindParam(':pass', $pass);
+        $stmt2->bindParam(':id', $id);
+        $stmt2->execute();
     }
     $mysql->close();
     header('Location: ../../pages/change_pass.php');
