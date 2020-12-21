@@ -57,7 +57,12 @@ if($capcha) {
     $stmt1->bindParam(':surname', $surname);
     $stmt1->bindParam(':pass', $pass);
     $stmt1->execute();
-    foreach ($stmt1 as $row)
+
+    $stmt2 = $pdo->prepare("SELECT id, name FROM users1 WHERE surname = :surname AND pass = :pass");
+    $stmt2->bindParam(':surname', $surname);
+    $stmt2->bindParam(':pass', $pass);
+    $stmt2->execute();
+    foreach ($stmt2 as $row)
     {
         $_SESSION['user'] = [
             "id" => $row['id'],
