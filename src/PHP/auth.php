@@ -25,5 +25,5 @@ foreach ($stmt as $row)
 $_SESSION['message1']='Неверный логин или пароль';
 header('Location: ../../pages/regest.php');
 exit();
-ж.ждлд
+
 ?>
