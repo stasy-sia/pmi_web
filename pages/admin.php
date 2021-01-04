@@ -62,6 +62,7 @@ require_once("../src/PHP/functions.php");
 
                  <?php if($_SESSION['user']['id']==7): ?>
              </ul>
+        <li class="nav-link" ><a href="/pages/restorans.php" >Рестораны</a></li>
         <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
         <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
         <?php else: ?>
@@ -157,6 +158,7 @@ require_once("../src/PHP/functions.php");
             <input type='file' name='file' class='file-drop' id='file-drop' required ><br>
             <input type='submit' value='Add new product' >
         </p>
+    </form>
 </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
