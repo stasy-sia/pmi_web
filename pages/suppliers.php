@@ -82,12 +82,6 @@ require_once("../src/PHP/functions.php");
     ?>
 </nav>
 <?php
-$mass = array(
-    "Завтрак", "Обед / Ужин", "Десерты", "Напитки"
-);
-$folder = array(
-    "breakfast", "dinner", "dessert", "drinks"
-);
 $pdo = PDO_OPT();
 $id = $_GET['id'];
 $add = $pdo->prepare("SELECT * FROM suppliers WHERE id_cafe = :id");
@@ -116,7 +110,7 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         <td><?= $product["id_supp"] ?></td>
         <td><?= $product["name"] ?></td>
         <td><?= $product["id_cafe"] ?></td>
-        <td><a href="prud_supp.php?id=<?=$product['id_supp']?>&id_cafe=<?=$product['id_cafe']?>">Просмотр</a></td>
+        <td><a href="prod_supp.php?id=<?=$product['id_supp']?>&id_cafe=<?=$product['id_cafe']?>">Просмотр</a></td>
         <td><a href="UpAdmin.php?id=<?= $product["id"]?>&cat=1">Update</a></td>
         <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
     </tr>
