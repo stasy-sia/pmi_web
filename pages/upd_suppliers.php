@@ -7,17 +7,10 @@ if (!isset($_SESSION['user'])) {
 }
 
 $update_id = $_GET['id'];
-
 $pdo = PDO_OPT();
-$stmt = $pdo->prepare("SELECT * FROM restaurants WHERE id = :update_id");
+$stmt = $pdo->prepare("SELECT * FROM suppliers WHERE id_supp = :update_id");
 $stmt->bindParam(':update_id', $update_id);
 $stmt->execute();
-$prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-$stmt1 = $pdo->prepare("SELECT * FROM cities WHERE id_cafe = :update_id");
-$stmt1->bindParam(':update_id', $update_id);
-$stmt1->execute();
-foreach ($stmt1 as $a)
-    $address = $a['adress'];
 ?>
 <!doctype html>
 <html lang="ru">
@@ -86,22 +79,21 @@ foreach ($stmt1 as $a)
 </table>
 <?php
 if($_SESSION['user']['id']==7){
-    foreach ($prod as $update)
+    foreach ($stmt as $update)
     {
         ?>
         <div style="padding-top: 10px; margin-left: 15px ">
             </table>
             <br></br>
-            <H4>Update cafe</H4>
-            <form action ="/src/PHP/upd_cafe.php" method="post">
-                <input type="hidden" name="id" value="<?=$update['id']?>">
+            <H4>Update suppliers</H4>
+            <form action ="/src/PHP/upd_suppliers.php" method="post">
                 <h4>Name</h4>
-                <input tupe="text" name="name" value="<?=$update['name']?>">
-                <h4>city</h4>
-                <input tupe="number" name="city" value="<?=$update['city']?>">
-                <h4>address</h4>
-                <input tupe="number" name="address" value="<?=$address?>">
-                <input type='submit' value='Update cafe' >
+                <input type="text" name="name" value="<?=$update['name']?>">
+                <h4>id cafe</h4>
+                <input type="number" name="id_cafe" value="<?=$update['id_cafe']?>">
+                <h4>salary</h4>
+                <input type="hidden" name="id_supp" value="<?=$update['id_supp']?>">
+                <input type='submit' value='Update supplier' >
             </form>
         </div>
         <?php
@@ -111,25 +103,25 @@ else{
     echo "У вас нет прав";
 }
 ?>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
-                    <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
-                        <span aria-hidden="true">&times;</span>
-                    </buttom>
-                </div>
-                <div class="modal-body">
-                    <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
+                <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
+                    <span aria-hidden="true">&times;</span>
+                </buttom>
+            </div>
+            <div class="modal-body">
+                <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
