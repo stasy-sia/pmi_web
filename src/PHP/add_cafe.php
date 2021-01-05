@@ -1,34 +1,24 @@
 <?php
 session_start();
 require_once("functions.php");
-if(!empty($_FILES['file']['name'])) {
+if($_POST) {
     $name = $_POST['name'];
     $city = $_POST['city'];
-    if($fileChecked) {
-        $success = move_uploaded_file($myFile['tmp_name'], $uploadFile);
-        if(!$success){
-            echo "<p>Не удалось загрузить файл.</p>";
-            exit;
-        }
-        chmod($uploadDir.$name_file, 0644);
-        $pdo = PDO_OPT();
-        $stmt = $pdo->prepare("INSERT INTO menu (name, price, gramm, picture, category, name_page) VALUES (:name, :price, :gramm, :name_file, :category, :name_page)");
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':price', $price);
-        $stmt->bindParam(':gramm', $gramm);
-        $stmt->bindParam(':name_file', $name_file);
-        $stmt->bindParam(':category', $category);
-        $stmt->bindParam(':name_page', $name_page);
-        $stmt->execute();
-        header('Location: ../../pages/admin.php');
-        /*                                                          Проверка на копии  */
-
-    } else {
-        echo "Недопустимый формат <br>";
+    $address = $_POST['address'];
+    $pdo = PDO_OPT();
+    $stmt = $pdo->prepare("INSERT INTO restaurants (name, city) VALUES (:name, :city)");
+    $stmt->bindParam(':name', $name);
+    $stmt->bindParam(':city', $city);
+    $stmt->execute();
+    $stmt1 = $pdo->prepare("SELECT id FROM restaurants WHERE name = :name");
+    $stmt1->bindParam(':name', $name);
+    $stmt1->execute();
+    foreach ($stmt1 as $id)
+        $id_cafe = $id['id'];
+    $stmt2 = $pdo->prepare("INSERT INTO cities (id_cafe, adress) VALUES (:id_cafe, :address)");
+    $stmt2->bindParam(':id_cafe', $id_cafe);
+    $stmt2->bindParam(':address', $address);
+    $stmt2->execute();
+    header('Location: ../../pages/restorans.php');
     }
-}
-else {
-    echo "Вы не прислали файл!" ;
-}
-
 ?>

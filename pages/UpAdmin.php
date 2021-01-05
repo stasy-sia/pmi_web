@@ -81,6 +81,7 @@ $prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
     </nav>
 </table>
     <?php
+    if($_SESSION['user']['id']==7){
     foreach ($prod as $update)
     {
         ?>
@@ -111,6 +112,10 @@ $prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
         </div>
     <?php
     }
+    }
+    else{
+        echo "У вас нет прав";
+    }
     ?>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
         aria-hidden="true">
@@ -131,8 +136,6 @@ $prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </div>
-
-    
 
     <div id="footer" style="position:flex;">
         © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:

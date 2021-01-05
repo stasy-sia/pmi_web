@@ -81,7 +81,9 @@ require_once("../src/PHP/functions.php");
     }
     ?>
 </nav>
-
+<?php
+if($_SESSION['user']['id']==7){
+?>
 <br>
 <H4>Add new cafe</H4>
 <form action ="../src/PHP/add_cafe.php" method="post" enctype="multipart/form-data" >
@@ -89,8 +91,16 @@ require_once("../src/PHP/functions.php");
     <input tupe="text" name="name" placeholder="name" required>
     <h4>City</h4>
     <input tupe="number" name="city" placeholder="city" required>
+    <h4>Address</h4>
+    <input tupe="text" name="address" placeholder="address" required>
     <input type='submit' value='Add new cafe' >
 </form>
+    <?php
+}
+else{
+    echo "У вас нет прав";
+}
+?>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
      aria-hidden="true">
@@ -112,7 +122,6 @@ require_once("../src/PHP/functions.php");
         </div>
     </div>
 </div>
-
 
 
 

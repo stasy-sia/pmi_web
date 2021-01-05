@@ -83,6 +83,7 @@ require_once("../src/PHP/functions.php");
         ?>
     </nav>
         <?php
+        if($_SESSION['user']['id']==7){
         $mass = array(
             "Завтрак", "Обед / Ужин", "Десерты", "Напитки"
         );
@@ -160,7 +161,12 @@ require_once("../src/PHP/functions.php");
         </p>
     </form>
 </div>
-
+    <?php
+        }
+        else{
+            echo "У вас нет прав";
+        }
+    ?>
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
         aria-hidden="true">
         <div class="modal-dialog" role="document">

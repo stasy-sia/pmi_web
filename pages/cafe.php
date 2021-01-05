@@ -82,6 +82,7 @@ require_once("../src/PHP/functions.php");
     ?>
 </nav>
 <?php
+if($_SESSION['user']['id']==7){
 $pdo = PDO_OPT();
 $id = $_GET['id'];
 $add = $pdo->prepare("SELECT * FROM restaurants WHERE id = :id");
@@ -105,7 +106,6 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         <th scope="col">adress</th>
         <th scope="col">Сотрудники</th>
         <th scope="col">Поставщики</th>
-        <th scope="col">Стоп лист</th>
         <th scope="col">Update</th>
         <th scope="col">Delete</th>
     </tr>
@@ -123,16 +123,19 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         <td><a href="workers.php?id=<?=$product['id']?>">Просмотр</a></td>
         <td><a href="suppliers.php?id=<?=$product['id']?>" >Просмотр</a></td>
         <td><a href="menues.php?id=<?=$product['id']?>" >Просмотр</a></td>
-        <td><a href="UpAdmin.php?id=<?= $product["id"]?>&cat=1">Update</a></td>
-        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
+        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/del_cafe.php?id=<?= $product["id"] ?>">Delete</a></td>
     </tr>
     <?php
     }
     ?>
     </tbody>
 </table>
-
-
+    <?php
+}
+else{
+    echo "У вас нет прав";
+}
+?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -152,9 +155,6 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-
-
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:

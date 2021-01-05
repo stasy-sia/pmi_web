@@ -82,6 +82,7 @@ require_once("../src/PHP/functions.php");
     ?>
 </nav>
 <?php
+if($_SESSION['user']['id']==7){
 $pdo = PDO_OPT();
 $id = $_GET['id'];
 $add = $pdo->prepare("SELECT * FROM suppliers WHERE id_cafe = :id");
@@ -119,8 +120,13 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     </tbody>
 </table>
-
-
+    <a href="add_suppliers.php?id=<?=$_GET['id']?>" class="floating-button">Добавить</a>
+    <?php
+}
+else{
+    echo "У вас нет прав";
+}
+?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -140,9 +146,6 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-
-
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:

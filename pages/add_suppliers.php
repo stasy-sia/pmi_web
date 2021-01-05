@@ -83,60 +83,44 @@ require_once("../src/PHP/functions.php");
 </nav>
 <?php
 if($_SESSION['user']['id']==7){
-$pdo = PDO_OPT();
-$add = $pdo->prepare("SELECT * FROM restaurants");
-$add->execute();
-$prod = $add ->fetchAll(PDO::FETCH_ASSOC);
-?>
-        <?php
-        foreach ($prod as $product) {
-        ?>
-            <div class="row">
-                <div class="col">
-                    <h2><?= $product['name'] ?></h2>
-
-                </div>
-                <div class="col">
-                    <h4><?= $product['city'] ?></h4>
-                </div>
-                <div class="col">
-                    <form action="cafe.php" method="get">
-                        <input type="hidden" name="id" value="<?=$product['id']?>">
-                        <input type='submit' class="floating-button" value='Информация' >
-                    </form>
-                </div>
-            </div>
-
-    <?php
-    }
     ?>
-<br>
-<a href="add_cafe.php" class="floating-button">Добавить кафе</a>
+    <br>
+    <H4>Add new suppliers</H4>
+    <form action ="../src/PHP/add_suppliers.php" method="post">
+        <h4>Name</h4>
+        <input tupe="text" name="name" placeholder="name" required>
+        <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <input type='submit' value='Add new supplier' >
+    </form>
     <?php
 }
 else{
     echo "У вас нет прав";
 }
 ?>
+
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
-                <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
-                    <span aria-hidden="true">&times;</span>
-                </buttom>
-            </div>
-            <div class="modal-body">
-                <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
+                    <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
+                        <span aria-hidden="true">&times;</span>
+                    </buttom>
+                </div>
+
+                <div class="modal-body">
+                    <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:

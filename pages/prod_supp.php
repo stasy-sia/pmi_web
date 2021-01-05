@@ -82,6 +82,7 @@ require_once("../src/PHP/functions.php");
     ?>
 </nav>
 <?php
+if($_SESSION['user']['id']==7){
 $pdo = PDO_OPT();
 $id = $_GET['id'];
 $add = $pdo->prepare("SELECT * FROM prod_supp WHERE id_supp = :id");
@@ -118,8 +119,13 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
     ?>
     </tbody>
 </table>
-
-
+    <a href="add_products.php?id_supp=<?=$_GET['id']?>&id_cafe=<?=$_GET['id_cafe']?>" class="floating-button">Добавить</a>
+    <?php
+}
+else{
+    echo "У вас нет прав";
+}
+?>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
      aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -139,8 +145,6 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         </div>
     </div>
 </div>
-
-
 
 
 <div id="footer" style="position:flex;">

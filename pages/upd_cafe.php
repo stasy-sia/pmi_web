@@ -1,10 +1,23 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
-require_once("../src/PHP/functions.php");
+
+$update_id = $_GET['id'];
+
+$pdo = PDO_OPT();
+$stmt = $pdo->prepare("SELECT * FROM restaurants WHERE id = :update_id");
+$stmt->bindParam(':update_id', $update_id);
+$stmt->execute();
+$prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
+$stmt1 = $pdo->prepare("SELECT * FROM cities WHERE id_cafe = :update_id");
+$stmt1->bindParam(':update_id', $update_id);
+$stmt1->execute();
+foreach ($stmt1 as $a)
+    $address = $a['adress'];
 ?>
 <!doctype html>
 <html lang="ru">
@@ -19,6 +32,7 @@ require_once("../src/PHP/functions.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Контакты "У папы Сантьяго"</title>
 </head>
 
@@ -41,7 +55,7 @@ require_once("../src/PHP/functions.php");
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active">
             <a href="#" class="nav-link">Контакты</a>
         </li>
 
@@ -57,86 +71,65 @@ require_once("../src/PHP/functions.php");
         endif;
         ?>
         <?php
-        if(isset($_SESSION['user'])){
-        ?>
-
-        <?php if($_SESSION['user']['id']==7): ?>
+        if(!isset($_SESSION['user'])):
+            ?>
+        <?php
+        else : ?>
     </ul>
-    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
-    <?php else: ?>
-        <div class="dropdown">
-            <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="korzina.php">Корзина</a>
-                <a href="OrederHistory.php">История заказов</a>
-                <a href="/pages/change_pass.php">Личный кабинет</a>
-                <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
-            </div>
-        </div>
     <?php
     endif;
     ?>
-    <?php
-    }
-    ?>
+    </div>
 </nav>
+</table>
 <?php
 if($_SESSION['user']['id']==7){
-$pdo = PDO_OPT();
-$add = $pdo->prepare("SELECT * FROM restaurants");
-$add->execute();
-$prod = $add ->fetchAll(PDO::FETCH_ASSOC);
-?>
-        <?php
-        foreach ($prod as $product) {
+    foreach ($prod as $update)
+    {
         ?>
-            <div class="row">
-                <div class="col">
-                    <h2><?= $product['name'] ?></h2>
-
-                </div>
-                <div class="col">
-                    <h4><?= $product['city'] ?></h4>
-                </div>
-                <div class="col">
-                    <form action="cafe.php" method="get">
-                        <input type="hidden" name="id" value="<?=$product['id']?>">
-                        <input type='submit' class="floating-button" value='Информация' >
-                    </form>
-                </div>
-            </div>
-
-    <?php
+        <div style="padding-top: 10px; margin-left: 15px ">
+            </table>
+            <br></br>
+            <H4>Update cafe</H4>
+            <form action ="/src/PHP/upd_cafe.php" method="post">
+                <input type="hidden" name="id" value="<?=$update['id']?>">
+                <h4>Name</h4>
+                <input tupe="text" name="name" value="<?=$update['name']?>">
+                <h4>city</h4>
+                <input tupe="number" name="city" value="<?=$update['city']?>">
+                <h4>address</h4>
+                <input tupe="number" name="address" value="<?=$address?>">
+                <input type='submit' value='Update product' >
+            </form>
+        </div>
+        <?php
     }
-    ?>
-<br>
-<a href="add_cafe.php" class="floating-button">Добавить кафе</a>
-    <?php
 }
 else{
     echo "У вас нет прав";
 }
 ?>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-     aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
-                <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
-                    <span aria-hidden="true">&times;</span>
-                </buttom>
-            </div>
-            <div class="modal-body">
-                <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-dismiss="modal">Close</button>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
+                    <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
+                        <span aria-hidden="true">&times;</span>
+                    </buttom>
+                </div>
+                <div class="modal-body">
+                    <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
@@ -145,7 +138,6 @@ else{
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../src/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
