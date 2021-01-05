@@ -1,10 +1,17 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
-require_once("../src/PHP/functions.php");
+
+$update_id = $_GET['id'];
+
+$pdo = PDO_OPT();
+$stmt = $pdo->prepare("SELECT * FROM workers WHERE id = :update_id");
+$stmt->bindParam(':update_id', $update_id);
+$stmt->execute();
 ?>
 <!doctype html>
 <html lang="ru">
@@ -19,6 +26,7 @@ require_once("../src/PHP/functions.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Контакты "У папы Сантьяго"</title>
 </head>
 
@@ -41,7 +49,7 @@ require_once("../src/PHP/functions.php");
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active">
             <a href="#" class="nav-link">Контакты</a>
         </li>
 
@@ -57,71 +65,43 @@ require_once("../src/PHP/functions.php");
         endif;
         ?>
         <?php
-        if(isset($_SESSION['user'])){
-        ?>
-
-        <?php if($_SESSION['user']['id']==7): ?>
+        if(!isset($_SESSION['user'])):
+            ?>
+        <?php
+        else : ?>
     </ul>
-    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
-    <?php else: ?>
-        <div class="dropdown">
-            <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="korzina.php">Корзина</a>
-                <a href="OrederHistory.php">История заказов</a>
-                <a href="/pages/change_pass.php">Личный кабинет</a>
-                <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
-            </div>
-        </div>
     <?php
     endif;
     ?>
-    <?php
-    }
-    ?>
+    </div>
 </nav>
+</table>
 <?php
 if($_SESSION['user']['id']==7){
-$pdo = PDO_OPT();
-$id = $_GET['id'];
-$add = $pdo->prepare("SELECT * FROM workers WHERE id_cafe = :id");
-$add->bindParam(':id', $id);
-$add->execute();
-
-$prod = $add ->fetchAll(PDO::FETCH_ASSOC);
-?>
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">id</th>
-        <th scope="col">name</th>
-        <th scope="col">position</th>
-        <th scope="col">salary</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <?php
-        foreach ($prod as $product) {
+    foreach ($stmt as $update)
+    {
         ?>
-    <tr>
-        <td><?= $product["id"] ?></td>
-        <td><?= $product["name"] ?></td>
-        <td><?= $product["position"] ?></td>
-        <td><?= $product["salary"] ?></td>
-        <td><a href="upd_worker.php?id=<?= $product["id"]?>&id_cafe=<?=$_GET['id']?>">Update</a></td>
-        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
-    </tr>
-    <?php
+        <div style="padding-top: 10px; margin-left: 15px ">
+            </table>
+            <br></br>
+            <H4>Update worker</H4>
+            <form action ="/src/PHP/upd_worker.php" method="post">
+                <h4>id Cafe</h4>
+                <input type="number" name="id_cafe" value="<?=$update['id_cafe']?>">
+                <h4>Name</h4>
+                <input type="text" name="name" value="<?=$update['name']?>">
+                <h4>position</h4>
+                <input type="text" name="position" value="<?=$update['position']?>">
+                <h4>salary</h4>
+                <input type="number" name="salary" value="<?=$update['salary']?>">
+                <input type="hidden" name="id" value="<?=$update['id']?>">
+                <input type='submit' value='Update product' >
+            </form>
+        </div>
+        <?php
     }
-    ?>
-    </tbody>
-</table>
-    <a href="add_worker.php?id=<?=$_GET['id']?>" class="floating-button">Добавить</a>
-    <?php
 }
 else{
     echo "У вас нет прав";
@@ -154,7 +134,6 @@ else{
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../src/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
