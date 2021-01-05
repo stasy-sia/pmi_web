@@ -1,10 +1,18 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
-require_once("../src/PHP/functions.php");
+
+$id_supp = $_GET['id_supp'];
+$id_prod = $_GET['id_prod'];
+$pdo = PDO_OPT();
+$stmt = $pdo->prepare("SELECT * FROM prod_supp WHERE id_supp = :id_supp AND id_prod = :id_prod");
+$stmt->bindParam(':id_supp', $id_supp);
+$stmt->bindParam(':id_prod', $id_prod);
+$stmt->execute();
 ?>
 <!doctype html>
 <html lang="ru">
@@ -19,6 +27,7 @@ require_once("../src/PHP/functions.php");
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Контакты "У папы Сантьяго"</title>
 </head>
 
@@ -41,7 +50,7 @@ require_once("../src/PHP/functions.php");
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item ">
+        <li class="nav-item active">
             <a href="#" class="nav-link">Контакты</a>
         </li>
 
@@ -57,70 +66,41 @@ require_once("../src/PHP/functions.php");
         endif;
         ?>
         <?php
-        if(isset($_SESSION['user'])){
-        ?>
-
-        <?php if($_SESSION['user']['id']==7): ?>
+        if(!isset($_SESSION['user'])):
+            ?>
+        <?php
+        else : ?>
     </ul>
-    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
-    <?php else: ?>
-        <div class="dropdown">
-            <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
-            <div id="myDropdown" class="dropdown-content">
-                <a href="korzina.php">Корзина</a>
-                <a href="OrederHistory.php">История заказов</a>
-                <a href="/pages/change_pass.php">Личный кабинет</a>
-                <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
-            </div>
-        </div>
     <?php
     endif;
     ?>
-    <?php
-    }
-    ?>
+    </div>
 </nav>
+</table>
 <?php
 if($_SESSION['user']['id']==7){
-$pdo = PDO_OPT();
-$id = $_GET['id'];
-$add = $pdo->prepare("SELECT * FROM prod_supp WHERE id_supp = :id");
-$add->bindParam(':id', $id);
-$add->execute();
-$prod = $add ->fetchAll(PDO::FETCH_ASSOC);
-?>
-<table class="table">
-    <thead class="thead-dark">
-    <tr>
-        <th scope="col">id_supp</th>
-        <th scope="col">id_prod</th>
-        <th scope="col">count</th>
-        <th scope="col">price</th>
-        <th scope="col">Update</th>
-        <th scope="col">Delete</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <?php
-        foreach ($prod as $product) {
+    foreach ($stmt as $update)
+    {
         ?>
-    <tr>
-        <td><?= $product["id_supp"] ?></td>
-        <td><?= $product["id_prod"] ?></td>
-        <td><?= $product["count"] ?></td>
-        <td><?= $product["price"] ?></td>
-        <td><a href="upd_products.php?id_supp=<?=$product["id_supp"]?>&id_prod=<?=$product['id_prod']?>&id_cafe=<?=$_GET['id_cafe']?>">Update</a></td>
-        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
-    </tr>
-    <?php
+        <div style="padding-top: 10px; margin-left: 15px ">
+            </table>
+            <br></br>
+            <H4>Update product</H4>
+            <form action ="/src/PHP/upd_products.php" method="post">
+                <h4>count</h4>
+                <input type="number" name="count" value="<?=$update['count']?>">
+                <h4>price</h4>
+                <input type="number" name="price" value="<?=$update['price']?>">
+                <input type="hidden" name="id_supp" value="<?=$update['id_supp']?>">
+                <input type="hidden" name="id_prod" value="<?=$update['id_prod']?>">
+                <input type="hidden" name="id_cafe" value="<?=$_GET['id_cafe']?>">
+                <input type='submit' value='Update product' >
+            </form>
+        </div>
+        <?php
     }
-    ?>
-    </tbody>
-</table>
-    <a href="add_products.php?id_supp=<?=$_GET['id']?>&id_cafe=<?=$_GET['id_cafe']?>" class="floating-button">Добавить</a>
-    <?php
 }
 else{
     echo "У вас нет прав";
@@ -146,7 +126,6 @@ else{
     </div>
 </div>
 
-
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
     8
@@ -154,7 +133,6 @@ else{
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../src/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>
