@@ -113,7 +113,7 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         <td><?= $product["position"] ?></td>
         <td><?= $product["salary"] ?></td>
         <td><a href="upd_worker.php?id=<?= $product["id"]?>&id_cafe=<?=$_GET['id']?>">Update</a></td>
-        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
+        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/del_worker.php?id=<?=$product["id"]?>&id_cafe=<?=$id?>">Delete</a></td>
     </tr>
     <?php
     }
