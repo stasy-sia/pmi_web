@@ -88,7 +88,7 @@ if($_SESSION['user']['id']==7){
     <H4>Add new suppliers</H4>
     <form action ="../src/PHP/add_suppliers.php" method="post">
         <h4>Name</h4>
-        <input tupe="text" name="name" placeholder="name" required>
+        <input type="text" name="name" placeholder="name" required>
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
         <input type='submit' value='Add new supplier' >
     </form>

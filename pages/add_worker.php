@@ -88,11 +88,11 @@ if($_SESSION['user']['id']==7){
     <H4>Add new worker</H4>
     <form action ="../src/PHP/add_worker.php" method="post">
         <h4>Name</h4>
-        <input tupe="text" name="name" placeholder="name" required>
+        <input type="text" name="name" placeholder="name" required>
         <h4>Position</h4>
-        <input tupe="number" name="position" placeholder="position" required>
+        <input type="number" name="position" placeholder="position" required>
         <h4>salary</h4>
-        <input tupe="text" name="salary" placeholder="salary" required>
+        <input type="text" name="salary" placeholder="salary" required>
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
         <input type='submit' value='Add new worker' >
     </form>

@@ -1,0 +1,8 @@
+POST array (
+  'name' => 'Александр',
+  'price' => '123',
+  'gramm' => '1234',
+  'name_page' => 'Александр',
+  'category' => 'breakfast',
+  'MAX_FILE_SIZE' => '5000000',
+)

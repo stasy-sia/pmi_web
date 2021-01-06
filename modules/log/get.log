@@ -1,0 +1,11 @@
+GET array (
+  'search' => '',
+)GET array (
+  'search' => 'Бу',
+)GET array (
+  'search' => 'яйцо',
+)GET array (
+  'id' => '44',
+  'cat' => 'breakfast',
+  'picture' => 'bg.jpg',
+)

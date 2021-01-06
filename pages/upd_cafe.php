@@ -96,11 +96,11 @@ if($_SESSION['user']['id']==7){
             <form action ="/src/PHP/upd_cafe.php" method="post">
                 <input type="hidden" name="id" value="<?=$update['id']?>">
                 <h4>Name</h4>
-                <input tupe="text" name="name" value="<?=$update['name']?>">
+                <input type="text" name="name" value="<?=$update['name']?>">
                 <h4>city</h4>
-                <input tupe="number" name="city" value="<?=$update['city']?>">
+                <input type="number" name="city" value="<?=$update['city']?>">
                 <h4>address</h4>
-                <input tupe="number" name="address" value="<?=$address?>">
+                <input type="number" name="address" value="<?=$address?>">
                 <input type='submit' value='Update cafe' >
             </form>
         </div>

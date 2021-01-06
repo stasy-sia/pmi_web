@@ -140,13 +140,13 @@ require_once("../src/PHP/functions.php");
     <H4>Add new product</H4>
     <form action ="../src/PHP/admin.php" method="post" enctype="multipart/form-data" >
         <h4>Name</h4>
-        <input tupe="text" name="name" placeholder="name" required>
+        <input type="text" name="name" placeholder="name" required>
         <h4>Price</h4>
-        <input tupe="number" name="price" placeholder="price" required>
+        <input type="number" name="price" placeholder="price" required>
         <h4>Gramm</h4>
-        <input tupe="number" name="gramm" placeholder="gramm" required>
+        <input type="number" name="gramm" placeholder="gramm" required>
         <h4>Name page</h4>
-        <input tupe="text" name="name_page" placeholder="name page" required>
+        <input type="text" name="name_page" placeholder="name page" required>
         <h4>Category</h4>
         <p><select name="category" size="4" multiple style="min-width: 240px; ">
                 <option selected value="breakfast">Завтрак</option>

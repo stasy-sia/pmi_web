@@ -88,11 +88,11 @@ if($_SESSION['user']['id']==7){
 <H4>Add new cafe</H4>
 <form action ="../src/PHP/add_cafe.php" method="post" enctype="multipart/form-data" >
     <h4>Name</h4>
-    <input tupe="text" name="name" placeholder="name" required>
+    <input type="text" name="name" placeholder="name" required>
     <h4>City</h4>
-    <input tupe="number" name="city" placeholder="city" required>
+    <input type="number" name="city" placeholder="city" required>
     <h4>Address</h4>
-    <input tupe="text" name="address" placeholder="address" required>
+    <input type="text" name="address" placeholder="address" required>
     <input type='submit' value='Add new cafe' >
 </form>
     <?php
