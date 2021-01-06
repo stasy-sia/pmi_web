@@ -8,4 +8,16 @@ POST array (
 )POST array (
   'email' => 'sasha.vladislav.2014@list.ru',
   'pass' => '1234',
+)POST array (
+  'email' => 'admin@mail.ru',
+  'pass' => 'admin',
+)POST array (
+  'name' => 'Александр',
+  'price' => '123',
+  'gramm' => '1234',
+  'name_page' => 'Александр',
+  'category' => 'drinks',
+  'MAX_FILE_SIZE' => '5000000',
+  'action' => 'add',
+  'data_base' => 'menu',
 )

@@ -150,6 +150,8 @@ SET_LOG();
                         echo '<div class="msg">'. $_SESSION['message2'] .'</div>';
                     unset($_SESSION['message2']);
                     ?>
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="data_base" value="users1">
                 </form>
                 <script src='https://www.google.com/recaptcha/api.js?render=<?php echo SITE_KEY; ?>'></script>
                 <script>

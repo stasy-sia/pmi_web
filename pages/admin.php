@@ -158,6 +158,8 @@ SET_LOG();
                 <br></br>
             <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
             <input type='file' name='file' class='file-drop' id='file-drop' required ><br>
+            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="data_base" value="menu">
             <input type='submit' value='Add new product' >
         </p>
     </form>

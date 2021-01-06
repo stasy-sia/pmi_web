@@ -91,6 +91,8 @@ if($_SESSION['user']['id']==7){
         <h4>Name</h4>
         <input type="text" name="name" placeholder="name" required>
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="data_base" value="suppliers">
         <input type='submit' value='Add new supplier' >
     </form>
     <?php

@@ -94,6 +94,8 @@ if($_SESSION['user']['id']==7){
     <input type="number" name="city" placeholder="city" required>
     <h4>Address</h4>
     <input type="text" name="address" placeholder="address" required>
+    <input type="hidden" name="action" value="add">
+    <input type="hidden" name="data_base" value="restaurants">
     <input type='submit' value='Add new cafe' >
 </form>
     <?php

@@ -96,7 +96,9 @@ if($_SESSION['user']['id']==7){
         <input type="number" name="price" placeholder="price" required>
         <input type="hidden" name="id_supp" value="<?=$_GET['id_supp']?>">
         <input type="hidden" name="id_cafe" value="<?=$_GET['id_cafe']?>">
-        <input type='submit' value='Add new supplier' >
+        <input type="hidden" name="action" value="add">
+        <input type="hidden" name="data_base" value="prod_supp">
+        <input type='submit' value='Add new prod' >
     </form>
     <?php
 }
