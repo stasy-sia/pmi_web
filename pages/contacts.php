@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once("../src/PHP/functions.php");
+SET_LOG();
 ?>
 <!doctype html>
 <html lang="ru">

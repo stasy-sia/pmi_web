@@ -6,8 +6,8 @@ if (!isset($_SESSION['user'])) {
 }
 define('SITE_KEY', '6LeL9QwaAAAAAMqf5cGir0M9vK9hUsWkU9AnL2ji');
 define('SECRET_KEY', '6LeL9QwaAAAAAO32MI1IyMDuIgmCeaHVfhKvqgMJ');
-
-
+require_once("../src/PHP/functions.php");
+SET_LOG();
 ?>
 <!doctype html>
 <html lang="ru">

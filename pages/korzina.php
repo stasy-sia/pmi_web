@@ -4,6 +4,8 @@ if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
+require_once("../src/PHP/functions.php");
+SET_LOG();
 ?>
 <!doctype html>
 <html lang="ru" xmlns="http://www.w3.org/1999/html">
