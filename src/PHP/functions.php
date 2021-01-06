@@ -16,4 +16,25 @@ function PDO_OPT()
     $pdo = new PDO($dsn, $user, $pass, $opt);
     return $pdo;
 }
+function SET_LOG()
+{
+    session_start();
+    $id = "NULL";
+    if(isset($_SESSION['user'])){
+        $id = $_SESSION['user']['id'];
+    }
+    $page = $_SERVER["REQUEST_URI"];
+    $count = substr_count($page,'/') - 1;
+    $file = '';
+    for($i = 0 ; $i < $count; $i++)
+        $file = $file.'../';
+    $file = $file.'modules/log/pages.log';
+    $col_str = 5000;
+    $date = date("H:i:s d.m.Y");
+    $lines = file($file);
+    while(count($lines) > $col_str) array_shift($lines);
+    $lines[] = $date.";".$id.";".$page.";\r\n";
+    file_put_contents($file, $lines);
+    return 0;
+}
 ?>

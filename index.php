@@ -1,7 +1,12 @@
 <?php
 
 session_start();
-
+require_once("src/PHP/functions.php");
+$id = NULL;
+if(isset($_SESSION['user'])){
+    $id = $_SESSION['user']['id'];
+}
+SET_LOG($id,$_SERVER["REQUEST_URI"])
 ?>
 <!doctype html>
 
@@ -42,7 +47,7 @@ session_start();
           <a href="pages/menu.php" class="nav-link">Меню</a>
         </li>
         <li class="nav-item">
-          <a href="pages/contacts.php" class="nav-link">Контакты</a>
+            <a href="pages/contacts.php" class="nav-link">Контакты</a>
         </li>
           <li class="nav-item">
               <form class="form-inline my-2 my-lg-0" method="get" action="pages/prob.php">

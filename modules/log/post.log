@@ -5,4 +5,7 @@ POST array (
   'name_page' => 'Александр',
   'category' => 'breakfast',
   'MAX_FILE_SIZE' => '5000000',
+)POST array (
+  'email' => 'sasha.vladislav.2014@list.ru',
+  'pass' => '1234',
 )

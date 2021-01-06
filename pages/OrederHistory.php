@@ -5,6 +5,8 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 require_once("../src/PHP/functions.php");
+require_once("../src/PHP/functions.php");
+SET_LOG();
 ?>
 <!doctype html>
 <html lang="ru">

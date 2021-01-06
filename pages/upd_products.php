@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../src/PHP/functions.php");
+SET_LOG();
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
