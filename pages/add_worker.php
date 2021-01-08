@@ -91,9 +91,9 @@ if($_SESSION['user']['id']==7){
         <h4>Name</h4>
         <input type="text" name="name" placeholder="name" required>
         <h4>Position</h4>
-        <input type="number" name="position" placeholder="position" required>
+        <input type="text" name="position" placeholder="position" required>
         <h4>salary</h4>
-        <input type="text" name="salary" placeholder="salary" required>
+        <input type="number" name="salary" placeholder="salary" required>
         <input type="hidden" name="id" value="<?=$_GET['id']?>">
         <input type="hidden" name="action" value="add">
         <input type="hidden" name="data_base" value="workers">

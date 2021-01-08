@@ -89,7 +89,6 @@ if($_SESSION['user']['id']==7) {
         echo 'Пустой запрос';
     } else {
         $search_result = $_SESSION['search_result'];
-        print_r($search_result);
         foreach ($search_result as $t) {
             foreach ($t as $a) {
                 ?>

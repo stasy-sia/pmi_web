@@ -126,7 +126,16 @@ SET_LOG();
                             <td><?= $product["category"] ?></td>
                             <td><?= $product["name_page"] ?></td>
                             <td><a href="UpAdmin.php?id=<?= $product["id"]?>&cat=<?=$folder[$j]?>">Update</a></td>
-                            <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/DelAdmin.php?id=<?= $product["id"] ?>&cat=<?=$folder[$j]?>&picture=<?=$product["picture"]?>">Delete</a></td>
+                            <td>
+                                <form action="/src/PHP/DelAdmin.php" method="post">
+                                    <button onclick="return confirm('Are you sure?')" style="color: red; background: #31373e">Delete</button>
+                                    <input type="hidden" name="id" value="<?= $product["id"] ?>">
+                                    <input type="hidden" name="cat" value="<?=$folder[$j] ?>">
+                                    <input type="hidden" name="picture" value="<?=$product["picture"]?>">
+                                    <input type="hidden" name="action" value="delete">
+                                    <input type="hidden" name="data_base" value="menu">
+                                </form>
+                            </td
                         </tr>
                 <?php
                     }

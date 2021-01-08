@@ -124,7 +124,14 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
         <td><a href="workers.php?id=<?=$product['id']?>">Просмотр</a></td>
         <td><a href="suppliers.php?id=<?=$product['id']?>" >Просмотр</a></td>
         <td><a href="upd_cafe.php?id=<?= $product["id"]?>">Update</a></td>
-        <td><a onclick="return confirm('Are you sure?')" style="color: red" href="/src/PHP/del_cafe.php?id_cafe=<?= $product["id"] ?>">Delete</a></td>
+        <td>
+            <form action="/src/PHP/del_cafe.php" method="post">
+                <button onclick="return confirm('Are you sure?')" style="color: red; background: #31373e">Delete</button>
+                <input type="hidden" name="id_cafe" value="<?=$product["id"] ?>">
+                <input type="hidden" name="action" value="delete">
+                <input type="hidden" name="data_base" value="restaurants">
+            </form>
+        </td
     </tr>
     <?php
     }

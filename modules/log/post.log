@@ -20,4 +20,80 @@ POST array (
   'MAX_FILE_SIZE' => '5000000',
   'action' => 'add',
   'data_base' => 'menu',
+)POST array (
+  'id' => '45',
+  'cat' => '',
+  'picture' => 'bg.jpg',
+)POST array (
+  'id' => '45',
+  'cat' => '',
+  'picture' => 'bg.jpg',
+)POST array (
+  'id' => '46',
+  'cat' => '',
+  'picture' => 'bg.jpg',
+)POST array (
+  'id' => '46',
+  'cat' => '',
+  'picture' => 'bg.jpg',
+)POST array (
+  'name' => 'Александр',
+  'price' => '324',
+  'gramm' => '100',
+  'name_page' => 'Александр',
+  'category' => 'breakfast',
+  'MAX_FILE_SIZE' => '5000000',
+  'action' => 'add',
+  'data_base' => 'menu',
+)POST array (
+  'id' => '48',
+  'cat' => 'breakfast',
+  'picture' => '________.png',
+  'action' => 'delete',
+  'data_base' => 'menu',
+)POST array (
+  'name' => 'Александр',
+  'city' => '2',
+  'address' => '64 Армия',
+  'action' => 'add',
+  'data_base' => 'restaurants',
+)POST array (
+  'id_cafe' => '8',
+  'action' => 'delete',
+  'data_base' => 'restaurants',
+)POST array (
+  'name' => 'Александр',
+  'position' => 'Программист',
+  'salary' => '25000',
+  'id' => '1',
+  'action' => 'add',
+  'data_base' => 'workers',
+)POST array (
+  'id' => '18',
+  'id_cafe' => '1',
+  'action' => 'delete',
+  'data_base' => 'restaurants',
+)POST array (
+  'name' => 'Александр',
+  'id' => '1',
+  'action' => 'add',
+  'data_base' => 'suppliers',
+)POST array (
+  'id_prod' => '1',
+  'count' => '1',
+  'price' => '1',
+  'id_supp' => '11',
+  'id_cafe' => '1',
+  'action' => 'add',
+  'data_base' => 'prod_supp',
+)POST array (
+  'id' => '11',
+  'id_cafe' => '1',
+  'action' => 'delete',
+  'data_base' => 'restaurants',
+)POST array (
+  'id' => '11',
+  'id_cafe' => '1',
+  'action' => 'delete',
+  'data_base' => 'restaurants',
 )

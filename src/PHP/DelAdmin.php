@@ -1,9 +1,9 @@
 <?php
 session_start();
 require_once("functions.php");
-$id = $_GET['id'];
-$category = $_GET['cat'];
-$picture = $_GET['picture'];
+$id = $_POST['id'];
+$category = $_POST['cat'];
+$picture = $_POST['picture'];
 if($picture != NULL) {
     $link = "../../assets/images/$category/$picture";
     unlink($link);

@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once("functions.php");
-$id_supp = $_GET['id'];
-$id_cafe = $_GET['id_cafe'];
+$id_supp = $_POST['id'];
+$id_cafe = $_POST['id_cafe'];
 $pdo = PDO_OPT();
 $stmt = $pdo->prepare("DELETE FROM suppliers WHERE id_supp = :id_supp");
 $stmt->bindParam(':id_supp', $id_supp);

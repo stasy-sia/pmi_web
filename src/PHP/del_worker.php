@@ -1,8 +1,8 @@
 <?php
 session_start();
 require_once("functions.php");
-$id = $_GET['id'];
-$id_cafe = $_GET['id_cafe'];
+$id = $_POST['id'];
+$id_cafe = $_POST['id_cafe'];
 $pdo = PDO_OPT();
 $stmt = $pdo->prepare("DELETE FROM workers WHERE id = :id");
 $stmt->bindParam(':id', $id);

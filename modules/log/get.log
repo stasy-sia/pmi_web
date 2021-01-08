@@ -208,4 +208,85 @@ GET array (
 )GET array (
   'search' => 'са',
   'cafe' => '1',
+)GET array (
+  'id' => '47',
+  'cat' => 'drinks',
+  'picture' => 'bg.jpg',
+)GET array (
+  'id' => '8',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '3',
+)GET array (
+  'id' => '3',
+)GET array (
+  'id' => '3',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '11',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id_supp' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id_supp' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id' => '11',
+  'id_cafe' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
+)GET array (
+  'id' => '1',
 )

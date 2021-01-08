@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once("functions.php");
-    $id_cafe = $_GET['id_cafe'];
+    $id_cafe = $_POST['id_cafe'];
     $pdo = PDO_OPT();
     $stmt = $pdo->prepare("DELETE FROM restaurants WHERE id = :id_cafe");
     $stmt->bindParam(':id_cafe', $id_cafe);

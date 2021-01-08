@@ -91,7 +91,7 @@ if($_SESSION['user']['id']==7){
     <h4>Name</h4>
     <input type="text" name="name" placeholder="name" required>
     <h4>City</h4>
-    <input type="number" name="city" placeholder="city" required>
+    <input type="text" name="city" placeholder="city" required>
     <h4>Address</h4>
     <input type="text" name="address" placeholder="address" required>
     <input type="hidden" name="action" value="add">
