@@ -99,9 +99,9 @@ if($_SESSION['user']['id']==7){
                 <h4>Name</h4>
                 <input type="text" name="name" value="<?=$update['name']?>">
                 <h4>city</h4>
-                <input type="number" name="city" value="<?=$update['city']?>">
+                <input type="text" name="city" value="<?=$update['city']?>">
                 <h4>address</h4>
-                <input type="number" name="address" value="<?=$address?>">
+                <input type="text" name="address" value="<?=$address?>">
                 <input type="hidden" name="action" value="update">
                 <input type="hidden" name="data_base" value="restaurants">
                 <input type='submit' value='Update cafe' >

@@ -25,9 +25,10 @@ if (isset($_GET['search']) and strlen($_GET['search'])) {
         $check = 1;
     }
     if ($_GET['workers'] == 1) {
-        $add = $pdo->prepare("SELECT * FROM workers WHERE salary = :salary OR name OR position LIKE :search");
+        $add = $pdo->prepare("SELECT * FROM workers WHERE salary = :salary OR name LIKE :name OR position LIKE :position");
         $add->bindParam(':salary', $search_get_number);;
-        $add->bindParam(':search', $search_get);;
+        $add->bindParam(':name', $search_get);;
+        $add->bindParam(':position', $search_get);;
         $add->execute();
         $prod = $add->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['search_result']['workers'] = $prod;
@@ -64,9 +65,10 @@ if (isset($_GET['search']) and strlen($_GET['search'])) {
         $prod = $add->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['search_result']['cafe'] = $prod;
 
-        $add = $pdo->prepare("SELECT * FROM workers WHERE salary = :salary OR name OR position LIKE :search");
+        $add = $pdo->prepare("SELECT * FROM workers WHERE salary = :salary OR name LIKE :name OR position LIKE :position");
         $add->bindParam(':salary', $search_get_number);;
-        $add->bindParam(':search', $search_get);;
+        $add->bindParam(':name', $search_get);;
+        $add->bindParam(':position', $search_get);;
         $add->execute();
         $prod = $add->fetchAll(PDO::FETCH_ASSOC);
         $_SESSION['search_result']['workers'] = $prod;

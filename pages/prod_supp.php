@@ -117,6 +117,7 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
             <form action="/src/PHP/del_production.php" method="post">
                 <button onclick="return confirm('Are you sure?')" style="color: red; background: #31373e">Delete</button>
                 <input type="hidden" name="id" value="<?= $product["id_supp"] ?>">
+                <input type="hidden" name="id_prod" value="<?= $product["id_prod"] ?>">
                 <input type="hidden" name="id_cafe" value="<?=$_GET['id_cafe']?>">
                 <input type="hidden" name="action" value="delete">
                 <input type="hidden" name="data_base" value="restaurants">

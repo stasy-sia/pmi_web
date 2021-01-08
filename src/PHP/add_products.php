@@ -8,6 +8,16 @@ if($_POST) {
     $count = $_POST['count'];
     $price = $_POST['price'];
     $pdo = PDO_OPT();
+    $stmt = $pdo->prepare("SELECT * FROM prod_supp WHERE id_supp = :id_supp AND id_prod = :id_prod");
+    $stmt->bindParam(':id_supp', $id_supp);
+    $stmt->bindParam(':id_prod', $id_prod);
+    $stmt->execute();
+    foreach ($stmt as $item) {
+        if($item != NULL){
+            echo "такой продукт уже поставляеться, вы не можете его поставлять";
+            exit();
+        }
+    }
     $stmt = $pdo->prepare("INSERT INTO prod_supp (id_supp, id_prod, count, price) VALUES (:id_supp, :id_prod, :count, :price)");
     $stmt->bindParam(':id_supp', $id_supp);
     $stmt->bindParam(':id_prod', $id_prod);
