@@ -94,6 +94,8 @@ if($_SESSION['user']['id']==7){
                 <input type="number" name="id_cafe" value="<?=$update['id_cafe']?>">
                 <h4>salary</h4>
                 <input type="hidden" name="id_supp" value="<?=$update['id_supp']?>">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="data_base" value="suppliers">
                 <input type='submit' value='Update supplier' >
             </form>
         </div>

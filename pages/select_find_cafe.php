@@ -1,24 +1,12 @@
 <?php
 session_start();
-require_once("../src/PHP/functions.php");
-SET_LOG();
 if (!isset($_SESSION['user'])) {
     header('Location: /pages/regest.php');
     exit();
 }
+require_once("../src/PHP/functions.php");
+SET_LOG();
 
-$update_id = $_GET['id'];
-
-$pdo = PDO_OPT();
-$stmt = $pdo->prepare("SELECT * FROM restaurants WHERE id = :update_id");
-$stmt->bindParam(':update_id', $update_id);
-$stmt->execute();
-$prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
-$stmt1 = $pdo->prepare("SELECT * FROM cities WHERE id_cafe = :update_id");
-$stmt1->bindParam(':update_id', $update_id);
-$stmt1->execute();
-foreach ($stmt1 as $a)
-    $address = $a['adress'];
 ?>
 <!doctype html>
 <html lang="ru">
@@ -33,7 +21,6 @@ foreach ($stmt1 as $a)
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Контакты "У папы Сантьяго"</title>
 </head>
 
@@ -56,7 +43,7 @@ foreach ($stmt1 as $a)
         <li class="nav-item">
             <a href="menu.php" class="nav-link">Меню</a>
         </li>
-        <li class="nav-item active">
+        <li class="nav-item ">
             <a href="#" class="nav-link">Контакты</a>
         </li>
 
@@ -72,67 +59,82 @@ foreach ($stmt1 as $a)
         endif;
         ?>
         <?php
-        if(!isset($_SESSION['user'])):
-            ?>
-        <?php
-        else : ?>
+        if(isset($_SESSION['user'])){
+        ?>
+
+        <?php if($_SESSION['user']['id']==7): ?>
     </ul>
-    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/korzina.php" > Корзина </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
+    <li class="nav-link" ><a href="/pages/admin.php" > Админ </a><a href="/pages/OrederHistory.php" >История заказов</a></li>
     <li class="nav-link" ><a href="/src/PHP/exit.php" >Выйти</a></li>
+    <?php else: ?>
+        <div class="dropdown">
+            <li onclick="myFunction()" class="dropbtn nav-link" >Привет, <?= $_SESSION['user']['name'] ?> </li>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="korzina.php">Корзина</a>
+                <a href="OrederHistory.php">История заказов</a>
+                <a href="/pages/change_pass.php">Личный кабинет</a>
+                <a href="../src/PHP/exit.php" style="color: red">Выйти</a>
+            </div>
+        </div>
     <?php
     endif;
     ?>
-    </div>
+    <?php
+    }
+    ?>
 </nav>
-</table>
 <?php
-if($_SESSION['user']['id']==7){
-    foreach ($prod as $update)
-    {
-        ?>
-        <div style="padding-top: 10px; margin-left: 15px ">
-            </table>
-            <br></br>
-            <H4>Update cafe</H4>
-            <form action ="/src/PHP/upd_cafe.php" method="post">
-                <input type="hidden" name="id" value="<?=$update['id']?>">
-                <h4>Name</h4>
-                <input type="text" name="name" value="<?=$update['name']?>">
-                <h4>city</h4>
-                <input type="number" name="city" value="<?=$update['city']?>">
-                <h4>address</h4>
-                <input type="number" name="address" value="<?=$address?>">
-                <input type="hidden" name="action" value="update">
-                <input type="hidden" name="data_base" value="restaurants">
-                <input type='submit' value='Update cafe' >
-            </form>
-        </div>
-        <?php
+if($_SESSION['user']['id']==7) {
+    if (!isset($_SESSION['search_result'])) {
+        echo 'Пустой запрос';
+    } else {
+        $search_result = $_SESSION['search_result'];
+        print_r($search_result);
+        foreach ($search_result as $t) {
+            foreach ($t as $a) {
+                ?>
+                <div class="row">
+                <?php
+                foreach ($a as $result){
+                ?>
+                        <div class="col">
+                            <p><?=$result?></p>
+                        </div>
+                <?php
+                }
+                ?>
+                    <div class="col">
+                        <a href="restorans.php?">Просмотр полной информации</a>
+                    </div>
+                </div>
+                <?php
+            }
+        }
     }
 }
 else{
     echo "У вас нет прав";
 }
 ?>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
-                    <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
-                        <span aria-hidden="true">&times;</span>
-                    </buttom>
-                </div>
-                <div class="modal-body">
-                    <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Заказ</h5>
+                <buttom class="close" type="button" data-dismiss="modal" aria-label="Сlose">
+                    <span aria-hidden="true">&times;</span>
+                </buttom>
+            </div>
+            <div class="modal-body">
+                <p> Можете нам позвонить по номеру телефона 8(800)-555-35-35</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
 <div id="footer" style="position:flex;">
     © У Папы Сантьяго 2020 &nbsp; • &nbsp; г. Волгоград, проспект Университетский, д. 100&nbsp; &nbsp;• &nbsp; Тел.:
@@ -141,6 +143,7 @@ else{
 </div>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../src/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
 </script>

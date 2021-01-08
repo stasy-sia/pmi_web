@@ -132,6 +132,8 @@ SET_LOG();
                             Запомнить меня
                         </label>
                     </div>
+                    <input type="hidden" name="action" value="enter">
+                    <input type="hidden" name="data_base" value="users1">
                     <button type="submit" class="btn btn-primary">Войти</button>
                     <?php
                     if($_SESSION['message1'])

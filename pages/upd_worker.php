@@ -98,6 +98,8 @@ if($_SESSION['user']['id']==7){
                 <h4>salary</h4>
                 <input type="number" name="salary" value="<?=$update['salary']?>">
                 <input type="hidden" name="id" value="<?=$update['id']?>">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="data_base" value="workers">
                 <input type='submit' value='Update worker' >
             </form>
         </div>

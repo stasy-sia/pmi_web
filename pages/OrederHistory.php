@@ -118,10 +118,6 @@ $order = $stmt ->fetchAll(PDO::FETCH_ASSOC);
 $stmt3 = $pdo->prepare("SELECT * FROM menu");
 $stmt3->execute();
 $menu = $stmt3 ->fetchAll(PDO::FETCH_ASSOC);
-
-//$mysql = new mysqli('localhost', 'root', 'root', 'regist');
-//$result = $mysql->query("SELECT * FROM `orders` WHERE usser_id = '$userid'");
-//$orders = $result->fetch_assoc();
 foreach ($order as $orders)
 {
     $orderid = $orders['id'];
@@ -197,6 +193,8 @@ foreach ($order as $orders)
                 <h4>
                     Удалить
                     <input type="hidden" value="<?=$orderid?>" name="orderid">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="data_base" value="orders">
                     <button type="submit" class="delbtn" style="" ><i class="fa fa-trash"></i></button>
                 </h4>
             </form>

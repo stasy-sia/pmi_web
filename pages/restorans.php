@@ -107,12 +107,32 @@ $prod = $add ->fetchAll(PDO::FETCH_ASSOC);
                     </form>
                 </div>
             </div>
-
     <?php
     }
     ?>
 <br>
 <a href="add_cafe.php" class="floating-button">Добавить кафе</a>
+    <div>
+        <form style="width: 300px;margin: 20px;" method="get" action="../src/PHP/search_cafe.php">
+            <input class="dsearch" type="search" name="search" placeholder="Искать здесь...">
+            <button class="dbutton" type="submit">Поиск</button>
+            <br>
+                <input type="checkbox" class="option-input checkbox" name="city" value="1"/>
+                Поиск городов
+            <br>
+                <input type="checkbox" class="option-input checkbox" name="cafe" value="1"/>
+                Поиск кафе
+            <br>
+                <input type="checkbox" class="option-input checkbox" name="workers" value="1" />
+                Поиск работников
+            <br>
+                <input type="checkbox" class="option-input checkbox" name="suppliers" value="1" />
+                Поиск поставщиков
+            <br>
+                <input type="checkbox" class="option-input checkbox" name="prod_supp" value="1" />
+                Поиск продуктов
+        </form>
+    </div>
     <?php
 }
 else{

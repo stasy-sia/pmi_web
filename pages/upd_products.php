@@ -97,6 +97,8 @@ if($_SESSION['user']['id']==7){
                 <input type="hidden" name="id_supp" value="<?=$update['id_supp']?>">
                 <input type="hidden" name="id_prod" value="<?=$update['id_prod']?>">
                 <input type="hidden" name="id_cafe" value="<?=$_GET['id_cafe']?>">
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="data_base" value="prod_supp">
                 <input type='submit' value='Update product' >
             </form>
         </div>

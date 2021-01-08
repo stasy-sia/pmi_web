@@ -8,4 +8,204 @@ GET array (
   'id' => '44',
   'cat' => 'breakfast',
   'picture' => 'bg.jpg',
+)GET array (
+  'id' => '47',
+  'cat' => 'drinks',
+)GET array (
+  'id' => '47',
+  'cat' => 'drinks',
+)GET array (
+  'search' => '',
+)GET array (
+  'search' => 'Са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'Са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'Са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'яйцо',
+  'cafe' => '1',
+)GET array (
+  'search' => '',
+  'city' => '1',
+  'cafe' => '1',
+  'workers' => '1',
+  'suppliers' => '1',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '',
+  'cafe' => '1',
+)GET array (
+  'search' => 'с',
+)GET array (
+  'search' => 'с',
+  'city' => 'tru',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'ипарп',
+  'city' => 'tru',
+)GET array (
+  'search' => '',
+  'cafe' => '1',
+)GET array (
+  'search' => '',
+  'workers' => '1',
+)GET array (
+  'search' => '',
+  'cafe' => 'tru',
+)GET array (
+  'search' => '',
+  'workers' => 'tru',
+)GET array (
+  'search' => '',
+  'workers' => 'tru',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'Бу',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
+)GET array (
+  'search' => 'Са',
+  'city' => '1',
+  'cafe' => '1',
+  'workers' => '1',
+  'suppliers' => '1',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'я',
+  'city' => '1',
+  'cafe' => '1',
+  'workers' => '1',
+  'suppliers' => '1',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'я',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'я',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'я',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'я',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '100',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '100',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '100',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '504',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '504',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '504',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => '2500',
+  'workers' => '1',
+)GET array (
+  'search' => 'Технарь',
+  'workers' => '1',
+)GET array (
+  'search' => 'с',
+)GET array (
+  'search' => 'с',
+)GET array (
+  'id' => '1',
+)GET array (
+  'search' => 'с',
+)GET array (
+  'search' => 'с',
+)GET array (
+  'search' => '100',
+  'prod_supp' => '1',
+)GET array (
+  'search' => '1000',
+  'prod_supp' => '1',
+)GET array (
+  'search' => 'c',
+  'cafe' => '1',
+)GET array (
+  'search' => 'са',
+  'cafe' => '1',
 )

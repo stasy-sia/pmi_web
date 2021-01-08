@@ -94,20 +94,22 @@ $prod = $stmt ->fetchAll(PDO::FETCH_ASSOC);
                 <input type="hidden" name="id" value="<?=$update['id']?>">
                 <input type="hidden" name="cat" value="<?=$category?>">
                 <h4>Name</h4>
-                <input tupe="text" name="name" value="<?=$update['name']?>">
+                <input type="text" name="name" value="<?=$update['name']?>">
                 <h4>Price</h4>
-                <input tupe="number" name="price" value="<?=$update['price']?>">
+                <input type="number" name="price" value="<?=$update['price']?>">
                 <h4>Gramm</h4>
-                <input tupe="number" name="gramm" value="<?=$update['gramm']?>">
+                <input type="number" name="gramm" value="<?=$update['gramm']?>">
                 <h4>picture</h4>
-                <input  tupe="text" name="name_page" value="<?=$update['name_page']?>">
+                <input type="text" name="name_page" value="<?=$update['name_page']?>">
                 <h4>picture</h4>
-                <input  readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
+                <input readonly="readonly" tupe="text" name="picture" value="<?=$update['picture']?>">
                 Удалить
                 <input type="checkbox" name="Del" value="tru"><Br>
                 <br></br>
                 <input type="hidden" name="MAX_FILE_SIZE" value="5000000">
                 <input type='file' name='file' class='file-drop' id='file-drop'><br>
+                <input type="hidden" name="action" value="update">
+                <input type="hidden" name="data_base" value="menu">
                 <input type='submit' value='Update product' >
             </form>
         </div>
